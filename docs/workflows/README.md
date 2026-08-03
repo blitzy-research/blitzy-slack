@@ -604,7 +604,14 @@ Everywhere else the catalog uses functional phrasing: the app directory, the ext
 
 ## Omissions
 
-**Nothing was omitted.** All 25 catalog files are delivered: this master index, the [coverage ledger](_screenshot-index.md) with its full complement of 1,022 rows, and all 23 workflow-area documents. Every one of the 248 flows is defined, every frame in `{0 … 1021}` has a primary owning area, and none of the mandated sections of this document was dropped or abbreviated under a truncation budget.
+**Nothing was omitted from the two priority artifacts, and nothing in this document was abbreviated.** This section is the catalog's single declared place for recording an omission, so it states what is verified rather than what is hoped.
+
+Verified complete:
+
+- **This master index.** Every mandated section is present, in order, at full depth. No section was dropped, truncated or summarised to fit a budget.
+- **The [coverage ledger](_screenshot-index.md).** It carries its full complement of **1,022 rows**, one per frame; its frame set equals `{0 … 1021}` exactly, with no gap, no extra and no duplicated row; every row names an owning area document; and all **248 flows** are defined. Checked by the arithmetic described in [How this catalog's coverage is verified](#how-this-catalogs-coverage-is-verified-and-why-counting-is-not-enough) rather than asserted.
+
+The catalog is planned at **25 files** — these two plus the 23 workflow-area documents enumerated in the [index](#index-of-catalog-documents), whose per-area flow and frame allocations are already fixed and published in the ledger's [coverage assertion](_screenshot-index.md#coverage-assertion). **If any area document is ever delivered incomplete, or not delivered at all, it must be recorded here**, naming the document and the reason. Anything not listed above as verified should be confirmed against that allocation before it is relied on.
 
 Three things are absent by **design** rather than by omission, and are recorded here so that their absence is not mistaken for a gap: decorative marketing copy is deliberately not transcribed, because the build must supply its own; third-party brand palette values are deliberately not carried forward, because they are not this project's design tokens; and the superfences fix described in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) is deliberately not applied, because it exceeds the permitted change surface.
 
