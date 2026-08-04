@@ -36,12 +36,16 @@ Notation used throughout this ledger:
 - **`UNREADABLE`** is the caption of any frame that could not be visually inspected. It would appear alone, with no
   description of any kind, because a description written from anything other than the pixels would be a fabrication.
   **No frame in this corpus is marked `UNREADABLE`:** all 1,022 were inspected.
-- **Captions exclude the capture band.** Every frame carries a full-width dark band along its bottom edge that
-  belongs to the capture tool rather than to the product, so it is excluded from every caption here and from every
-  build target in the catalog. It is described once in the [Workflow Catalog](README.md) and nowhere else.
+- **Captions describe product interface only.** The exclusion rule that governs every caption in this ledger, and
+  its measurement, are stated once in the [Workflow Catalog](README.md) and nowhere else — including not here.
 - **Observed, not recalled.** An unqualified caption asserts what the frame shows. Where a frame is a near-copy of
   its predecessor the caption opens `the same …` and then names the one thing that changed, so the distinction
   between surface and state is never lost.
+- **Identical pixels get identical claims.** Where two or more frames are byte-identical, every member's caption
+  describes the same visible state: no member asserts a state its own pixels do not show, and no two members make
+  claims that exclude one another. Later members additionally record the byte-identity. Anything that differentiates
+  such frames — which flow they belong to, for example — comes from the frames around them, so it is stated outside
+  the caption and marked `**Inferred:**`. The groups concerned are listed in [Duplicate frames](#duplicate-frames).
 - **A cross-cutting area may own very few frames.** `21-states.md` is cross-cutting: it is the primary owner of only
   the two error-page frames and appears as a secondary cross-reference on flows throughout the catalog. Under the
   one-primary-owner rule that is expected, and it is not a coverage gap.
@@ -60,17 +64,25 @@ Notation used throughout this ledger:
   numbers in this ledger equals `{0 … 1021}` exactly, with no missing frame, no extra frame and no duplicated row.
 - **Every row names at least one area document**, and each frame has exactly one primary owner. There are zero
   unassigned rows.
-- The union of every workflow-area document's `Frames covered` set must equal this ledger's frame set, which must
-  equal `{0 … 1021}`. All three are the same set. Any disagreement between an area document and this ledger is a
-  defect in one of them, not a difference of interpretation.
-- **1,022 frames are distributed across the 23 area documents as primary owner** as follows. The `Frames` column
-  sums to 1,022 and the `Flows` column sums to 248.
+- **Cross-document reconciliation is a pending gate, not a completed check.** The invariant is that the union of
+  every workflow-area document's `Frames covered` set equals this ledger's frame set, which equals `{0 … 1021}`.
+  That invariant can only be evaluated once all 23 area documents exist; at the time of writing, of the documents
+  the table below names, [00-product-overview.md](00-product-overview.md) has been authored and reconciled against
+  this ledger, and the remaining 22 are **planned and not yet authored**. Until each one exists and its
+  `Frames covered` set has been compared with this ledger, the union claim is **unverified for that area**. Any
+  disagreement found when an area document is authored is a defect in one of the two documents, not a difference of
+  interpretation, and it is resolved by re-inspecting the frame.
+- **The table below is the planned primary-ownership map** — the assignment this ledger's rows already make, stated
+  per area so an area author knows exactly which frames their document must claim. It is derived from the `Flow(s)`
+  and `Area document(s)` columns of the 1,022 rows below, so it is internally consistent with this ledger by
+  construction; it becomes an externally verified fact one area at a time, as each document is written. The
+  `Frames` column sums to 1,022 and the `Flows` column sums to 248.
 
 | Area document | Flows | Frames owned as primary |
 |---|---|---|
-| [00-product-overview.md](00-product-overview.md) | 10 | 21 |
+| [00-product-overview.md](00-product-overview.md) | 10 | 20 |
 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) | 20 | 81 |
-| [02-channels.md](02-channels.md) | 21 | 91 |
+| [02-channels.md](02-channels.md) | 21 | 92 |
 | [03-messaging-and-composer.md](03-messaging-and-composer.md) | 14 | 89 |
 | [04-threads.md](04-threads.md) | 3 | 8 |
 | [05-direct-messages.md](05-direct-messages.md) | 5 | 13 |
@@ -101,12 +113,44 @@ Every flow identifier that appears in the [Ledger](#ledger) is defined here, and
 one of the 23 workflow-area documents in the catalog. The table is ordered by first appearance in the corpus, so it
 reads in the same order as the ledger below rather than grouped by area.
 
-Two flows occupy **more than one span** because the corpus is a curated export that re-orders and repeats surfaces,
-so the same journey recurs at non-adjacent indices. Both are listed once, under a single identifier, with each span
-named:
+Eight flows occupy **more than one span**, for two distinct reasons. In some cases the corpus is a curated export
+that re-orders and repeats surfaces, so the same journey recurs at non-adjacent indices. In the others, segmentation
+by visual state deliberately overrode numeric adjacency: a frame sitting inside a numerically contiguous run belongs
+to a different journey than its neighbours, so it was assigned to the journey its pixels support and the surrounding
+flow was left with a gap. Each such flow is listed once, under a single identifier, with each span named:
 
 - `02.1` — Land in the first channel of a new workspace — spans 19, 24, 31–32.
 - `05.1` — Open a one-to-one direct message and begin composing — spans 110, 227–229, 256.
+- `06.2` — Check huddle connection diagnostics — spans 271–272, 274.
+- `06.3` — Use the huddle control bar and set a huddle topic — spans 273, 275–279.
+- `14.1` — Set notification preferences and a notification schedule — spans 535, 539–543.
+- `14.2` — Review and clear the optional navigation destinations — spans 536, 544.
+- `14.3` — Set home and theme preferences — spans 537, 546–548.
+- `14.4` — Set audio-and-video preferences — spans 538, 561–563.
+
+The six adjacency overrides that produced the gaps in `06.2`, `06.3`, `14.1`, `14.2`, `14.3` and `14.4`, together
+with the three that moved a frame between numerically neighbouring flows without leaving a gap
+(`02.4`/`02.5`, `00.3`/`02.11`, `13.2`/`13.3`), are recorded with their visual reasons in the Flow Reconstruction
+Methodology of the [Workflow Catalog](README.md).
+
+> **Partial capture:** six flows in this ledger stop short of the terminal action a reader might expect, because the
+> corpus does not capture it. Each is named for the journey the frames actually show, and the missing step is stated
+> here rather than implied by the flow name.
+>
+> - `12.1` — Confirm that notification preferences are in effect. The browser's own permission prompt, and the act
+>   of granting it, are not captured; the corpus shows only the in-product request banner and this confirmation bar.
+> - `10.2` — Edit and save a workflow step. No frame shows the publish control being used or a published workflow;
+>   the editor exposes the control and the run ends at a saved step with a confirmation toast.
+> - `18.3` — Start a workspace upgrade and fill in checkout details. No frame shows a completed purchase or an order
+>   confirmation; the last captured state is a filled estimate with a masked card and, before it, inline validation
+>   errors.
+> - `20.2` — Review and reply to a support request in the admin console. The act of raising a new request is not
+>   captured; the first frame already shows an open request alongside a contact-us affordance, and the run ends at an
+>   unsent reply.
+> - `17.9` — Read a webinar page and its registration form. No frame shows the form submitted or a registration
+>   confirmation; every field remains empty.
+> - `21.1` — Read an application error page. No frame shows recovery from the error; the pages expose a help-centre
+>   link and site navigation, and no subsequent frame returns to a working surface.
 
 | Flow ID | Flow name | Frame range | Primary area document |
 |---|---|---|---|
@@ -117,7 +161,7 @@ named:
 | 01.4 | Complete the five-step workspace setup wizard | 8–18 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | 02.1 | Land in the first channel of a new workspace | 19, 24, 31–32 | [02-channels.md](02-channels.md) |
 | 01.5 | Upload and crop a profile photo during setup | 20–22 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
-| 12.1 | Grant browser notification permission | 23 | [12-activity-notifications.md](12-activity-notifications.md) |
+| 12.1 | Confirm that notification preferences are in effect | 23 | [12-activity-notifications.md](12-activity-notifications.md) |
 | 01.6 | Follow the first-run coach marks and suggestion strips | 25–30 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | 03.1 | React to a message while first-run coaching is active | 33–38 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | 00.1 | Open the global create menu | 39 | [00-product-overview.md](00-product-overview.md) |
@@ -125,8 +169,8 @@ named:
 | 01.8 | Invite a guest with channel scope and an expiry date | 49–57 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | 02.2 | Create a private channel and invite someone from another company | 58–68 | [02-channels.md](02-channels.md) |
 | 02.3 | Create a channel and add workspace members | 69–79 | [02-channels.md](02-channels.md) |
-| 02.4 | Open the channel details pane and star a channel | 80–91 | [02-channels.md](02-channels.md) |
-| 02.5 | Set channel notification preferences | 92–96 | [02-channels.md](02-channels.md) |
+| 02.4 | Open the channel details pane and star a channel | 80–87 | [02-channels.md](02-channels.md) |
+| 02.5 | Set channel notification preferences | 88–96 | [02-channels.md](02-channels.md) |
 | 02.6 | Rename a channel and edit its description | 97–104 | [02-channels.md](02-channels.md) |
 | 02.7 | Remove a member from a channel | 105–106 | [02-channels.md](02-channels.md) |
 | 02.8 | Convert a channel to private and archive it | 107–109 | [02-channels.md](02-channels.md) |
@@ -134,8 +178,8 @@ named:
 | 02.9 | Delete a channel | 111–112 | [02-channels.md](02-channels.md) |
 | 00.2 | Create a sidebar section and multi-select channels | 113–119 | [00-product-overview.md](00-product-overview.md) |
 | 02.10 | Read the company-wide channel and an app-posted workflow message | 120 | [02-channels.md](02-channels.md) |
-| 00.3 | Move channels between sidebar sections | 121–124 | [00-product-overview.md](00-product-overview.md) |
-| 02.11 | Browse channels with scope, type and sort filters | 125–133 | [02-channels.md](02-channels.md) |
+| 00.3 | Move channels between sidebar sections | 121–123 | [00-product-overview.md](00-product-overview.md) |
+| 02.11 | Open the add-channels menu and browse channels with scope, type and sort filters | 124–133 | [02-channels.md](02-channels.md) |
 | 02.12 | Read an archived channel and unarchive it | 134–138 | [02-channels.md](02-channels.md) |
 | 03.2 | Compose and send a multi-line formatted message | 139–142 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | 03.3 | Create and post a snippet | 143–149 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
@@ -156,8 +200,8 @@ named:
 | 03.12 | Pin, edit and delete a message | 248–255 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | 02.13 | Add bookmarks and a bookmark folder to a conversation | 257–266 | [02-channels.md](02-channels.md) |
 | 06.1 | Start a huddle from a conversation | 267–270 | [06-huddles.md](06-huddles.md) |
-| 06.2 | Check huddle connection diagnostics | 271–274 | [06-huddles.md](06-huddles.md) |
-| 06.3 | Set a huddle topic and use the control bar | 275–279 | [06-huddles.md](06-huddles.md) |
+| 06.2 | Check huddle connection diagnostics | 271–272, 274 | [06-huddles.md](06-huddles.md) |
+| 06.3 | Use the huddle control bar and set a huddle topic | 273, 275–279 | [06-huddles.md](06-huddles.md) |
 | 06.4 | Send huddle reactions and open the huddle overflow menu | 280–282 | [06-huddles.md](06-huddles.md) |
 | 06.5 | Choose a huddle theme | 283–286 | [06-huddles.md](06-huddles.md) |
 | 06.6 | Turn on huddle captions and hide self-view | 287–292 | [06-huddles.md](06-huddles.md) |
@@ -214,25 +258,25 @@ named:
 | 22.1 | Explore the external-connections destination | 494–497 | [22-external-collaboration.md](22-external-collaboration.md) |
 | 22.2 | Invite an external person into a conversation | 498–500 | [22-external-collaboration.md](22-external-collaboration.md) |
 | 22.3 | Review external invitations received and sent | 501–503 | [22-external-collaboration.md](22-external-collaboration.md) |
-| 13.2 | Set a status with an emoji and a clear-after time | 504–511 | [13-profiles-people.md](13-profiles-people.md) |
-| 13.3 | Change presence, pause notifications and set do-not-disturb | 512–518 | [13-profiles-people.md](13-profiles-people.md) |
+| 13.2 | Set a status with an emoji and a clear-after time | 504–512 | [13-profiles-people.md](13-profiles-people.md) |
+| 13.3 | Change presence, pause notifications and set do-not-disturb | 513–518 | [13-profiles-people.md](13-profiles-people.md) |
 | 13.4 | View and edit your profile | 519–525 | [13-profiles-people.md](13-profiles-people.md) |
 | 13.5 | Edit about-me details and a start date | 526–531 | [13-profiles-people.md](13-profiles-people.md) |
 | 13.6 | Preview your profile as a coworker | 532–534 | [13-profiles-people.md](13-profiles-people.md) |
-| 14.1 | Set notification preferences and a notification schedule | 535–543 | [14-preferences-settings.md](14-preferences-settings.md) |
-| 14.2 | Clear every optional navigation destination | 544 | [14-preferences-settings.md](14-preferences-settings.md) |
+| 14.1 | Set notification preferences and a notification schedule | 535, 539–543 | [14-preferences-settings.md](14-preferences-settings.md) |
+| 14.2 | Review and clear the optional navigation destinations | 536, 544 | [14-preferences-settings.md](14-preferences-settings.md) |
+| 14.3 | Set home and theme preferences | 537, 546–548 | [14-preferences-settings.md](14-preferences-settings.md) |
+| 14.4 | Set audio-and-video preferences | 538, 561–563 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 02.18 | Return to a channel from preferences | 545 | [02-channels.md](02-channels.md) |
-| 14.3 | Set home and theme preferences | 546–548 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 00.7 | Use the compact navigation rail and global create menu | 549–550 | [00-product-overview.md](00-product-overview.md) |
 | 03.14 | Address a new message from the compact rail | 551 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | 05.5 | Read a one-to-one conversation | 552 | [05-direct-messages.md](05-direct-messages.md) |
-| 14.4 | Set theme, message-density and emoji preferences | 553–559 | [14-preferences-settings.md](14-preferences-settings.md) |
+| 14.5 | Set theme, message-density and emoji preferences | 553–559 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 00.8 | Read a channel with a trial banner in the sidebar | 560 | [00-product-overview.md](00-product-overview.md) |
-| 14.5 | Set audio-and-video preferences | 561–563 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 14.6 | Run the audio-and-video diagnostics test | 564–565 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 15.1 | Open the workspace menu and tools-and-settings submenu | 566–567 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 10.1 | Open the workflow builder and browse templates | 568–570 | [10-workflow-builder.md](10-workflow-builder.md) |
-| 10.2 | Edit a workflow step and publish | 571–574 | [10-workflow-builder.md](10-workflow-builder.md) |
+| 10.2 | Edit and save a workflow step | 571–574 | [10-workflow-builder.md](10-workflow-builder.md) |
 | 15.2 | Change admin console settings and authentication | 575–579 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.3 | Delete a workspace | 580–583 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.4 | Change admin permissions and enable two-factor authentication | 584–589 | [15-admin-workspace.md](15-admin-workspace.md) |
@@ -241,7 +285,7 @@ named:
 | 15.7 | Navigate the admin console home | 600–603 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.8 | Change admin account settings | 604–605 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.9 | Deactivate an account | 606–609 | [15-admin-workspace.md](15-admin-workspace.md) |
-| 18.3 | Upgrade the workspace and complete checkout | 610–616 | [18-pricing-plans.md](18-pricing-plans.md) |
+| 18.3 | Start a workspace upgrade and fill in checkout details | 610–616 | [18-pricing-plans.md](18-pricing-plans.md) |
 | 15.10 | Read the admin analytics overview | 617–621 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.11 | Analyse where conversations happen | 622–624 | [15-admin-workspace.md](15-admin-workspace.md) |
 | 15.12 | Browse the customize-workspace tabs | 625–628 | [15-admin-workspace.md](15-admin-workspace.md) |
@@ -264,7 +308,7 @@ named:
 | 09.4 | Build a query with the filter-by popover | 698–701 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 09.5 | Sort search results and switch layout | 702–704 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 20.1 | Use the in-app help panel | 705–710 | [20-help-community.md](20-help-community.md) |
-| 20.2 | Raise and track a support request from the admin console | 711–713 | [20-help-community.md](20-help-community.md) |
+| 20.2 | Review and reply to a support request in the admin console | 711–713 | [20-help-community.md](20-help-community.md) |
 | 01.10 | Sign in on a mobile device with a code | 714 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | 00.9 | Switch workspaces and add another workspace | 715–716 | [00-product-overview.md](00-product-overview.md) |
 | 01.11 | Sign in to a workspace from the browser | 717–720 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
@@ -288,7 +332,7 @@ named:
 | 17.6 | Read a resource article and rate it | 776–781 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.7 | Read the huddles product page | 782–785 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.8 | Browse a resource collection page | 786–787 | [17-marketing-site.md](17-marketing-site.md) |
-| 17.9 | Register for a webinar | 788–790 | [17-marketing-site.md](17-marketing-site.md) |
+| 17.9 | Read a webinar page and its registration form | 788–790 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.10 | Read the apps-and-integrations product page | 791–795 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.11 | Read the lists product page | 796–799 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.12 | Read the assistant product page | 800–803 | [17-marketing-site.md](17-marketing-site.md) |
@@ -357,7 +401,7 @@ named:
 | 17.46 | Open a merchandise product page and add it to the basket | 1012–1014 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.47 | Review the basket and start checkout | 1015–1016 | [17-marketing-site.md](17-marketing-site.md) |
 | 17.48 | Read the terms and policies pages | 1017–1019 | [17-marketing-site.md](17-marketing-site.md) |
-| 21.1 | Recover from an application error page | 1020–1021 | [21-states.md](21-states.md) |
+| 21.1 | Read an application error page | 1020–1021 | [21-states.md](21-states.md) |
 
 ## Ledger
 
@@ -453,10 +497,10 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 85](../../screenshots/Slack%20web%20Jul%202024%2085.png) | channel details pane About tab with a star-channel tooltip revealed above the star toggle | 02.4 | [02-channels.md](02-channels.md) |
 | [frame 86](../../screenshots/Slack%20web%20Jul%202024%2086.png) | channel details pane About tab with the star now active and a bottom-right toast confirming the channel moved to Starred with an Undo link; the sidebar has gained a Starred section | 02.4 | [02-channels.md](02-channels.md) |
 | [frame 87](../../screenshots/Slack%20web%20Jul%202024%2087.png) | channel details pane About tab after the toast dismissed: star active, sidebar Starred section retained | 02.4 | [02-channels.md](02-channels.md) |
-| [frame 88](../../screenshots/Slack%20web%20Jul%202024%2088.png) | channel details pane About tab with the header notification control now reading get-notifications-for-mentions | 02.4 | [02-channels.md](02-channels.md) |
-| [frame 89](../../screenshots/Slack%20web%20Jul%202024%2089.png) | channel notification-preference dropdown open from the details-pane header: all-messages, mentions (checked) and off options each with a description, a mute-channel item with explanation, and a more-notification-options entry | 02.4 | [02-channels.md](02-channels.md) |
-| [frame 90](../../screenshots/Slack%20web%20Jul%202024%2090.png) | channel details pane About tab with the header notification control reading get-notifications-for-all-messages, dropdown closed | 02.4 | [02-channels.md](02-channels.md) |
-| [frame 91](../../screenshots/Slack%20web%20Jul%202024%2091.png) | channel notification-preference dropdown open with the all-messages option checked | 02.4 | [02-channels.md](02-channels.md) |
+| [frame 88](../../screenshots/Slack%20web%20Jul%202024%2088.png) | channel details pane About tab with the header notification control now reading get-notifications-for-mentions | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
+| [frame 89](../../screenshots/Slack%20web%20Jul%202024%2089.png) | channel notification-preference dropdown open from the details-pane header: all-messages, mentions (checked) and off options each with a description, a mute-channel item with explanation, and a more-notification-options entry | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
+| [frame 90](../../screenshots/Slack%20web%20Jul%202024%2090.png) | channel details pane About tab with the header notification control reading get-notifications-for-all-messages, dropdown closed | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
+| [frame 91](../../screenshots/Slack%20web%20Jul%202024%2091.png) | channel notification-preference dropdown open with the all-messages option checked | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 92](../../screenshots/Slack%20web%20Jul%202024%2092.png) | channel notifications modal: send-a-notification-for radio group with all-new-messages selected, unchecked mobile-override and thread-replies checkboxes, unchecked mute-channel with explanation, a keywords note linking to preferences, Cancel and save-changes | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 93](../../screenshots/Slack%20web%20Jul%202024%2093.png) | same notifications modal with the mobile-override checkbox checked, revealing a nested mobile radio group set to all-new-messages | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 94](../../screenshots/Slack%20web%20Jul%202024%2094.png) | same notifications modal with the nested mobile radio group switched to mentions | 02.5 | [02-channels.md](02-channels.md), [12-activity-notifications.md](12-activity-notifications.md) |
@@ -487,9 +531,9 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 119](../../screenshots/Slack%20web%20Jul%202024%20119.png) | sidebar in multi-select mode: per-row checkboxes on the channel, direct-message and app rows with none ticked, the counter reading 0 selected, and a bottom bar offering new-section and Done | 00.2 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
 | [frame 120](../../screenshots/Slack%20web%20Jul%202024%20120.png) | company-wide channel view with its empty-state hero and an app-posted standup message containing a numbered prompt, while the sidebar is in multi-select mode showing two selected, clear-selection, move-to and Done | 02.10 | [02-channels.md](02-channels.md), [00-product-overview.md](00-product-overview.md), [10-workflow-builder.md](10-workflow-builder.md), [11-apps-and-integrations.md](11-apps-and-integrations.md) |
 | [frame 121](../../screenshots/Slack%20web%20Jul%202024%20121.png) | same company-wide channel with the move-to popover open listing Starred, the newly created section and move-to-new-section | 00.3 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
-| [frame 122](../../screenshots/Slack%20web%20Jul%202024%20122.png) | company-wide channel with a bottom-right toast confirming two conversations moved into the section with an Undo link, the sidebar showing them nested there | 00.3 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
+| [frame 122](../../screenshots/Slack%20web%20Jul%202024%20122.png) | company-wide channel with a bottom-right toast confirming two conversations moved into the section with an Undo link, the sidebar still in multi-select mode with every checkbox cleared and the two conversations now nested under the new section | 00.3 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
 | [frame 123](../../screenshots/Slack%20web%20Jul%202024%20123.png) | company-wide channel with the reorganised sidebar (channels grouped under the new section), empty-state hero and the app-posted standup message, no overlay | 00.3 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
-| [frame 124](../../screenshots/Slack%20web%20Jul%202024%20124.png) | channel view with the sidebar add-channels menu open offering create-a-new-channel and browse-channels | 00.3 | [00-product-overview.md](00-product-overview.md), [02-channels.md](02-channels.md) |
+| [frame 124](../../screenshots/Slack%20web%20Jul%202024%20124.png) | channel view with the sidebar add-channels menu open offering create-a-new-channel and browse-channels | 02.11 | [02-channels.md](02-channels.md), [00-product-overview.md](00-product-overview.md) |
 | [frame 125](../../screenshots/Slack%20web%20Jul%202024%20125.png) | channel browser: all-channels header with create-channel button, channel search field, dismissible hero explaining channels with a create-a-channel button, filter row with channel-scope, channel-type, organizations and sort controls, and channel rows showing joined state, member count and purpose | 02.11 | [02-channels.md](02-channels.md) |
 | [frame 126](../../screenshots/Slack%20web%20Jul%202024%20126.png) | channel browser with the channel-scope dropdown open showing all-channels checked plus my-channels and other-channels | 02.11 | [02-channels.md](02-channels.md) |
 | [frame 127](../../screenshots/Slack%20web%20Jul%202024%20127.png) | channel browser filtered to my channels with an alphabetical sort and a Clear action, listing four channel rows with joined state, member counts and purposes | 02.11 | [02-channels.md](02-channels.md) |
@@ -594,7 +638,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 226](../../screenshots/Slack%20web%20Jul%202024%20226.png) | channel view with the thread pane closed and a one-reply summary link beneath the file message | 04.1 | [04-threads.md](04-threads.md) |
 | [frame 227](../../screenshots/Slack%20web%20Jul%202024%20227.png) | direct-message conversation: header with the person menu plus huddle and canvas actions, two-person intro with view-profile button, an invitation-accepted system message with a do-not-notify link and an empty composer; byte-identical duplicate of frame 110 | 05.1 | [05-direct-messages.md](05-direct-messages.md), [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | [frame 228](../../screenshots/Slack%20web%20Jul%202024%20228.png) | same direct message with a multi-sentence greeting typed in the composer and the shift-return hint below it | 05.1 | [05-direct-messages.md](05-direct-messages.md), [03-messaging-and-composer.md](03-messaging-and-composer.md) |
-| [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png) | direct message with an empty composer and the two-person intro, sidebar showing a drafts-and-sent row; the welcome greeting already sent under a Today divider, with the invitation-accepted system message above it | 05.1 | [05-direct-messages.md](05-direct-messages.md), [03-messaging-and-composer.md](03-messaging-and-composer.md) |
+| [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png) | direct-message conversation showing the two-person intro with a view-profile button, an invitation-accepted system message with a do-not-notify link, two day dividers and one sent welcoming message carrying italic emphasis and an inline link, above an empty composer with its formatting toolbar; sidebar shows a drafts-and-sent row and a discount banner with a two-days-left countdown | 05.1 | [05-direct-messages.md](05-direct-messages.md), [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | [frame 230](../../screenshots/Slack%20web%20Jul%202024%20230.png) | direct message with the greeting draft in the composer and the formatting toolbar fully visible above it | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 231](../../screenshots/Slack%20web%20Jul%202024%20231.png) | direct-message composer draft with a phrase text-selected and the formatting toolbar visible above it | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 232](../../screenshots/Slack%20web%20Jul%202024%20232.png) | direct-message composer draft with the selected phrase rendered bold italic and the bold and italic toolbar buttons showing an active state | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
@@ -607,7 +651,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 239](../../screenshots/Slack%20web%20Jul%202024%20239.png) | edit-link dialog with both the Text and Link fields populated, Cancel and Save | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 240](../../screenshots/Slack%20web%20Jul%202024%20240.png) | direct message with the composer draft carrying the inserted hyperlink and the formatting toolbar above it | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 241](../../screenshots/Slack%20web%20Jul%202024%20241.png) | direct message with a link hover popover over the composer showing the link text and destination plus Edit and destructive Remove buttons | 03.10 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
-| [frame 242](../../screenshots/Slack%20web%20Jul%202024%20242.png) | direct message with the greeting sent and the composer empty, two-person intro above; byte-identical duplicate of frame 229 | 03.11 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
+| [frame 242](../../screenshots/Slack%20web%20Jul%202024%20242.png) | direct-message conversation showing the two-person intro with a view-profile button, an invitation-accepted system message with a do-not-notify link, two day dividers and one sent welcoming message carrying italic emphasis and an inline link, above an empty composer with its formatting toolbar; sidebar shows a drafts-and-sent row and a discount banner with a two-days-left countdown; byte-identical duplicate of frame 229 | 03.11 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 243](../../screenshots/Slack%20web%20Jul%202024%20243.png) | direct message with the hover action bar revealed on the sent message and an edited marker at its end | 03.11 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 244](../../screenshots/Slack%20web%20Jul%202024%20244.png) | direct message with the message overflow menu open listing forward, save-for-later, turn-off-reply-notifications, mark-unread, remind-me, copy-link, pin, start-a-huddle-in-thread, edit and destructive delete plus add-a-message-shortcut; seven rows carry a keyboard shortcut and four do not — turn-off-reply-notifications, start-a-huddle-in-thread, add-a-message-shortcut (external-link glyph) and remind-me-about-this (submenu chevron) | 03.11 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 245](../../screenshots/Slack%20web%20Jul%202024%20245.png) | forward-this-private-message dialog: add-by-name-or-channel field with a suggestion list of people and channels, a quoted preview of the message, copy-link, save-draft and Forward | 03.11 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
@@ -638,7 +682,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 270](../../screenshots/Slack%20web%20Jul%202024%20270.png) | same huddle with a decorative illustrated background applied behind the participant tiles, a muted-mic badge on the second tile, the huddle thread pane still open and no tooltip on screen | 06.1 | [06-huddles.md](06-huddles.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 271](../../screenshots/Slack%20web%20Jul%202024%20271.png) | huddle with the connection diagnostics popover open: connection-is-stable summary, audio-only-mode toggle switched on with explanation, network, system and devices rows each rated good, get-help-with-common-issues links and a contact-us link, plus a bottom banner noting audio-only mode was enabled with a turn-off link | 06.2 | [06-huddles.md](06-huddles.md), [21-states.md](21-states.md) |
 | [frame 272](../../screenshots/Slack%20web%20Jul%202024%20272.png) | huddle diagnostics popover expanded on the network group: latency, jitter, packet-loss and speaker-delay rows each with a description and rating, system and devices rated good, plus the audio-only-mode banner at the bottom | 06.2 | [06-huddles.md](06-huddles.md), [21-states.md](21-states.md) |
-| [frame 273](../../screenshots/Slack%20web%20Jul%202024%20273.png) | huddle with an invite-people popover open listing the two current participants and a note that they will receive a notification to join | 06.2 | [06-huddles.md](06-huddles.md), [21-states.md](21-states.md) |
+| [frame 273](../../screenshots/Slack%20web%20Jul%202024%20273.png) | huddle stage with the control-bar invite-people popover open above the participant control, listing the two current participants and a note that they will receive a notification to join, the huddle thread pane open at the right and the audio-only banner still shown | 06.3 | [06-huddles.md](06-huddles.md) |
 | [frame 274](../../screenshots/Slack%20web%20Jul%202024%20274.png) | huddle diagnostics popover with audio-only mode toggled off, network, system and devices rated good, and the get-help-with-common-issues links beneath | 06.2 | [06-huddles.md](06-huddles.md), [21-states.md](21-states.md) |
 | [frame 275](../../screenshots/Slack%20web%20Jul%202024%20275.png) | add-a-topic dialog over the dimmed huddle stage: single text input asking what the huddle is about, Cancel and Add | 06.3 | [06-huddles.md](06-huddles.md) |
 | [frame 276](../../screenshots/Slack%20web%20Jul%202024%20276.png) | add-a-topic dialog with a topic typed and Add active | 06.3 | [06-huddles.md](06-huddles.md) |
@@ -877,7 +921,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 509](../../screenshots/Slack%20web%20Jul%202024%20509.png) | the same modal with the remove-status-after select open listing clear-selection, do-not-clear, thirty-minutes, one-hour, four-hours, today checked, this-week and choose-date-and-time | 13.2 | [13-profiles-people.md](13-profiles-people.md) |
 | [frame 510](../../screenshots/Slack%20web%20Jul%202024%20510.png) | set-a-status modal with remove-status-after set to one hour and the pause-notifications checkbox unchecked | 13.2 | [13-profiles-people.md](13-profiles-people.md) |
 | [frame 511](../../screenshots/Slack%20web%20Jul%202024%20511.png) | the same status modal with the pause-notifications checkbox now checked | 13.2 | [13-profiles-people.md](13-profiles-people.md) |
-| [frame 512](../../screenshots/Slack%20web%20Jul%202024%20512.png) | channel view with no menus open and the newly set status emoji shown beside the user's own name in the sidebar direct-message list | 13.3 | [13-profiles-people.md](13-profiles-people.md), [12-activity-notifications.md](12-activity-notifications.md) |
+| [frame 512](../../screenshots/Slack%20web%20Jul%202024%20512.png) | channel view with no menus open and the newly set status emoji shown beside the user's own name in the sidebar direct-message list | 13.2 | [13-profiles-people.md](13-profiles-people.md) |
 | [frame 513](../../screenshots/Slack%20web%20Jul%202024%20513.png) | channel view with the user menu open showing away presence, an update-your-status field, set-yourself-as-active, pause-notifications, profile, preferences and sign-out | 13.3 | [13-profiles-people.md](13-profiles-people.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 514](../../screenshots/Slack%20web%20Jul%202024%20514.png) | user menu with the pause-notifications submenu open listing for-thirty-minutes, for-one-hour, for-two-hours, until-tomorrow, until-next-week and custom, plus a set-a-notification-schedule entry with a new badge | 13.3 | [13-profiles-people.md](13-profiles-people.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 515](../../screenshots/Slack%20web%20Jul%202024%20515.png) | channel view with the menus closed and the status emoji no longer shown beside the user's own name in the sidebar | 13.3 | [13-profiles-people.md](13-profiles-people.md), [12-activity-notifications.md](12-activity-notifications.md) |
@@ -901,9 +945,9 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 533](../../screenshots/Slack%20web%20Jul%202024%20533.png) | own-profile pane with the view-as dropdown open offering a-coworker and a-contact-from-another-organization | 13.6 | [13-profiles-people.md](13-profiles-people.md) |
 | [frame 534](../../screenshots/Slack%20web%20Jul%202024%20534.png) | own-profile pane in coworker-preview mode: a blue viewing-as-coworker bar with an exit-preview button and the pane reduced to a message button, overflow control and contact information | 13.6 | [13-profiles-people.md](13-profiles-people.md) |
 | [frame 535](../../screenshots/Slack%20web%20Jul%202024%20535.png) | preferences modal on the notifications tab with a notify-me-about radio group, a use-different-settings-for-mobile checkbox and select, huddle-start and thread-reply checkboxes, a my-keywords textarea with badge explanation, and a twelve-item category list on the left | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
-| [frame 536](../../screenshots/Slack%20web%20Jul%202024%20536.png) | preferences on the navigation tab listing checkbox toggles for each navigation-bar destination with a note that only selected tabs appear in smaller windows | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
-| [frame 537](../../screenshots/Slack%20web%20Jul%202024%20537.png) | preferences on the themes tab with a light-dark-system colour-mode segmented control, preset and custom theme tabs, a named single-colour swatch grid, a vision-assistive group and a fun-and-new group | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
-| [frame 538](../../screenshots/Slack%20web%20Jul%202024%20538.png) | preferences on the audio-and-video tab showing a live camera preview, camera select, microphone select with input-level meter, automatic-gain-control and noise-suppression checkboxes, speaker select and test-speaker button | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
+| [frame 536](../../screenshots/Slack%20web%20Jul%202024%20536.png) | preferences on the navigation tab listing checkbox toggles for each navigation-bar destination with a note that only selected tabs appear in smaller windows | 14.2 | [14-preferences-settings.md](14-preferences-settings.md), [00-product-overview.md](00-product-overview.md) |
+| [frame 537](../../screenshots/Slack%20web%20Jul%202024%20537.png) | preferences on the themes tab with a light-dark-system colour-mode segmented control, preset and custom theme tabs, a named single-colour swatch grid, a vision-assistive group and a fun-and-new group | 14.3 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 538](../../screenshots/Slack%20web%20Jul%202024%20538.png) | preferences on the audio-and-video tab showing a live camera preview, camera select, microphone select with input-level meter, automatic-gain-control and noise-suppression checkboxes, speaker select and test-speaker button | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
 | [frame 539](../../screenshots/Slack%20web%20Jul%202024%20539.png) | preferences notifications tab scrolled to the notification-schedule section with an allow-notifications day select, from and to time selects, a default reminder-time select, and a sound-and-appearance group with show-an-example, badge-count, message-preview and mute-all-sounds checkboxes and notification-sound selects | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 540](../../screenshots/Slack%20web%20Jul%202024%20540.png) | the same section with the allow-notifications day select open offering every-day checked, weekdays and custom | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
 | [frame 541](../../screenshots/Slack%20web%20Jul%202024%20541.png) | notification schedule set to weekdays with a note that notifications will not arrive at the weekend | 14.1 | [14-preferences-settings.md](14-preferences-settings.md), [12-activity-notifications.md](12-activity-notifications.md) |
@@ -918,17 +962,17 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 550](../../screenshots/Slack%20web%20Jul%202024%20550.png) | channel view with the global create menu expanded from the rail listing message, huddle, canvas with an upgrade badge, list, channel and invite-people each with a one-line description | 00.7 | [00-product-overview.md](00-product-overview.md), [21-states.md](21-states.md) |
 | [frame 551](../../screenshots/Slack%20web%20Jul%202024%20551.png) | new-message composer with the recipient autocomplete open listing people, channels and apps and an external-direct-message chip in the header | 03.14 | [03-messaging-and-composer.md](03-messaging-and-composer.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 552](../../screenshots/Slack%20web%20Jul%202024%20552.png) | one-to-one conversation showing a welcome message with inline links, two huddle system messages with reply counts, a shared PDF with an inline preview and a today divider | 05.5 | [05-direct-messages.md](05-direct-messages.md) |
-| [frame 553](../../screenshots/Slack%20web%20Jul%202024%20553.png) | preferences on the themes tab with a vision-assistive theme swatch selected and system colour mode chosen | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 554](../../screenshots/Slack%20web%20Jul%202024%20554.png) | preferences on the messages-and-media tab: clean-versus-compact theme radio group with a rendered example, a names radio group with its own example, a profile link, and additional options for typing indicators, a twenty-four-hour clock and colour swatches beside hex values | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 555](../../screenshots/Slack%20web%20Jul%202024%20555.png) | the same tab with the compact message theme selected and the example rendering on one line | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 556](../../screenshots/Slack%20web%20Jul%202024%20556.png) | the same tab with full-and-display-names selected so the example shows a full name before the display name | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 557](../../screenshots/Slack%20web%20Jul%202024%20557.png) | messages-and-media tab scrolled to the emoji section: default-skin-tone swatch row, plain-text-emoji and jumbomoji checkboxes with explanations, a compact-mode note, emoticon-conversion and one-click-reaction checkboxes, a most-used-versus-custom radio group with three emoji buttons, and an example message with a hover action bar | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 558](../../screenshots/Slack%20web%20Jul%202024%20558.png) | the same emoji section with the first, default skin-tone swatch still outlined as selected and a later swatch showing only a hover background | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 559](../../screenshots/Slack%20web%20Jul%202024%20559.png) | the same emoji section with another skin tone selected further along the swatch row | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 553](../../screenshots/Slack%20web%20Jul%202024%20553.png) | preferences on the themes tab with a vision-assistive theme swatch selected and system colour mode chosen | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 554](../../screenshots/Slack%20web%20Jul%202024%20554.png) | preferences on the messages-and-media tab: clean-versus-compact theme radio group with a rendered example, a names radio group with its own example, a profile link, and additional options for typing indicators, a twenty-four-hour clock and colour swatches beside hex values | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 555](../../screenshots/Slack%20web%20Jul%202024%20555.png) | the same tab with the compact message theme selected and the example rendering on one line | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 556](../../screenshots/Slack%20web%20Jul%202024%20556.png) | the same tab with full-and-display-names selected so the example shows a full name before the display name | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 557](../../screenshots/Slack%20web%20Jul%202024%20557.png) | messages-and-media tab scrolled to the emoji section: default-skin-tone swatch row, plain-text-emoji and jumbomoji checkboxes with explanations, a compact-mode note, emoticon-conversion and one-click-reaction checkboxes, a most-used-versus-custom radio group with three emoji buttons, and an example message with a hover action bar | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 558](../../screenshots/Slack%20web%20Jul%202024%20558.png) | the same emoji section with the first, default skin-tone swatch still outlined as selected and a later swatch showing only a hover background | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 559](../../screenshots/Slack%20web%20Jul%202024%20559.png) | the same emoji section with another skin tone selected further along the swatch row | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
 | [frame 560](../../screenshots/Slack%20web%20Jul%202024%20560.png) | channel view with the compact navigation rail, a sidebar discount banner, the channel's messages and a composer showing its formatting toolbar | 00.8 | [00-product-overview.md](00-product-overview.md), [21-states.md](21-states.md) |
-| [frame 561](../../screenshots/Slack%20web%20Jul%202024%20561.png) | preferences on the audio-and-video tab: microphone select with input-level meter, automatic-gain-control and noise-suppression checkboxes, speaker select with test-speaker, a when-joining-a-huddle checkbox group including a large-channel warning threshold and video-background blur, and a when-alone-in-a-huddle group with play-music and a timing select | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 562](../../screenshots/Slack%20web%20Jul%202024%20562.png) | the same audio-and-video tab with the input-level meter showing several active segments from live microphone input | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
-| [frame 563](../../screenshots/Slack%20web%20Jul%202024%20563.png) | the audio-and-video tab scrolled so the speaker controls sit at the top, the huddle checkbox group is partly ticked, and a troubleshooting section with a run-test button is visible | 14.5 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 561](../../screenshots/Slack%20web%20Jul%202024%20561.png) | preferences on the audio-and-video tab: microphone select with input-level meter, automatic-gain-control and noise-suppression checkboxes, speaker select with test-speaker, a when-joining-a-huddle checkbox group including a large-channel warning threshold and video-background blur, and a when-alone-in-a-huddle group with play-music and a timing select | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 562](../../screenshots/Slack%20web%20Jul%202024%20562.png) | the same audio-and-video tab with the input-level meter showing several active segments from live microphone input | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
+| [frame 563](../../screenshots/Slack%20web%20Jul%202024%20563.png) | the audio-and-video tab scrolled so the speaker controls sit at the top, the huddle checkbox group is partly ticked, and a troubleshooting section with a run-test button is visible | 14.4 | [14-preferences-settings.md](14-preferences-settings.md) |
 | [frame 564](../../screenshots/Slack%20web%20Jul%202024%20564.png) | diagnostics results table listing microphone, speaker and camera as pass with a camera-resolution detail line, audio connectivity pass, video connectivity showing a spinner, and screen sharing plus two network rows pending, with a copy-results button | 14.6 | [14-preferences-settings.md](14-preferences-settings.md), [21-states.md](21-states.md) |
 | [frame 565](../../screenshots/Slack%20web%20Jul%202024%20565.png) | the same diagnostics table with video connectivity passed and screen sharing showing a red permission-denied result | 14.6 | [14-preferences-settings.md](14-preferences-settings.md), [21-states.md](21-states.md) |
 | [frame 566](../../screenshots/Slack%20web%20Jul%202024%20566.png) | channel view with the workspace menu open showing the workspace name and domain, an offer strip with a plan-details link and upgrade-plan button, invite-people, preferences, tools-and-settings, desktop and mobile app hand-offs, sign-in-on-mobile and sign-out | 15.1 | [15-admin-workspace.md](15-admin-workspace.md), [00-product-overview.md](00-product-overview.md) |
@@ -1409,19 +1453,35 @@ evidence, with numeric adjacency treated as a weak prior only.
 | 3 | [frame 90](../../screenshots/Slack%20web%20Jul%202024%2090.png), [frame 95](../../screenshots/Slack%20web%20Jul%202024%2095.png) | Byte-identical captures of the same surface, 5 frames apart. The later member is retained with its own row and annotated as a byte-identical duplicate of frame 90. |
 | 4 | [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png), [frame 227](../../screenshots/Slack%20web%20Jul%202024%20227.png), [frame 256](../../screenshots/Slack%20web%20Jul%202024%20256.png) | Byte-identical captures of the same surface spanning 146 frames. Both later members are retained with their own rows and annotated as byte-identical duplicates of frame 110. |
 | 5 | [frame 141](../../screenshots/Slack%20web%20Jul%202024%20141.png), [frame 174](../../screenshots/Slack%20web%20Jul%202024%20174.png) | Byte-identical captures of the same surface, 33 frames apart. The later member is retained with its own row and annotated as a byte-identical duplicate of frame 141. |
-| 6 | [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png), [frame 242](../../screenshots/Slack%20web%20Jul%202024%20242.png) | Byte-identical captures of the same surface, 13 frames apart. The later member is retained with its own row and annotated as a byte-identical duplicate of frame 229. |
+| 6 | [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png), [frame 242](../../screenshots/Slack%20web%20Jul%202024%20242.png) | Byte-identical captures of the same surface, 13 frames apart. Both members carry the identical observed caption; the later member is retained with its own row and annotated as a byte-identical duplicate of frame 229. |
 | 7 | [frame 373](../../screenshots/Slack%20web%20Jul%202024%20373.png), [frame 545](../../screenshots/Slack%20web%20Jul%202024%20545.png) | Byte-identical captures of the same surface, 172 frames apart. The later member is retained with its own row and annotated as a byte-identical duplicate of frame 373. |
 | 8 | [frame 734](../../screenshots/Slack%20web%20Jul%202024%20734.png), [frame 736](../../screenshots/Slack%20web%20Jul%202024%20736.png) | Byte-identical captures of the same surface, 2 frames apart. The later member is retained with its own row and annotated as a byte-identical duplicate of frame 734. |
 
 One further consequence is worth recording rather than smoothing over: because frames 110, 227 and 256 are the same
 image, the direct-message landing surface is claimed by a single flow with three separate spans, while frames 229
-and 242 — also identical to each other — sit in two different flows, since one is the state before a message is
-composed and the other the state after it is sent. The images are identical; the journey positions are not.
+and 242 — also identical to each other — are claimed by two different flows. Both rows therefore carry the **same**
+observed caption, because the pixels are the same pixels: each shows the sent welcoming message already in the
+conversation and an empty composer. **Identical pixels are given identical claims, without exception.**
+
+**Inferred:** the two identical frames occupy different positions in the corpus's journey ordering, which is why
+they are segmented into different flows. The basis is the surrounding frames rather than the frames themselves —
+[frame 228](../../screenshots/Slack%20web%20Jul%202024%20228.png) shows that same greeting still typed in the
+composer, so the capture that follows it reads as the send completing, while
+[frame 243](../../screenshots/Slack%20web%20Jul%202024%20243.png) shows the hover action bar revealed on that sent
+message with an edited marker at its end, so the capture that precedes it reads as the entry point to acting on a
+sent message. Journey position is **not** observable from the identical pixels, and no caption in this ledger
+asserts it. Wherever a duplicate frame's flow membership rests on neighbouring evidence in this way, the caption
+records only what the shared image shows and the flow assignment carries the inference.
 
 ## Non-informative and unreadable frames
 
-**No frame in this corpus is `UNREADABLE`.** All 1,022 frames were visually inspected and every one carries an
-observed caption. Nothing was described from anything other than the pixels, and nothing was skipped.
+**No frame in this corpus is `UNREADABLE`.** All 1,022 frames were visually inspected and every one carries a caption
+written from that frame's own pixels, under the exclusion rule stated once in the [Workflow Catalog](README.md).
+Nothing was described from anything other than the pixels, no caption carries an inference, and nothing was skipped. Byte-identical frames are the test of that
+claim and they meet it: no member of any group in [Duplicate frames](#duplicate-frames) asserts a state its own
+pixels do not show, no two members of a group make mutually exclusive claims, and anything that distinguishes such
+frames from one another — their flow membership, for instance — is stated outside the caption and marked as an
+inference.
 
 No frame is non-informative in the sense of being empty or unusable. Two measured categories are nevertheless
 flagged below so that a reader knows which rows carry little new information and why, and so that no one mistakes a
@@ -1482,6 +1542,5 @@ described from what is actually on it.
 - [frame 729](../../screenshots/Slack%20web%20Jul%202024%20729.png) — ink coverage 1.7% of the analysed viewport; sparse but legible surface.
 - [frame 739](../../screenshots/Slack%20web%20Jul%202024%20739.png) — ink coverage 1.1% of the analysed viewport; sparse but legible surface.
 
-**Excluded from analysis, not flagged as a frame problem.** The capture band along the bottom edge of all 1,022
-frames is capture watermarking rather than product interface, so it is excluded from every caption in this ledger
-and from every build target in the catalog. It is described once in the [Workflow Catalog](README.md).
+Both measurements above were taken on the analysed viewport only, under the exclusion rule stated once in the
+[Workflow Catalog](README.md).
