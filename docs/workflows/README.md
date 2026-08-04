@@ -51,7 +51,7 @@ Twenty-five documents make up the catalog: this master index, the coverage ledge
 | Document | Area | What it covers |
 |---|---|---|
 | *(this page)* | Master index | Whole-product information architecture, the component roll-up, the consolidated data model, the phased build backlog, the flow-reconstruction methodology, the taxonomy deviations, the known limitations and the Next Build Run Prompt |
-| [00-product-overview.md](00-product-overview.md) | Product Overview & App Shell | The persistent authenticated shell — left navigation rail and its destinations, workspace switcher, sidebar with its collapsible sections and multi-select mode, top bar with history controls and search entry, global create menu, help entry. **Holds the authoritative definition of all 28 reusable components and of the placeholder branding vocabulary**, plus the rail destination map and the automations boundary rule |
+| [00-product-overview.md](00-product-overview.md) | Product Overview & App Shell | The persistent authenticated shell — left navigation rail and its destinations, workspace switcher, sidebar with its collapsible sections and multi-select mode, top bar with history controls and search entry, global create menu, help entry. **Holds the authoritative definition of all 35 reusable components and of the placeholder branding vocabulary**, plus the rail destination map and the automations boundary rule |
 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) | Onboarding & Authentication | Sign-up by email address, verification by emailed code, account and marketing-consent confirmation, the five-step workspace setup wizard, profile-photo upload and crop, first-run coach marks, sign-in by password, by emailed code and by reset link with their rejection and recovery states, joining a workspace from an invitation, the welcome-back workspace chooser, inviting members and guests with channel scope and an expiry, and hand-off from the browser to the desktop and mobile clients |
 | [02-channels.md](02-channels.md) | Channels | The full channel lifecycle — two-step creation with a visibility choice, adding and removing members with destructive confirmation, the four-tab details pane, renaming and editing topic and description, notification preferences and muting, starring, bookmarks and bookmark folders, conversion to private, archiving, unarchiving and deletion, the channel browser with its scope, type and sort filters, and the company-wide channel |
 | [03-messaging-and-composer.md](03-messaging-and-composer.md) | Messaging & Composer | The message list and message row, the composer and its formatting toolbar, multi-line formatted messages, snippets, channel and person mentions, scheduled send, slash-command autocomplete, audio-clip recording and attachment, the emoji picker with custom emoji and emoji packs, hover actions, forwarding, pinning, inline editing and deletion, and the distraction-free composer |
@@ -198,7 +198,7 @@ Four properties of this architecture are load-bearing for the build and are stat
 
 **This is a roll-up, not a definition.** Every component's contract — its purpose, regions, variants, states, ordering and relative sizing — is defined once, authoritatively, in [`00-product-overview.md`](00-product-overview.md). Nothing here restates a contract; this table exists so that a reader can see the whole inventory at a glance and resolve any `C-*` identifier to the document that defines it. The **Referenced by** column names the area documents whose observed surfaces contain the component, which is what makes each component worth building once rather than per area.
 
-The 28 identifiers below are a **floor, not a ceiling**. An area author who finds a further recurring structure defines it in [`00-product-overview.md`](00-product-overview.md) and adds it here; the closure requirement is that **every `C-*` cited anywhere in the catalog resolves to a definition in that one document and appears in this table**.
+The 35 identifiers below are a **floor, not a ceiling**. An area author who finds a further recurring structure defines it in [`00-product-overview.md`](00-product-overview.md) and adds it here; the closure requirement is that **every `C-*` cited anywhere in the catalog resolves to a definition in that one document and appears in this table**. The last seven rows arrived by exactly that route: [`01-onboarding-and-auth.md`](01-onboarding-and-auth.md) found seven recurring structures with no identifier, and each was defined in `00-product-overview.md` and added here rather than described locally.
 
 | Component ID | Name | Defined in | Referenced by |
 |---|---|---|---|
@@ -217,7 +217,7 @@ The 28 identifiers below are a **floor, not a ceiling**. An area author who find
 | `C-CONTEXT-MENU` | Overflow and right-click context menu | [00-product-overview.md](00-product-overview.md) | 03, 06, 07, 08, 12, 15 |
 | `C-TAB-BAR` | Tab bar, with optional per-tab counts | [00-product-overview.md](00-product-overview.md) | 02, 09, 10, 11, 12, 13, 14, 15, 20, 22 |
 | `C-FILTER-CHIP` | Filter chip and chip-based filter bar | [00-product-overview.md](00-product-overview.md) | 08, 09, 16, 17 |
-| `C-TOAST` | Transient confirmation toast with an undo affordance | [00-product-overview.md](00-product-overview.md) | 02, 08, 10, 13 |
+| `C-TOAST` | Transient toast reporting the outcome of an action | [00-product-overview.md](00-product-overview.md) | 01, 02, 03, 08, 10, 13 |
 | `C-BANNER` | Inline and page-level banner, dismissible variants | [00-product-overview.md](00-product-overview.md) | 02, 08, 09, 11, 12, 15, 18 |
 | `C-COACH-MARK` | Anchored first-run coach mark with a step counter | [00-product-overview.md](00-product-overview.md) | 01, 02, 03 |
 | `C-AVATAR` | Avatar, with facepile and stacked variants | [00-product-overview.md](00-product-overview.md) | 02, 05, 06, 09, 13, 15, 17, 22 |
@@ -230,6 +230,13 @@ The 28 identifiers below are a **floor, not a ceiling**. An area author who find
 | `C-RECORD-CARD` | Record and item card with typed fields | [00-product-overview.md](00-product-overview.md) | 07, 08, 17 |
 | `C-MEDIA-PLAYER` | Audio and video player with scrubber and elapsed time | [00-product-overview.md](00-product-overview.md) | 03, 06, 16, 17 |
 | `C-PERMISSION-PROMPT` | Browser and device permission prompt and denial state | [00-product-overview.md](00-product-overview.md) | 06, 12, 14, 21 |
+| `C-AUTH-PAGE-SHELL` | Unauthenticated page shell | [00-product-overview.md](00-product-overview.md) | 01, 21 |
+| `C-CHIP-INPUT` | Chip input field with removable tokens | [00-product-overview.md](00-product-overview.md) | 01, 02, 03, 09, 13, 22 |
+| `C-SEGMENTED-CODE-INPUT` | Segmented one-character-per-box code input | [00-product-overview.md](00-product-overview.md) | 01 |
+| `C-DATE-PICKER-POPOVER` | Month-grid date-picker popover | [00-product-overview.md](00-product-overview.md) | 01, 03, 09, 13 |
+| `C-STRENGTH-METER` | Password-strength meter | [00-product-overview.md](00-product-overview.md) | 01 |
+| `C-INLINE-VALIDATION` | Inline field-level validation message | [00-product-overview.md](00-product-overview.md) | 01, 02, 03, 18, 21 |
+| `C-PLAN-CARD` | Plan-choice card | [00-product-overview.md](00-product-overview.md) | 01, 18 |
 
 ## Consolidated data model
 
@@ -328,7 +335,7 @@ Partitioning the 248 flows and 1,022 frames across the phases gives each phase a
 Inherits from [`00-product-overview.md`](00-product-overview.md), [`01-onboarding-and-auth.md`](01-onboarding-and-auth.md), [`02-channels.md`](02-channels.md), [`03-messaging-and-composer.md`](03-messaging-and-composer.md), and the default, hover, focus, empty, loading, error and disabled states that these surfaces need from [`21-states.md`](21-states.md).
 
 - [ ] The chosen product name, logo mark, wordmark and colour palette are defined as design tokens before any screen is built, and no third-party brand value appears anywhere in the codebase.
-- [ ] All 28 `C-*` components in the [roll-up](#consolidated-component-inventory-roll-up) that Phase 1 surfaces require are implemented once as shared components, each matching its contract in [`00-product-overview.md`](00-product-overview.md), and no Phase 1 screen re-implements one locally.
+- [ ] Every `C-*` component in the [roll-up](#consolidated-component-inventory-roll-up) that Phase 1 surfaces require — drawn from the 35 defined identifiers — is implemented once as a shared component, each matching its contract in [`00-product-overview.md`](00-product-overview.md), and no Phase 1 screen re-implements one locally.
 - [ ] The application shell renders as a persistent layout owning a routed content region: navigation rail, sidebar with collapsible sections, top bar with history controls and search entry, and the global create menu — per [`00-product-overview.md`](00-product-overview.md).
 - [ ] Every rail destination in the [IA map](#product-information-architecture) is present and routes, with destinations belonging to later phases resolving to a defined placeholder rather than a dead control.
 - [ ] Sidebar multi-select works end to end: per-item checkboxes, a selection-count bar, clear-selection, move-to and done, per [`02-channels.md`](02-channels.md).
