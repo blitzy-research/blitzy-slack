@@ -26,8 +26,8 @@ One flow is named for this area, spanning 2 frames. Frame spans are written as p
 
 | State journey | Frames | Owning flow | Owning area document | Specified below under |
 |---|---|---|---|---|
-| Run a progressive check and read a denied permission | 563–565 | `14.6` | [14-preferences-settings.md](14-preferences-settings.md) | [Journey A](#journey-a-run-a-progressive-check-and-read-a-denied-permission) |
-| Satisfy a disabled control's precondition and submit it | 949–952 | `20.16` | [20-help-community.md](20-help-community.md) | [Journey B](#journey-b-satisfy-a-disabled-controls-precondition-and-submit-it) |
+| Run a progressive check and read a denied permission | 564–565, entered from 563 | `14.6`, entered from `14.4` | [14-preferences-settings.md](14-preferences-settings.md) | [Journey A](#journey-a-run-a-progressive-check-and-read-a-denied-permission) |
+| Satisfy a disabled control's precondition and submit it | 950–952, entered from 949 | `20.16`, entered from `20.15` | [20-help-community.md](20-help-community.md) | [Journey B](#journey-b-satisfy-a-disabled-controls-precondition-and-submit-it) |
 | Correct a rejected entry and reach the confirmation | 216–219 | `03.9` | [03-messaging-and-composer.md](03-messaging-and-composer.md) | [Journey C](#journey-c-correct-a-rejected-entry-and-reach-the-confirmation) |
 | Encounter a read-only surface and restore write access | 134–138 | `02.12` | [02-channels.md](02-channels.md) | [Journey D](#journey-d-encounter-a-read-only-surface-and-restore-write-access) |
 | Meet an upgrade gate and reach the upgrade path | 550, 566, 600, 610 | `00.7`, `15.1`, `15.7`, `18.3` | [00-product-overview.md](00-product-overview.md), [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) | [Journey E](#journey-e-meet-an-upgrade-gate-and-reach-the-upgrade-path) |
@@ -282,7 +282,7 @@ Owned as flow `14.6` by [14-preferences-settings.md](14-preferences-settings.md)
 
 #### Journey B — Satisfy a disabled control's precondition and submit it
 
-Owned as flow `20.16` by [20-help-community.md](20-help-community.md). **Trigger:** the was-this-article-helpful prompt at the foot of a help article [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png). **Preconditions:** an article open and scrolled to its foot; the affirmative response chosen — the negative response's own form is not captured.
+Owned as flow `20.16` by [20-help-community.md](20-help-community.md), entered from flow `20.15`, which owns the article and the prompt itself. **Trigger:** the was-this-article-helpful prompt at the foot of a help article [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png). **Preconditions:** an article open and scrolled to its foot; the affirmative response chosen — the negative response's own form is not captured.
 
 | Step | Frame(s) | What the user does | What changes on screen | Component(s) involved |
 |---|---|---|---|---|
