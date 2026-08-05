@@ -44,7 +44,7 @@ A person's row in the **Direct messages** group of the sidebar. The row is the t
 
 ### Preconditions
 
-An authenticated session with a workspace loaded and the shell rendered. The person must already appear in the Direct messages group — in this capture the group holds three rows and an add-coworkers affordance [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png). No membership, permission grant or plan entitlement is required: nothing in the conversation, its header or its composer carries an entitlement badge in any frame of this flow [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png), [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png).
+An authenticated session with a workspace loaded and the shell rendered. The person must already appear in the Direct messages group — in this capture the group holds three rows and an add-coworkers affordance [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png). No plan entitlement is evidenced — no capture of this surface carries a `C-UPGRADE-GATE` badge, which is a statement about badges rather than about entitlement, per the obligation in [21-states.md](21-states.md). Whether a capability is required to open a conversation is not evidenced, and per `S-AUTHZ-READ` the conversation renders only for a viewer currently authorized as one of its participants. Nothing further is required: nothing in the conversation, its header or its composer carries an entitlement badge in any frame of this flow [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png), [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png).
 
 ### Frame-by-frame steps
 
@@ -386,7 +386,7 @@ Each criterion is objectively checkable against a named frame.
 - [ ] A file shared into a direct message renders a type label above a card carrying a type-coloured icon, the file's name, its type and an inline first-page preview [frame 552](../../screenshots/Slack%20web%20Jul%202024%20552.png).
 - [ ] Every region of the conversation, including the message list and the composer, renders in the selected colour mode, and the active sidebar row's highlight adapts to it [frame 552](../../screenshots/Slack%20web%20Jul%202024%20552.png).
 - [ ] The same conversation renders correctly from either participant's session, with the self-marker on the signed-in user's row and the header naming the other participant [frame 229](../../screenshots/Slack%20web%20Jul%202024%20229.png), [frame 299](../../screenshots/Slack%20web%20Jul%202024%20299.png).
-- [ ] No presence colour, countdown value, relative timestamp or huddle-entry string from the corpus is hard-coded; each is computed or supplied as data.
+- [ ] No presence colour, countdown value, relative timestamp or huddle-entry string from the corpus is hard-coded; each is computed or supplied as data. The corpus itself shows why: one person's filled indicator renders in two different tones within a single capture [frame 250](../../screenshots/Slack%20web%20Jul%202024%20250.png), the promotional countdown reads a different number of days in different captures of the same area [frame 110](../../screenshots/Slack%20web%20Jul%202024%20110.png), [frame 552](../../screenshots/Slack%20web%20Jul%202024%20552.png), the destination list's timestamps are relative rather than absolute [frame 377](../../screenshots/Slack%20web%20Jul%202024%20377.png), and the huddle entries name their participants and their duration from the session itself [frame 299](../../screenshots/Slack%20web%20Jul%202024%20299.png).
 
 ## Frames covered
 

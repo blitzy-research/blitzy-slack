@@ -100,7 +100,7 @@ Each row below is a structure whose whole purpose is to express a state. Sizes a
 
 **Components this document is the canonical consumer of.** `C-EMPTY-STATE` for every centred block and for the error page itself; `C-PERMISSION-PROMPT` for the request and denial bands; `C-BANNER` for the advisory, promotional and access-required bands; `C-COACH-MARK` for the first-run overlay [frame 27](../../screenshots/Slack%20web%20Jul%202024%2027.png). It additionally attaches state to `C-DATA-TABLE`, `C-TOAST`, `C-INLINE-VALIDATION`, `C-UPGRADE-GATE`, `C-MESSAGE-ROW`, `C-HOVER-ACTION-BAR`, `C-TAB-BAR`, `C-MODAL-SHELL`, `C-COMPOSER`, `C-DETAILS-PANE`, `C-PLAN-CARD`, `C-CHIP-INPUT`, `C-DATE-PICKER-POPOVER`, `C-RECORD-CARD` and `C-SIDEBAR`, because state attaches to components and these are the ones the corpus shows in a non-default rendering.
 
-**No new component is defined here.** The corpus revealed no state-bearing structure that the 35 identifiers in [00-product-overview.md](00-product-overview.md) do not already cover: the centred blocks, bands, callouts, validation blocks, tables, badges and pills above are all renderings of components that document already defines. Had one been found, it would have been reported there for definition rather than described locally.
+**No new component is defined here.** The corpus revealed no state-bearing structure that the shared component identifiers in [00-product-overview.md](00-product-overview.md) do not already cover: the centred blocks, bands, callouts, validation blocks, tables, badges and pills above are all renderings of components that document already defines. Had one been found, it would have been reported there for definition rather than described locally.
 
 ## States
 

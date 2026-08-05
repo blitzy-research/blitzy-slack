@@ -64,19 +64,40 @@ Notation used throughout this ledger:
   numbers in this ledger equals `{0 … 1021}` exactly, with no missing frame, no extra frame and no duplicated row.
 - **Every row names at least one area document**, and each frame has exactly one primary owner. There are zero
   unassigned rows.
-- **Cross-document reconciliation is a pending gate, not a completed check.** The invariant is that the union of
-  every workflow-area document's `Frames covered` set equals this ledger's frame set, which equals `{0 … 1021}`.
-  That invariant can only be evaluated once all 23 area documents exist; at the time of writing, of the documents
-  the table below names, [00-product-overview.md](00-product-overview.md) has been authored and reconciled against
-  this ledger, and the remaining 22 are **planned and not yet authored**. Until each one exists and its
-  `Frames covered` set has been compared with this ledger, the union claim is **unverified for that area**. Any
-  disagreement found when an area document is authored is a defect in one of the two documents, not a difference of
-  interpretation, and it is resolved by re-inspecting the frame.
-- **The table below is the planned primary-ownership map** — the assignment this ledger's rows already make, stated
-  per area so an area author knows exactly which frames their document must claim. It is derived from the `Flow(s)`
-  and `Area document(s)` columns of the 1,022 rows below, so it is internally consistent with this ledger by
-  construction; it becomes an externally verified fact one area at a time, as each document is written. The
-  `Frames` column sums to 1,022 and the `Flows` column sums to 248.
+- **Cross-document reconciliation: verified for the nineteen delivered documents, outstanding for four.** The
+  invariant is that the union of every workflow-area document's `Frames covered` set equals this ledger's frame set,
+  which equals `{0 … 1021}`. It is evaluated per area, and the current state is three-way rather than binary:
+    - **Delivered and reconciled — 19 documents.** `00` through `16`, plus [21-states.md](21-states.md) and
+      [22-external-collaboration.md](22-external-collaboration.md). Each one exists, and each one's `Frames covered`
+      set has been compared against this ledger's primary-ownership assignment for it and agrees exactly. Together
+      they claim **750 frames across 173 flows**.
+    - **Not yet authored — 4 documents.** [17-marketing-site.md](17-marketing-site.md),
+      [18-pricing-plans.md](18-pricing-plans.md), [19-brand-guidelines.md](19-brand-guidelines.md) and
+      [20-help-community.md](20-help-community.md), holding **272 frames across 75 flows** between them. For these the
+      union claim is **unverified**, because there is no `Frames covered` set to compare yet. Their rows below are
+      complete and their captions are observed, so the corpus itself is fully recorded — what is outstanding is the
+      behavioural specification built on top of that record. Until they exist, **this ledger is the authority for
+      those 272 frames.** They are listed as outstanding in the master index's [Omissions](README.md#omissions).
+    - **The arithmetic closes now, not later.** 750 delivered + 272 outstanding = 1,022 frames, and 173 + 75 = 248
+      flows. So the union invariant is already known to be *satisfiable*: every frame is allocated to exactly one
+      primary owner, and no frame is allocated twice or left over. What each outstanding document adds is
+      confirmation, not coverage.
+  Any disagreement found when an area document is authored is a defect in one of the two documents, not a difference
+  of interpretation, and it is resolved by re-inspecting the frame.
+- **How flow counting works here, so the 248 stays exact.** This ledger's `Flow(s)` column names the single
+  **primary owning** flow for each frame, and the `Flows` column of the table below counts only flows that own at
+  least one frame primarily. An area document may legitimately define further flows whose steps cite frames owned by
+  other areas — cross-cutting journeys assembled from secondary citations — and **those flows are deliberately not
+  counted here**, because counting them would break the one-flow-per-frame arithmetic. [21-states.md](21-states.md)
+  is the clearest case: it owns just one flow primarily, `21.1` over frames 1020 and 1021, and cites **81 further
+  frames** as the observed evidence for a state while naming the area that owns each of them — so it contributes
+  **1 flow and 2 frames** to the totals below while those 81 secondary citations appear nowhere in this column. That is by design, and it is why the totals remain 248 and 1,022 rather than drifting upward as
+  cross-cutting flows are added.
+- **The table below is the primary-ownership map.** It is the assignment this ledger's rows already make, stated per
+  area so an area author knows exactly which frames their document must claim. It is derived from the `Flow(s)` and
+  `Area document(s)` columns of the 1,022 rows below, so it is internally consistent with this ledger by
+  construction, and for the nineteen delivered documents it has additionally been checked against those documents
+  themselves. The `Frames` column sums to 1,022 and the `Flows` column sums to 248.
 
 | Area document | Flows | Frames owned as primary |
 |---|---|---|
@@ -1011,7 +1032,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 599](../../screenshots/Slack%20web%20Jul%202024%20599.png) | export page scrolled to past exports plus a download-tokens section explaining tokens attached to private file URLs, with a from-export, token and status table and a red revoke-all button | 15.6 | [15-admin-workspace.md](15-admin-workspace.md) |
 | [frame 600](../../screenshots/Slack%20web%20Jul%202024%20600.png) | admin console home with a personalised greeting and chevron cards for account settings, settings and permissions, manage-your-workspace, billing carrying a trial notice with a six-item benefit list and upgrade and compare-plans buttons, and customize | 15.7 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
 | [frame 601](../../screenshots/Slack%20web%20Jul%202024%20601.png) | the same admin home with the plans menu open in the top bar listing three paid tiers and a compare-plans link | 15.7 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
-| [frame 602](../../screenshots/Slack%20web%20Jul%202024%20602.png) | the same admin home with the workspaces menu open listing the current workspace with an external-link icon and a sign-in-to-another-workspace entry | 15.7 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
+| [frame 602](../../screenshots/Slack%20web%20Jul%202024%20602.png) | the same admin home with the workspaces menu open listing the current workspace with a circled check-mark glyph marking it as current, then a rule, then a sign-in-to-another-workspace entry with a leading plus glyph | 15.7 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
 | [frame 603](../../screenshots/Slack%20web%20Jul%202024%20603.png) | admin console home scrolled to the billing benefit list, a customize card, an analytics card and a recently-added-applications section listing two apps with descriptions, an add-applications button and a view-all-installed-applications link above a footer link row | 15.7 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
 | [frame 604](../../screenshots/Slack%20web%20Jul%202024%20604.png) | admin console account page with settings, notifications and profile tabs plus an access-logs link, showing expandable rows for password, two-factor authentication marked inactive, email address, time zone, language, sign-out-of-all-other-sessions with a red button, and deactivate-account | 15.8 | [15-admin-workspace.md](15-admin-workspace.md), [13-profiles-people.md](13-profiles-people.md) |
 | [frame 605](../../screenshots/Slack%20web%20Jul%202024%20605.png) | the same account page scrolled to the sign-out-of-all-other-sessions block, a deactivate-account section with explanatory copy and button, a profile-deletion request note naming the workspace owner's address, and a username row | 15.8 | [15-admin-workspace.md](15-admin-workspace.md), [13-profiles-people.md](13-profiles-people.md) |
@@ -1075,7 +1096,7 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 663](../../screenshots/Slack%20web%20Jul%202024%20663.png) | the invite modal expanded by customize-your-invitation to reveal a channels field with search and a default-channels helper plus a custom-message field | 15.20 | [15-admin-workspace.md](15-admin-workspace.md), [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | [frame 664](../../screenshots/Slack%20web%20Jul%202024%20664.png) | the expanded invite modal with a channel chip added and a short personal note typed into the custom-message field | 15.20 | [15-admin-workspace.md](15-admin-workspace.md), [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
 | [frame 665](../../screenshots/Slack%20web%20Jul%202024%20665.png) | invite success modal with an illustration, an invited-one-person heading, the invitee row noting the coworker role, a manage-invitations link, invite-more-people and done | 15.20 | [15-admin-workspace.md](15-admin-workspace.md), [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
-| [frame 666](../../screenshots/Slack%20web%20Jul%202024%20666.png) | manage-permissions page with introductory copy and two expandable cards, one for customising permissions per basic account type and one for roles carrying a count for members needing additional permissions | 15.21 | [15-admin-workspace.md](15-admin-workspace.md) |
+| [frame 666](../../screenshots/Slack%20web%20Jul%202024%20666.png) | manage-permissions page with introductory copy and two expandable cards, one for customising permissions per basic account type and one for roles carrying a count of roles, whose copy states that roles are assigned to members needing additional permissions | 15.21 | [15-admin-workspace.md](15-admin-workspace.md) |
 | [frame 667](../../screenshots/Slack%20web%20Jul%202024%20667.png) | account-types permission matrix with a breadcrumb back to manage-permissions, an eleven-permission count, a filter-by-name field and a table of permissions against single-channel-guest, multi-channel-guest, member, workspace-admin and a fifth account-type column clipped at the right edge, granted cells marked with green check badges and ungranted cells left blank, each row carrying an overflow control | 15.21 | [15-admin-workspace.md](15-admin-workspace.md) |
 | [frame 668](../../screenshots/Slack%20web%20Jul%202024%20668.png) | the same permission matrix scrolled right to include the workspace-owner and primary-workspace-owner columns | 15.21 | [15-admin-workspace.md](15-admin-workspace.md) |
 | [frame 669](../../screenshots/Slack%20web%20Jul%202024%20669.png) | billing overview tab with six tabs, a celebratory illustration, a heading stating the workspace is on a free trial through a date, copy about upgrading before reverting to the free plan, an upgrade button, an end-trial link, a non-profit discount note and a promo-code link | 15.22 | [15-admin-workspace.md](15-admin-workspace.md), [18-pricing-plans.md](18-pricing-plans.md) |
