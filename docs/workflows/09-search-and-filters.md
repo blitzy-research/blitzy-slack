@@ -25,7 +25,7 @@ Frame spans below are written as plain numeric ranges because they designate a s
 | `09.1` | Open search and review recent history | 684–687 | `C-SEARCH-ENTRY` in the centre of `C-TOP-BAR` |
 | `09.2` | Move between search result-type tabs | 688–692 | The result-type `C-TAB-BAR` above the results |
 | `09.3` | Filter search results by sender and file type | 693–697 | An individual `C-FILTER-CHIP` in the control row |
-| `09.4` | Build a query with the filter-by popover | 698–701 | The trailing filters control at the end of the chip row |
+| `09.4` | Build a query with the filter-by modal | 698–701 | The trailing filters control at the end of the chip row |
 | `09.5` | Sort search results and switch layout | 702–704 | The sort control at the right of the control row |
 
 ### The retrieval journey
@@ -168,13 +168,13 @@ A results surface already rendered for a query, on a tab whose chip set includes
 
 > **Partial capture:** only two of the eight chips observed anywhere in this area are ever captured open. The location, date, creator, title, membership-scope, channel-type and organizations chips are all rendered with carets but never expanded, so their option sets are unknown and **must not be assumed to mirror the filter-by modal's fields** [frame 689](../../screenshots/Slack%20web%20Jul%202024%20689.png), [frame 690](../../screenshots/Slack%20web%20Jul%202024%20690.png), [frame 691](../../screenshots/Slack%20web%20Jul%202024%20691.png), [frame 692](../../screenshots/Slack%20web%20Jul%202024%20692.png). The sender popover is also never captured with a typed search term, so how its suggestion list responds to input is not observable.
 
-## Flow 09.4 — Build a query with the filter-by popover
+## Flow 09.4 — Build a query with the filter-by modal
 
 ### Overview
 
 The trailing control in the chip row opens a **single surface carrying five filter dimensions at once**, and this flow is the reason the area needs its own document rather than a paragraph in the shell's. Two contracts are visible here and nowhere else. First, the surface is **a centred modal over a dimmed backdrop**, not a popover anchored to the control that opened it. Second, it holds **pending** state: a change made inside it does not reach the chip row until its search action is run, and until a change is made that action is rendered muted [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png) through [frame 701](../../screenshots/Slack%20web%20Jul%202024%20701.png).
 
-The flow's published name follows the [Screenshot Coverage Index](_screenshot-index.md) and calls the surface a popover; the pixels show a centred modal with a dimmed backdrop, so the word is a naming convention in this catalog and not a claim about placement. The positional fact is recorded here as observed, and the discrepancy is left standing rather than smoothed away.
+**Correction to this flow's published name.** The flow was first published — here and in the [Screenshot Coverage Index](_screenshot-index.md) — as building a query with a *popover*. The pixels show a centred modal over a dimmed backdrop rather than a surface anchored to the control that opened it, so the name has been corrected in both places to say modal, and the ledger's captions for this span now describe it the same way. The identifier `09.4` and its frame span are unchanged. The distinction is load-bearing rather than cosmetic: this area's *other* filter surfaces genuinely are anchored popovers over an undimmed backdrop [frame 693](../../screenshots/Slack%20web%20Jul%202024%20693.png), [frame 696](../../screenshots/Slack%20web%20Jul%202024%20696.png), and a build that treated all of them alike would place this one wrongly and dim nothing behind it [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png).
 
 ### Trigger
 
@@ -282,13 +282,15 @@ Five values, in this order, with the current one carrying a leading check glyph:
 
 Five labelled controls in this order, then a three-part footer [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png), [frame 700](../../screenshots/Slack%20web%20Jul%202024%20700.png):
 
-| Order | Label | Control shape | Observed value or placeholder |
-|---|---|---|---|
-| 1 | Sender | Bordered input holding zero or more person chips, each with a leading avatar and a trailing remove control | The applied person, marked as the signed-in user |
-| 2 | Location | Bordered text input | An example channel name as placeholder text |
-| 3 | Participant | Bordered text input | An example person name as placeholder text |
-| 4 | Date | Select with a caret | An any-time default |
-| 5 | File types | Select with a caret | The single applied type by name, or a count summary once more than one is selected |
+| Order | Dimension | Label as rendered | Control shape | Observed value or placeholder |
+|---|---|---|---|---|
+| 1 | Sender | *From* | Bordered input holding zero or more person chips, each with a leading avatar and a trailing remove control | The applied person, marked as the signed-in user |
+| 2 | Location | *In* | Bordered text input | An example channel name as placeholder text |
+| 3 | Participant | *With* | Bordered text input | An example person name as placeholder text |
+| 4 | Date | *Date* | Select with a caret | An any-time default |
+| 5 | File types | *File types* | Select with a caret | The single applied type by name, or a count summary once more than one is selected |
+
+The first column names the dimension by function, as this catalog does throughout; the second quotes the label the surface actually renders, because three of the five differ from their functional name and a build that generated labels from the function names would render the wrong three [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png).
 
 Footer, left to right: an information glyph with a learn-more link; a secondary, outlined clear-filters action; a primary search action, **muted until a control is edited and filled afterwards** [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png), [frame 700](../../screenshots/Slack%20web%20Jul%202024%20700.png).
 

@@ -207,14 +207,14 @@ Methodology of the [Workflow Catalog](README.md).
 | 06.6 | Turn on huddle captions and hide self-view | 287–292 | [06-huddles.md](06-huddles.md) |
 | 06.7 | Choose a camera background and preview shared video | 293–295 | [06-huddles.md](06-huddles.md) |
 | 04.2 | Reply in the huddle thread | 296–298 | [04-threads.md](04-threads.md) |
-| 05.2 | Open the self direct message with huddle history | 299 | [05-direct-messages.md](05-direct-messages.md) |
-| 06.8 | Keep a huddle running from the self direct message | 300 | [06-huddles.md](06-huddles.md) |
+| 05.2 | Open a one-to-one direct message that has huddle history | 299 | [05-direct-messages.md](05-direct-messages.md) |
+| 06.8 | Keep a huddle running from the conversation | 300 | [06-huddles.md](06-huddles.md) |
 | 05.3 | Read huddle summary messages in a direct message | 301–302 | [05-direct-messages.md](05-direct-messages.md) |
 | 07.3 | Open the canvas pane in a conversation | 303–304 | [07-canvases.md](07-canvases.md) |
 | 07.4 | Build a canvas from a template and insert a profile card | 305–311 | [07-canvases.md](07-canvases.md) |
 | 07.5 | Attach and share a template canvas | 312–315 | [07-canvases.md](07-canvases.md) |
-| 07.6 | Insert image, file, checklist and table blocks in a canvas | 316–329 | [07-canvases.md](07-canvases.md) |
-| 07.7 | Use the canvas overflow menu, later and cover image | 330–335 | [07-canvases.md](07-canvases.md) |
+| 07.6 | Insert image, file, checklist and table blocks | 316–329 | [07-canvases.md](07-canvases.md) |
+| 07.7 | Use the canvas overflow menu, later, starred and cover image | 330–335 | [07-canvases.md](07-canvases.md) |
 | 07.8 | Change canvas accessibility settings | 336–337 | [07-canvases.md](07-canvases.md) |
 | 00.4 | Open the keyboard-shortcuts reference | 338 | [00-product-overview.md](00-product-overview.md) |
 | 07.9 | Read a canvas in read-only mode | 339 | [07-canvases.md](07-canvases.md) |
@@ -222,7 +222,7 @@ Methodology of the [Workflow Catalog](README.md).
 | 02.14 | Return to a channel from the canvas pane | 341 | [02-channels.md](02-channels.md) |
 | 03.13 | Compose a new message from the distraction-free composer | 342–345 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
 | 18.1 | Choose a plan and compare features inside the product | 346–354 | [18-pricing-plans.md](18-pricing-plans.md) |
-| 04.3 | Open the threads view | 355 | [04-threads.md](04-threads.md) |
+| 04.3 | Open the threads destination and read unread thread activity | 355 | [04-threads.md](04-threads.md) |
 | 12.2 | Work through unreads with conversation filters | 356–359 | [12-activity-notifications.md](12-activity-notifications.md) |
 | 12.3 | Review drafts, scheduled and sent messages | 360–363 | [12-activity-notifications.md](12-activity-notifications.md) |
 | 01.9 | Invite people from inside a channel | 364–367 | [01-onboarding-and-auth.md](01-onboarding-and-auth.md) |
@@ -270,7 +270,7 @@ Methodology of the [Workflow Catalog](README.md).
 | 02.18 | Return to a channel from preferences | 545 | [02-channels.md](02-channels.md) |
 | 00.7 | Use the compact navigation rail and global create menu | 549–550 | [00-product-overview.md](00-product-overview.md) |
 | 03.14 | Address a new message from the compact rail | 551 | [03-messaging-and-composer.md](03-messaging-and-composer.md) |
-| 05.5 | Read a one-to-one conversation | 552 | [05-direct-messages.md](05-direct-messages.md) |
+| 05.5 | Read a one-to-one conversation in dark colour mode | 552 | [05-direct-messages.md](05-direct-messages.md) |
 | 14.5 | Set theme, message-density and emoji preferences | 553–559 | [14-preferences-settings.md](14-preferences-settings.md) |
 | 00.8 | Read a channel with a trial banner in the sidebar | 560 | [00-product-overview.md](00-product-overview.md) |
 | 14.6 | Run the audio-and-video diagnostics test | 564–565 | [14-preferences-settings.md](14-preferences-settings.md) |
@@ -305,7 +305,7 @@ Methodology of the [Workflow Catalog](README.md).
 | 09.1 | Open search and review recent history | 684–687 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 09.2 | Move between search result-type tabs | 688–692 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 09.3 | Filter search results by sender and file type | 693–697 | [09-search-and-filters.md](09-search-and-filters.md) |
-| 09.4 | Build a query with the filter-by popover | 698–701 | [09-search-and-filters.md](09-search-and-filters.md) |
+| 09.4 | Build a query with the filter-by modal | 698–701 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 09.5 | Sort search results and switch layout | 702–704 | [09-search-and-filters.md](09-search-and-filters.md) |
 | 20.1 | Use the in-app help panel | 705–710 | [20-help-community.md](20-help-community.md) |
 | 20.2 | Review and reply to a support request in the admin console | 711–713 | [20-help-community.md](20-help-community.md) |
@@ -708,8 +708,8 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 296](../../screenshots/Slack%20web%20Jul%202024%20296.png) | huddle thread pane with a reply typed into the thread composer and the send control active | 04.2 | [04-threads.md](04-threads.md), [06-huddles.md](06-huddles.md) |
 | [frame 297](../../screenshots/Slack%20web%20Jul%202024%20297.png) | huddle thread pane showing the posted reply with author avatar, name and relative timestamp | 04.2 | [04-threads.md](04-threads.md), [06-huddles.md](06-huddles.md) |
 | [frame 298](../../screenshots/Slack%20web%20Jul%202024%20298.png) | huddle thread pane with a second reply from the other participant | 04.2 | [04-threads.md](04-threads.md), [06-huddles.md](06-huddles.md) |
-| [frame 299](../../screenshots/Slack%20web%20Jul%202024%20299.png) | self direct message: header with a huddle badge and participant count, sidebar showing an anyone-missing prompt and an incoming huddle invitation card with join, be-there-soon and decline actions, message list with huddle summary system entries | 05.2 | [05-direct-messages.md](05-direct-messages.md), [06-huddles.md](06-huddles.md) |
-| [frame 300](../../screenshots/Slack%20web%20Jul%202024%20300.png) | self direct message during a huddle: compact huddle tile in the sidebar with participant thumbnails and controls, a you-joined-the-huddle live system message, and a yellow bottom banner asking the user to enable the microphone in the browser address bar | 06.8 | [06-huddles.md](06-huddles.md), [05-direct-messages.md](05-direct-messages.md) |
+| [frame 299](../../screenshots/Slack%20web%20Jul%202024%20299.png) | two-person direct message captured from the second participant's session, the sidebar's self badge sitting on a different row than the open conversation: header with a huddle badge and participant count, sidebar showing an anyone-missing prompt and an incoming huddle invitation card with join, be-there-soon and decline actions, message list with a joined row for the reader and huddle summary system entries | 05.2 | [05-direct-messages.md](05-direct-messages.md), [06-huddles.md](06-huddles.md) |
+| [frame 300](../../screenshots/Slack%20web%20Jul%202024%20300.png) | the same two-person direct message during a huddle: compact huddle tile in the sidebar with participant thumbnails and controls, a you-joined-the-huddle live system message, and a yellow bottom banner asking the user to enable the microphone in the browser address bar | 06.8 | [06-huddles.md](06-huddles.md), [05-direct-messages.md](05-direct-messages.md) |
 | [frame 301](../../screenshots/Slack%20web%20Jul%202024%20301.png) | direct message with a teammate: two-person intro, view-profile button, two neutral date dividers, an invitation-accepted system message and a single green-highlighted huddle-happened system entry | 05.3 | [05-direct-messages.md](05-direct-messages.md), [06-huddles.md](06-huddles.md) |
 | [frame 302](../../screenshots/Slack%20web%20Jul%202024%20302.png) | same direct message with huddle summary system messages and a two-replies thread summary link beneath one of them | 05.3 | [05-direct-messages.md](05-direct-messages.md), [06-huddles.md](06-huddles.md) |
 | [frame 303](../../screenshots/Slack%20web%20Jul%202024%20303.png) | direct message with the canvas panel open at the right: what's-on-your-mind prompt above a get-started template list of five options | 07.3 | [07-canvases.md](07-canvases.md), [05-direct-messages.md](05-direct-messages.md) |
@@ -1107,9 +1107,9 @@ One row per frame, ascending from frame 0 to frame 1021.
 | [frame 695](../../screenshots/Slack%20web%20Jul%202024%20695.png) | the same sender-filtered results with the from chip applied in the filter row and the trial advisory still shown | 09.3 | [09-search-and-filters.md](09-search-and-filters.md), [16-files-media.md](16-files-media.md) |
 | [frame 696](../../screenshots/Slack%20web%20Jul%202024%20696.png) | search results with the file-type filter list open listing lists, canvases-and-posts, documents, emails, images, PDFs, presentations and snippets as checkboxes | 09.3 | [09-search-and-filters.md](09-search-and-filters.md), [16-files-media.md](16-files-media.md) |
 | [frame 697](../../screenshots/Slack%20web%20Jul%202024%20697.png) | search results with a PDF type token added to the query, recalculated tab counts and three PDF rows | 09.3 | [09-search-and-filters.md](09-search-and-filters.md), [16-files-media.md](16-files-media.md) |
-| [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png) | filter-by popover with a from chip, in and with fields, a date select on any-time, a file-types select on PDFs, a learn-more link, clear-filters and search | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
-| [frame 699](../../screenshots/Slack%20web%20Jul%202024%20699.png) | the same filter popover with the file-types list expanded, canvases-and-posts highlighted and PDFs already checked | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
-| [frame 700](../../screenshots/Slack%20web%20Jul%202024%20700.png) | the same filter popover with the file-types control summarising two selected file types | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
+| [frame 698](../../screenshots/Slack%20web%20Jul%202024%20698.png) | filter-by modal centred over a dimmed backdrop, with a from chip, in and with fields, a date select on any-time, a file-types select on PDFs, a learn-more link, clear-filters and a muted search action | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
+| [frame 699](../../screenshots/Slack%20web%20Jul%202024%20699.png) | the same filter-by modal with the file-types list expanded past the modal's lower bound, canvases-and-posts highlighted and PDFs already checked | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
+| [frame 700](../../screenshots/Slack%20web%20Jul%202024%20700.png) | the same filter-by modal with the file-types control summarising two selected file types and the search action now a filled primary | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
 | [frame 701](../../screenshots/Slack%20web%20Jul%202024%20701.png) | search results for a query carrying a sender token and two type tokens, with a two-file-types chip and six file rows | 09.4 | [09-search-and-filters.md](09-search-and-filters.md) |
 | [frame 702](../../screenshots/Slack%20web%20Jul%202024%20702.png) | search results with the sort dropdown open listing most-relevant checked, oldest, newest, A-to-Z and Z-to-A | 09.5 | [09-search-and-filters.md](09-search-and-filters.md), [16-files-media.md](16-files-media.md) |
 | [frame 703](../../screenshots/Slack%20web%20Jul%202024%20703.png) | search results sorted newest with the sort chip updated and the file rows reordered | 09.5 | [09-search-and-filters.md](09-search-and-filters.md), [16-files-media.md](16-files-media.md) |
