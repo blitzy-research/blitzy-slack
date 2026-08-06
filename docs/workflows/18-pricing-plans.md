@@ -544,9 +544,9 @@ Every criterion in this group resolves to a build-security contract owned by [00
 - Flow `18.3`, four frames: [frame 966](../../screenshots/Slack%20web%20Jul%202024%20966.png), [frame 967](../../screenshots/Slack%20web%20Jul%202024%20967.png), [frame 968](../../screenshots/Slack%20web%20Jul%202024%20968.png), [frame 969](../../screenshots/Slack%20web%20Jul%202024%20969.png)
 - Flow `18.4`, three frames: [frame 970](../../screenshots/Slack%20web%20Jul%202024%20970.png), [frame 971](../../screenshots/Slack%20web%20Jul%202024%20971.png), [frame 972](../../screenshots/Slack%20web%20Jul%202024%20972.png)
 
-**Seven frames this document previously claimed are now owned elsewhere.** Frames 610 to 616 — the upgrade destination and the purchase page — are the primary property of [15-admin-workspace.md](15-admin-workspace.md) as its flow `15.10`, because they form an account-surface billing journey rather than a commercial-comparison surface. The reassignment renumbered this area's remaining flows into `18.1` to `18.3` and is recorded in the master index's [Flow Reconstruction Methodology](README.md); the ledger's [coverage assertion](_screenshot-index.md) carries the resulting allocation of four flows over 19 frames.
+**Seven frames this document previously claimed are now owned elsewhere.** Frames 610 to 616 — the upgrade destination and the purchase page — are the primary property of [15-admin-workspace.md](15-admin-workspace.md) as its flow `15.10`, because they form an account-surface billing journey rather than a commercial-comparison surface. The reassignment renumbered this area's remaining flows into `18.1` to `18.4` and is recorded in the master index's [Flow Reconstruction Methodology](README.md); the ledger's [coverage assertion](_screenshot-index.md) carries the resulting allocation of four flows over 19 frames.
 
-**Frames this document cites as evidence but does not own — 18, all secondary cross-references excluded from the coverage arithmetic by design.** Each was inspected directly; none is described from another document's summary.
+**Frames this document cites as evidence but does not own — 19, all secondary cross-references excluded from the coverage arithmetic by design.** Each was inspected directly; none is described from another document's summary.
 
 | Frame | Owned by | Cited here for |
 |---|---|---|
@@ -565,6 +565,7 @@ Every criterion in this group resolves to a build-security contract owned by [00
 | [frame 672](../../screenshots/Slack%20web%20Jul%202024%20672.png) | [15-admin-workspace.md](15-admin-workspace.md) | The billing-mutation authorization note and the locked delivery preference |
 | [frame 674](../../screenshots/Slack%20web%20Jul%202024%20674.png) | [15-admin-workspace.md](15-admin-workspace.md) | The reused payment-instrument capture control and the storage-and-default statement |
 | [frame 677](../../screenshots/Slack%20web%20Jul%202024%20677.png) | [15-admin-workspace.md](15-admin-workspace.md) | The promotional-code rejection, and the muted-primary validation policy |
+| [frame 678](../../screenshots/Slack%20web%20Jul%202024%20678.png) | [15-admin-workspace.md](15-admin-workspace.md) | The payment-instrument fields that recur on the purchase page beyond this area's boundary, cited to mark where the account-surface journey continues |
 | [frame 679](../../screenshots/Slack%20web%20Jul%202024%20679.png) | [15-admin-workspace.md](15-admin-workspace.md) | The stored instrument's retained field set and the inline success report |
 | [frame 700](../../screenshots/Slack%20web%20Jul%202024%20700.png) | [09-search-and-filters.md](09-search-and-filters.md) | The contextual upsell strip above a result set |
 | [frame 824](../../screenshots/Slack%20web%20Jul%202024%20824.png) | [17-marketing-site.md](17-marketing-site.md) | The two-plan benefit card, its dash exclusion, its check-plus-label cells and its inbound link to the pricing page |
