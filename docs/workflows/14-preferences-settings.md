@@ -371,12 +371,6 @@ Every identifier resolves to a contract in [00-product-overview.md](00-product-o
 | `C-TILE-SELECT-ROW` | The theme swatch grid, the skin-tone row and the custom one-click-reaction row [frame 537](../../screenshots/Slack%20web%20Jul%202024%20537.png), [frame 557](../../screenshots/Slack%20web%20Jul%202024%20557.png) |
 | `C-LIVE-PREVIEW-CARD` | The message previews of the messages-and-media category, and the example message that renders the chosen quick reactions [frame 554](../../screenshots/Slack%20web%20Jul%202024%20554.png), [frame 557](../../screenshots/Slack%20web%20Jul%202024%20557.png) |
 | `C-BANNER`, `C-UPGRADE-GATE` | Present behind the dialog as the sidebar's promotional offer banner and trial footer item, and in the workspace menu as an offer block with a countdown and an upgrade action [frame 535](../../screenshots/Slack%20web%20Jul%202024%20535.png), [frame 566](../../screenshots/Slack%20web%20Jul%202024%20566.png). **No control inside the dialog carries an entitlement badge in any of the 25 frames**, so no preference observed here is plan-gated |
-| `C-SETTINGS-CATEGORY-COLUMN` | The dialog's twelve-row category column at its leading edge, the active row a filled band |
-| `C-SEGMENTED-CONTROL` | The three-way choice on the themes category |
-| `C-LEVEL-METER` | The microphone input-level meter on the audio-and-video category |
-| `C-DEVICE-PREVIEW` | The camera preview above its device select |
-| `C-TILE-SELECT-ROW` | The theme and colour-mode tile rows, selection as outline and hover as fill |
-| `C-LIVE-PREVIEW-CARD` | The rendered preview of the object a setting governs, re-rendering as the setting changes |
 
 ### Structures this area contributed to the shared inventory
 
