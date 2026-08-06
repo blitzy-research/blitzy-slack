@@ -214,7 +214,7 @@ Every identifier resolves to its single authoritative contract in [00-product-ov
 
 ### The area's primary journey
 
-Every node below is a surface observed in a frame and every edge is a transition the corpus shows; nodes owned by another area are labelled with that document.
+Every node below is a surface observed in a frame, and nodes owned by another area are labelled with that document. **Two link styles carry two different claims.** A solid edge is a transition the corpus shows: both endpoints are captured and the step between them is evidenced. A **dotted, labelled edge** means the affordance and its stated destination are observed but **the step itself is not captured**, so the edge records where the affordance points rather than a transition anyone watched happen. Three edges are dotted, all of them on the conversation-creation path, and the same gaps are recorded as a partial capture beneath **Transitions in and out** — creation is never captured end to end, and an external acceptance is never captured at all.
 
 ```mermaid
 flowchart TD
@@ -240,9 +240,9 @@ flowchart TD
     RAILDEST --> LIST
     LIST --> CONV
     SIDEBARGROUP --> CONV
-    CREATEMENU --> NEWMSG
-    EXTACCEPT --> LIST
-    NEWMSG --> CONV
+    CREATEMENU -.->|"menu-to-composer step not captured"| NEWMSG
+    EXTACCEPT -.->|"acceptance and its effect not captured"| LIST
+    NEWMSG -.->|"resulting conversation not captured"| CONV
     CONV --> INTRO
     INTRO --> PROFILE
     CONV --> DRAFT

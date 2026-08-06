@@ -48,7 +48,7 @@ Frame spans are written as plain numeric ranges because they designate a span ra
 
 ### The channel lifecycle
 
-Every node and edge below corresponds to a state or a transition observed in a cited frame; nothing is a plausible route that the corpus does not show.
+Every node and edge below corresponds to a state or a transition observed in a cited frame; nothing is a plausible route that the corpus does not show. **One edge is drawn dotted and labelled**, and the distinction is evidential rather than decorative: a solid edge means the arrival state is captured, while a dotted edge means the action is captured but **its arrival state is not**, so the node it points at is named from the action's own confirming copy rather than from a frame. Only the deletion edge is in that position, and the same gap is recorded as a partial capture beside flow `02.9`.
 
 ```mermaid
 flowchart TD
@@ -98,7 +98,7 @@ flowchart TD
     MEMBERS --> ADDPEOPLE
     SETTINGS --> PRIVATE
     SETTINGS --> ARCHIVED
-    SETTINGS --> DELETED
+    SETTINGS -.->|"post-deletion state not captured"| DELETED
     PRIVATE --> SETTINGS
     ARCHIVED --> OPEN
 ```

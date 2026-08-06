@@ -388,7 +388,7 @@ Each criterion is objectively checkable against the frame cited beside it. A cri
 | `10.1` | [frame 568](../../screenshots/Slack%20web%20Jul%202024%20568.png), [frame 569](../../screenshots/Slack%20web%20Jul%202024%20569.png), [frame 570](../../screenshots/Slack%20web%20Jul%202024%20570.png) |
 | `10.2` | [frame 571](../../screenshots/Slack%20web%20Jul%202024%20571.png), [frame 572](../../screenshots/Slack%20web%20Jul%202024%20572.png), [frame 573](../../screenshots/Slack%20web%20Jul%202024%20573.png), [frame 574](../../screenshots/Slack%20web%20Jul%202024%20574.png) |
 
-**Secondary cross-references, owned by other areas and claimed by none of this area's flows.** They are cited in this document as evidence and are ignored by the coverage arithmetic:
+**Secondary cross-references, owned by other areas and claimed by none of this area's flows.** **Fifteen**, across the eleven rows below, and the ledger lists this area as a secondary on exactly those fifteen rows. They are cited in this document as evidence and are ignored by the coverage arithmetic:
 
 | Frame | Cited for | Primary owner |
 |---|---|---|
