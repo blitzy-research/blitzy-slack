@@ -64,23 +64,23 @@ Notation used throughout this ledger:
   numbers in this ledger equals `{0 … 1021}` exactly, with no missing frame, no extra frame and no duplicated row.
 - **Every row names at least one area document**, and each frame has exactly one primary owner. There are zero
   unassigned rows.
-- **Cross-document reconciliation: verified for the nineteen delivered documents, outstanding for four.** The
+- **Cross-document reconciliation: verified for the twenty-two delivered documents, outstanding for one.** The
   invariant is that the union of every workflow-area document's `Frames covered` set equals this ledger's frame set,
   which equals `{0 … 1021}`. It is evaluated per area, and the current state is three-way rather than binary:
-    - **Delivered and reconciled — 19 documents.** `00` through `16`, plus [21-states.md](21-states.md) and
-      [22-external-collaboration.md](22-external-collaboration.md). Each one exists, and each one's `Frames covered`
-      set has been compared against this ledger's primary-ownership assignment for it and agrees exactly. Together
-      they claim **750 frames across 173 flows**.
-    - **Not yet authored — 4 documents.** [17-marketing-site.md](17-marketing-site.md),
-      [18-pricing-plans.md](18-pricing-plans.md), [19-brand-guidelines.md](19-brand-guidelines.md) and
-      [20-help-community.md](20-help-community.md), holding **272 frames across 75 flows** between them. For these the
-      union claim is **unverified**, because there is no `Frames covered` set to compare yet. Their rows below are
-      complete and their captions are observed, so the corpus itself is fully recorded — what is outstanding is the
-      behavioural specification built on top of that record. Until they exist, **this ledger is the authority for
-      those 272 frames.** They are listed as outstanding in the master index's [Omissions](README.md#omissions).
-    - **The arithmetic closes now, not later.** 750 delivered + 272 outstanding = 1,022 frames, and 173 + 75 = 248
+    - **Delivered and reconciled — 22 documents.** `00` through `16`, plus [18-pricing-plans.md](18-pricing-plans.md),
+      [19-brand-guidelines.md](19-brand-guidelines.md), [20-help-community.md](20-help-community.md),
+      [21-states.md](21-states.md) and [22-external-collaboration.md](22-external-collaboration.md). Each one exists,
+      and each one's `Frames covered` set has been compared against this ledger's primary-ownership assignment for it
+      and agrees exactly. Together they claim **851 frames across 200 flows**.
+    - **Not yet authored — 1 document.** [17-marketing-site.md](17-marketing-site.md), holding **171 frames across 48
+      flows**. For it the union claim is **unverified**, because there is no `Frames covered` set to compare yet. Its
+      rows below are complete and their captions are observed, so the corpus itself is fully recorded — what is
+      outstanding is the behavioural specification built on top of that record. Until it exists, **this ledger is the
+      authority for those 171 frames.** It is listed as outstanding in the master index's
+      [Omissions](README.md#omissions).
+    - **The arithmetic closes now, not later.** 851 delivered + 171 outstanding = 1,022 frames, and 200 + 48 = 248
       flows. So the union invariant is already known to be *satisfiable*: every frame is allocated to exactly one
-      primary owner, and no frame is allocated twice or left over. What each outstanding document adds is
+      primary owner, and no frame is allocated twice or left over. What the outstanding document adds is
       confirmation, not coverage.
   Any disagreement found when an area document is authored is a defect in one of the two documents, not a difference
   of interpretation, and it is resolved by re-inspecting the frame.
@@ -96,7 +96,7 @@ Notation used throughout this ledger:
 - **The table below is the primary-ownership map.** It is the assignment this ledger's rows already make, stated per
   area so an area author knows exactly which frames their document must claim. It is derived from the `Flow(s)` and
   `Area document(s)` columns of the 1,022 rows below, so it is internally consistent with this ledger by
-  construction, and for the nineteen delivered documents it has additionally been checked against those documents
+  construction, and for the twenty-two delivered documents it has additionally been checked against those documents
   themselves. The `Frames` column sums to 1,022 and the `Flows` column sums to 248.
 
 | Area document | Flows | Frames owned as primary |
