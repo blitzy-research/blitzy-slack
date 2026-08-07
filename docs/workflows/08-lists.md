@@ -38,60 +38,106 @@ Every node below is a surface observed in a frame of this area, and every edge i
 
 ```mermaid
 flowchart TD
-    RAIL["Lists destination reached from the rail - 00-product-overview.md"] --> DEST["Lists destination: hero, new-list action, featured templates"]
-    CREATEMENU["Global create menu, list row - 00-product-overview.md"] -. "inferred" .-> DEST
-    DEST --> ALLLISTS["All-lists index: filter chips, recency sort, list rows"]
-    DEST --> WAYS["Ways-to-start panel: blank list plus seven templates"]
+    RAIL["Lists destination from the rail - 00-product-overview.md"]
+    CREATEMENU["Global create menu, list row - 00-product-overview.md"]
+    DEST["Lists destination: hero, new-list action, featured templates"]
+    ALLLISTS["All-lists index: filter chips, recency sort, list rows"]
+    WAYS["Ways-to-start panel: blank list plus seven templates"]
+    LISTVIEW["New list in table layout: three empty item rows"]
+    PREVIEW["Template preview modal: scaled preview, use-template action"]
+    BOARD["Grouped board layout: one column per group value, item count"]
+    NAMEITEM["Type item titles into the name cells"]
+    PEOPLECELL["People cell in edit mode: picker with not-in-list notes"]
+    DATECELL["Date cell in edit mode: month calendar popover"]
+    FILLED["Every item carries an assignee and a date"]
+    ADDITEM["Add an item from a group foot or the floating action"]
+    PANE["Record detail pane: comment, notifications, typed field rows"]
+    STATUSSEL["Status select: not started, in progress, blocked, done"]
+    PRIORITY["Priority: three star positions"]
+    DESCEDIT["Description editor with an inline rich-text toolbar"]
+    ASSIGNEE["Assignee picker"]
+    DUEDATE["Due-date picker"]
+    ADDFIELD["Add-field popover: optional name, nine-value type list"]
+    CUSTOMFIELD["Custom field in the pane and echoed on the card"]
+    FIELDMENU["Field overflow: edit field, move field up, delete field"]
+    EDITFIELD["Edit-field popover: type select, allow-multiple, default"]
+    CONVERT["Convert-field dialog: create new field, cancel, convert"]
+    TOAST["Field-type-updated toast with undo"]
+    DELFIELD["Delete-field confirmation"]
+    STAR["Star toggle filled, list mirrored into the starred group"]
+    OVERFLOW["List overflow menu: six actions, details through delete"]
+    DETAILS["List details modal, About tab: name, description, CSV"]
+    RENAME["Name row in edit mode: emoji control plus input"]
+    DESCRIPTION["Description row in edit mode: textarea, counter, prompt"]
+    FEEDBACK["Feedback modal: type radios, textarea, response checkbox"]
+    FBTOAST["Feedback-sent toast"]
+    VIEWS["Views dropdown: six named views with counts, all-items, add"]
+    SAVEDVIEW["Saved view active: view, group-by and filter chips, reset"]
+    TEXTFILTER["Search field filters items in place"]
+    EDITVIEW["Edit-view panel: filter, sort, hide fields, group, layout"]
+    TABLE["Table layout: column per field, add-item row, add-column"]
+    GROUPEDTABLE["Grouped table: collapsible sections, header plus row"]
+    FILTERBY["Filter-by popover: field list, then operator and value"]
+    SORT["Sort popover: sort-by field, direction, delete sort, add sort"]
+    HIDE["Hide-fields popover: shown and hidden groups with toggles"]
+    UNSAVED["Unsaved view state: save-as-new-view action plus reset"]
+    SAVEMODAL["Save-as-new-view modal: name, visibility note, create"]
+    NEWVIEW["New view active in the view chip, its filters applied"]
+
+    RAIL --> DEST
+    CREATEMENU -. "inferred" .-> DEST
+    DEST --> ALLLISTS
+    DEST --> WAYS
     ALLLISTS -. "inferred" .-> LISTVIEW
-    WAYS --> LISTVIEW["New list in table layout: three empty item rows"]
-    WAYS --> PREVIEW["Template preview modal: scaled board preview, use-template action"]
-    PREVIEW --> BOARD["Grouped board layout: one column per group value with an item count"]
-    LISTVIEW --> NAMEITEM["Type item titles into the name cells"]
-    NAMEITEM --> PEOPLECELL["People cell in edit mode: member picker with not-in-list notes"]
-    NAMEITEM --> DATECELL["Date cell in edit mode: month calendar popover"]
-    PEOPLECELL --> FILLED["Every item carries an assignee and a date"]
+    WAYS --> LISTVIEW
+    WAYS --> PREVIEW
+    PREVIEW --> BOARD
+    LISTVIEW --> NAMEITEM
+    NAMEITEM --> PEOPLECELL
+    NAMEITEM --> DATECELL
+    PEOPLECELL --> FILLED
     DATECELL --> FILLED
-    BOARD --> ADDITEM["Add an item from a group foot or the floating action"]
-    ADDITEM --> PANE["Record detail pane: comment, notifications, typed field rows"]
+    BOARD --> ADDITEM
+    ADDITEM --> PANE
     BOARD --> PANE
-    PANE --> STATUSSEL["Status select: not started, in progress, blocked, done"]
-    PANE --> PRIORITY["Priority: three star positions"]
-    PANE --> DESCEDIT["Description editor with an inline rich-text toolbar"]
-    PANE --> ASSIGNEE["Assignee picker"]
-    PANE --> DUEDATE["Due-date picker"]
+    PANE --> STATUSSEL
+    PANE --> PRIORITY
+    PANE --> DESCEDIT
+    PANE --> ASSIGNEE
+    PANE --> DUEDATE
     STATUSSEL --> BOARD
-    PANE --> ADDFIELD["Add-field popover: optional name plus a nine-value field-type list"]
-    ADDFIELD --> CUSTOMFIELD["Custom field rendered in the pane and echoed on the card"]
-    CUSTOMFIELD --> FIELDMENU["Field overflow: edit field, move field up, delete field"]
-    FIELDMENU --> EDITFIELD["Edit-field popover: type select, allow-multiple, default"]
-    EDITFIELD --> CONVERT["Convert-field dialog: create new field, cancel, convert"]
-    CONVERT --> TOAST["Field-type-updated toast with undo"]
-    FIELDMENU --> DELFIELD["Delete-field confirmation"]
+    PANE --> ADDFIELD
+    ADDFIELD --> CUSTOMFIELD
+    CUSTOMFIELD --> FIELDMENU
+    FIELDMENU --> EDITFIELD
+    EDITFIELD --> CONVERT
+    CONVERT --> TOAST
+    FIELDMENU --> DELFIELD
     DELFIELD --> BOARD
-    BOARD --> STAR["Star toggle filled, list mirrored into the sidebar starred group"]
-    BOARD --> OVERFLOW["List overflow menu: edit details, copy link, make a copy, download CSV, share feedback, delete list"]
-    OVERFLOW --> DETAILS["List details modal, About tab: name row, description row, download CSV"]
-    DETAILS --> RENAME["Name row in edit mode: emoji control plus input"]
-    DETAILS --> DESCRIPTION["Description row in edit mode: textarea, counter, helper prompt"]
+    BOARD --> STAR
+    BOARD --> OVERFLOW
+    OVERFLOW --> DETAILS
+    DETAILS --> RENAME
+    DETAILS --> DESCRIPTION
     RENAME --> BOARD
     DESCRIPTION --> BOARD
-    OVERFLOW --> FEEDBACK["Feedback modal: type radios, details textarea, response checkbox"]
-    FEEDBACK --> FBTOAST["Feedback-sent toast"]
-    BOARD --> VIEWS["Views dropdown: six named views with item counts, all-items, add view"]
-    VIEWS --> SAVEDVIEW["Saved view active: view chip, group-by chip, filter chip, reset"]
-    BOARD --> TEXTFILTER["Search field filters items in place"]
-    VIEWS --> EDITVIEW["Edit-view panel: filter, sort, hide fields, group by, layout"]
-    EDITVIEW --> TABLE["Table layout: one column per field, add-item row, add-column control"]
-    EDITVIEW --> GROUPEDTABLE["Grouped table: collapsible sections, each with its own header and add-item row"]
-    EDITVIEW --> FILTERBY["Filter-by popover: field list, then an operator and a value picker"]
-    EDITVIEW --> SORT["Sort popover: sort-by field, direction, delete sort, add sort"]
-    EDITVIEW --> HIDE["Hide-fields popover: shown and hidden groups with per-field toggles"]
-    FILTERBY --> UNSAVED["Unsaved view state: save-as-new-view action plus reset"]
+    OVERFLOW --> FEEDBACK
+    FEEDBACK --> FBTOAST
+    BOARD --> VIEWS
+    VIEWS --> SAVEDVIEW
+    BOARD --> TEXTFILTER
+    VIEWS --> EDITVIEW
+    EDITVIEW --> TABLE
+    EDITVIEW --> GROUPEDTABLE
+    EDITVIEW --> FILTERBY
+    EDITVIEW --> SORT
+    EDITVIEW --> HIDE
+    FILTERBY --> UNSAVED
     SORT --> UNSAVED
     HIDE --> UNSAVED
     TABLE --> UNSAVED
-    UNSAVED --> SAVEMODAL["Save-as-new-view modal: view name, visibility note, create"]
-    SAVEMODAL --> NEWVIEW["New view active in the view chip with its filters still applied"]
+    UNSAVED --> SAVEMODAL
+    SAVEMODAL --> NEWVIEW
 ```
 
 ## Flow 08.1 — Create a list and fill in items

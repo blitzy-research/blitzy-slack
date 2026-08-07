@@ -220,22 +220,22 @@ Every node below is a surface observed in a frame, and nodes owned by another ar
 flowchart TD
     RAILDEST["Direct-messages destination in the rail - flow 05.4"]
     SIDEBARGROUP["Direct messages group in the sidebar"]
-    CREATEMENU["Global create menu message entry - 00-product-overview.md"]
-    EXTACCEPT["Accepted external invitation, stated to add the person to the list - 22-external-collaboration.md"]
-    NEWMSG["Full-width new-message composer with recipient field - 03-messaging-and-composer.md"]
+    CREATEMENU["Create-menu message entry - 00-product-overview.md"]
+    EXTACCEPT["Accepted external invite - 22-external-collaboration.md"]
+    NEWMSG["Full-width new-message composer with a recipient field"]
     LIST["Conversation list with unreads toggle and previews"]
     CONV["Direct-message conversation"]
     INTRO["Two-person introduction block with view-profile action"]
     PROFILE["Profile panel - 13-profiles-people.md"]
     DRAFT["Draft in the composer, send control filled"]
     SENT["Sent message beneath a new day divider"]
-    DRAFTSROW["Drafts and sent row in the sidebar - 12-activity-notifications.md"]
+    DRAFTSROW["Drafts and sent row - 12-activity-notifications.md"]
     HUDDLEMENU["Header huddle menu - start huddle or copy link"]
     HUDDLE["Huddle session - 06-huddles.md"]
     HUDDLEENTRY["Huddle entry in the message list"]
     THREAD["Huddle thread - 04-threads.md"]
     CANVASPANE["Canvas pane docked at the right - 07-canvases.md"]
-    SUPPRESS["Do-not-notify link on a system message - 12-activity-notifications.md"]
+    SUPPRESS["Do-not-notify link - 12-activity-notifications.md"]
 
     RAILDEST --> LIST
     LIST --> CONV

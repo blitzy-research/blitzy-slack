@@ -81,66 +81,70 @@ Twenty-five documents make up the catalog: this master index, the coverage ledge
 
 The corpus captures four structurally distinct surface families, and the boundaries between them are architectural rather than cosmetic: an unauthenticated public web site, an authentication and onboarding path, the authenticated application shell with its destinations, and a **standalone browser administration console** that has its own top bar and its own left navigation and is reached by following an external link out of the application [frame 567](../../screenshots/Slack%20web%20Jul%202024%20567.png). Every node below is a surface actually observed in a frame, and every node names the area document that owns it.
 
+**How to read the node labels.** Each label ends in the **two-digit number of the owning area document** — `- 17` means [`17-marketing-site.md`](17-marketing-site.md), `- 00` means [`00-product-overview.md`](00-product-overview.md), and so on for all twenty-three areas; the [index above](#index-of-catalog-documents) maps every number to its file. The number is used rather than the filename for one reason, and it is the same reason recorded in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration): this diagram is published as a fenced code block, not as a rendered diagram, so a line longer than the code box is clipped at rest with no scrollbar cue. Every line in every fence in this catalog is therefore held to a width that fits, and the numeric suffix is what buys that width back without deleting an observed destination from the map.
+
+**The measured ceiling, stated once so it is not re-derived or drifted past.** Every diagram line in this catalog is **at most 74 characters**, and that figure is a measurement rather than a convention. In the published site the diagram fence's inner code element is a horizontally scrollable box with 16 pixels of padding on each side, and its width tracks the width of the line-number gutter: a fence of 8 to 9 lines gets the widest box, one of 17 to 99 lines a middle box, and one of 100 or more lines the narrowest. In that narrowest box the usable content width divided by the monospace advance width of the theme's code font gives **74 characters**, and a 75th character overflows. Verified at the glyph level on the two fences that sit exactly on the ceiling — the [lists](08-lists.md) and [administration](15-admin-workspace.md) maps, both 74 characters in the narrowest box — where the final bracket renders fully inside the box with under four pixels to spare. **74 is a hard limit, not a target.** Anyone editing a fence should re-check it, and should note the one way the limit could tighten: a fence of more than 999 lines would widen the gutter by a digit and narrow the box again. No fence in this catalog exceeds 163 lines.
+
 **How to read the edges.** Two link styles carry two different evidential claims, and the distinction is load-bearing rather than decorative. A **solid edge** means both endpoints are captured surfaces *and* the affordance joining them is observed on one of them. A **dotted, labelled edge** means the affordance is observed but the **arrival state is not captured anywhere in the corpus** — the route is where the affordance points, not a transition anyone watched happen; each such edge carries the reason on the edge itself and is documented as a partial capture by the owning area. A **node with no inbound edge** is entered from outside the captured surfaces: the landing page is the corpus's own root, the brand and developer properties are separate web properties reached by external address, and the join page is reached from an emailed invitation link the corpus never captures. No plausible-but-unevidenced route is drawn at all.
 
 ```mermaid
 flowchart TD
     subgraph PUBLIC["Unauthenticated public web surfaces"]
-        LANDING["Landing page and mega-menus - 17-marketing-site.md"]
-        PRODPAGES["Product and solutions pages - 17-marketing-site.md"]
-        RESOURCES["Resources, stories, blog, careers, store, policies - 17-marketing-site.md"]
-        PRICINGPG["Pricing page and comparison table - 18-pricing-plans.md"]
-        BRAND["Brand centre - 19-brand-guidelines.md"]
-        HELPCTR["Help centre and support contact - 20-help-community.md"]
-        COMMUNITY["Community forum and certification - 20-help-community.md"]
-        APPDIR["App directory site - 11-apps-and-integrations.md"]
-        DEVPLAT["Developer platform and docs - 11-apps-and-integrations.md"]
-        ERRPAGE["Application error page - 21-states.md"]
+        LANDING["Landing page and mega-menus - 17"]
+        PRODPAGES["Product and solutions pages - 17"]
+        RES["Resources, stories, blog, careers, store, policies - 17"]
+        PRICINGPG["Pricing page and comparison table - 18"]
+        BRAND["Brand centre - 19"]
+        HELPCTR["Help centre and support contact - 20"]
+        COMMUNITY["Community forum and certification - 20"]
+        APPDIR["App directory site - 11"]
+        DEVPLAT["Developer platform and docs - 11"]
+        ERRPAGE["Application error page - 21"]
     end
 
     subgraph GATE["Authentication and onboarding"]
-        SIGNUP["Sign up, verify code, confirm account - 01-onboarding-and-auth.md"]
-        SIGNIN["Sign in by password, code or reset link - 01-onboarding-and-auth.md"]
-        WIZARD["Five-step workspace setup wizard - 01-onboarding-and-auth.md"]
-        JOININV["Accept invitation and choose workspace, entered from an emailed link - 01-onboarding-and-auth.md"]
-        HANDOFF["Desktop and mobile client hand-off - 01-onboarding-and-auth.md"]
+        SIGNUP["Sign up, verify code, confirm account - 01"]
+        SIGNIN["Sign in by password, code or reset link - 01"]
+        WIZARD["Five-step workspace setup wizard - 01"]
+        JOININV["Accept invitation and choose workspace - 01"]
+        HANDOFF["Desktop and mobile client hand-off - 01"]
     end
 
     subgraph APP["Authenticated application shell"]
-        SHELL["Rail, sidebar, top bar, search entry, create menu - 00-product-overview.md"]
-        CHANNEL["Channel view, details pane, browser - 02-channels.md"]
-        DM["Direct messages destination - 05-direct-messages.md"]
-        THREADS["Threads view and thread pane - 04-threads.md"]
-        COMPOSER["Composer, formatting, slash commands, clips - 03-messaging-and-composer.md"]
-        HUDDLE["Huddle stage and control bar - 06-huddles.md"]
-        CANVAS["Canvas pane and templates - 07-canvases.md"]
-        LISTS["Lists destination, records, views - 08-lists.md"]
-        SEARCH["Search overlay and results - 09-search-and-filters.md"]
-        BUILDER["Workflow builder and editor - 10-workflow-builder.md"]
-        APPSURF["Apps surface and app homes - 11-apps-and-integrations.md"]
-        ACTIVITY["Activity, later, drafts and sent - 12-activity-notifications.md"]
-        PEOPLE["People destination and profile pane - 13-profiles-people.md"]
-        PREFS["Preferences dialog and diagnostics - 14-preferences-settings.md"]
-        FILES["Files destination and previews - 16-files-media.md"]
-        EXTCONN["External connections destination - 22-external-collaboration.md"]
-        WSMENU["Workspace menu and tools submenu - 15-admin-workspace.md"]
-        INPLAN["In-product plan chooser and paid-plan tour - 18-pricing-plans.md"]
-        HELPPANEL["In-app help panel - 20-help-community.md"]
+        SHELL["Rail, sidebar, top bar, search entry, create menu - 00"]
+        CHANNEL["Channel view, details pane, browser - 02"]
+        DM["Direct messages destination - 05"]
+        THREADS["Threads view and thread pane - 04"]
+        COMPOSER["Composer, formatting, slash commands, clips - 03"]
+        HUDDLE["Huddle stage and control bar - 06"]
+        CANVAS["Canvas pane and templates - 07"]
+        LISTS["Lists destination, records, views - 08"]
+        SEARCH["Search overlay and results - 09"]
+        BUILDER["Workflow builder and editor - 10"]
+        APPSURF["Apps surface and app homes - 11"]
+        ACTIVITY["Activity, later, drafts and sent - 12"]
+        PEOPLE["People destination and profile pane - 13"]
+        PREFS["Preferences dialog and diagnostics - 14"]
+        FILES["Files destination and previews - 16"]
+        EXTCONN["External connections destination - 22"]
+        WSMENU["Workspace menu and tools submenu - 15"]
+        INPLAN["In-product plan chooser and paid-plan tour - 18"]
+        HELPPANEL["In-app help panel - 20"]
     end
 
     subgraph CONSOLE["Standalone browser administration console"]
-        ADMIN["Console home, settings, members, analytics, billing - 15-admin-workspace.md"]
-        ADMINSUP["Support request tracking - 20-help-community.md"]
+        ADMIN["Console home, settings, members, analytics, billing - 15"]
+        ADMINSUP["Support request tracking - 20"]
     end
 
     LANDING --> PRODPAGES
-    LANDING --> RESOURCES
+    LANDING --> RES
     LANDING --> PRICINGPG
     LANDING --> SIGNUP
     LANDING --> SIGNIN
     PRODPAGES --> SIGNUP
     PRICINGPG --> SIGNUP
-    RESOURCES --> HELPCTR
+    RES --> HELPCTR
     HELPCTR --> COMMUNITY
     APPDIR --> SIGNIN
     DEVPLAT --> APPDIR
@@ -947,6 +951,66 @@ It is recorded as a limitation rather than merely as an inconsistency because of
 
 The same discipline applies to the other two clocks, which do **not** conflict and must not be merged with this one: they are enumerated with their single named authorities in the [consolidated data model](#consolidated-data-model).
 
+### 7. Publishing this catalog gives the site a nested navigation section, and at narrow widths that section's drawer blanks on keyboard Tab
+
+This is a limitation of **the published site**, not of the catalog's content, and it exists as a direct consequence of the one change this work makes outside the documentation directory: the twenty-five catalog pages are published under a single nested navigation section, and a nested section is what causes the condition below. It is disclosed rather than fixed because the markup and the stylesheet that produce it are **entirely generated by the documentation theme**, and reaching them would require a theme override, an extra stylesheet or an extra script — none of which is within the single permitted navigation edit. Flattening the navigation instead is not an option either: the nested section, and the page titles inside it, are what this work is required to publish.
+
+**What happens, measured rather than described.** At narrow viewport widths the primary sidebar becomes an off-canvas drawer. Open it, then press Tab four times. The browser's own scroll-focused-element-into-view behaviour drives the sidebar's scroll container horizontally from 0 to **242 pixels** — it can do so only because the container's scrollable width is **484** against a visible width of **242**, which is to say two stacked panels where a flat navigation would have one. The first-level navigation slides to **x = −242** and a still-transparent panel arrives at **x = 0**. The drawer is then an apparently empty white panel, **242 pixels wide** and the full height of the viewport. Navigation rows that are actually opaque drop from **25 to 0**.
+
+| Stage | Container scrollLeft | First-level nav x | Opaque nav rows |
+|---|---|---|---|
+| Drawer just opened | 0 | 0 | 25 |
+| After Tab 1, 2, 3 | 0 | 0 | 25 |
+| **After Tab 4** | **242** | **−242** | **0** |
+| After two further Tabs | 242 | −242 | 0 |
+| After closing and reopening the drawer | **242** | −242 | **0** |
+| After reloading the page | **0** | 0 | **25** |
+
+Three details matter for anyone reproducing it. **No focus indicator is visible** from the fourth Tab onward — the theme does compute one, but the element holding it has an effective opacity of zero, so nothing is painted. **Closing and reopening the drawer does not recover it**: closing clears the drawer's own toggle but leaves the horizontal scroll offset at 242, so reopening re-presents the same blank panel. **Only reloading the page recovers it**, which it does completely. The three states after the fourth Tab, after the sixth, and after a close-and-reopen are pixel-identical to one another, and the state after a reload is pixel-identical to the original opened drawer.
+
+**The affected width band was bisected to a single pixel, and it is narrower than an earlier record of this condition claimed.** An earlier record put the band at every width up to 1219 pixels. Direct measurement puts it at **959 pixels and below**:
+
+| Viewport width | Drawer present | Nested table-of-contents panel | Scrollable vs visible width | Blanks on Tab |
+|---|---|---|---|---|
+| 390, 768 | yes | rendered | 484 vs 242 | **yes** |
+| **959** | yes | rendered | **484 vs 242** | **yes** |
+| **960** | yes | not rendered | **242 vs 242** | no |
+| 1219 | yes | not rendered | 242 vs 242 | no |
+| 1220 and above | no drawer at all | not rendered | no overflow | no |
+
+At 960 pixels and above the theme moves the table of contents out of the drawer into its own right-hand column, which removes the horizontal overflow and with it the defect; at 960 the fourth Tab lands on a visible row with a visible focus ring. Between 960 and 1219 inclusive the drawer exists and is fully keyboard-operable. At 1220 and above there is no drawer.
+
+**The mechanism, corrected against the same earlier record.** That record attributed the transparent panel to the nested section's own toggle never being checked. On this page that is not what happens: the nested section's toggle ships **already checked**, because this page is itself the active child of the section, so the second-level panel is legitimately visible and is what the drawer shows. The panel dragged into view while still transparent is the **third-level table-of-contents panel**, whose own toggle is the one that was never checked. The measured numbers are otherwise exactly as recorded; only the named toggle changes.
+
+**A theme-level remedy exists and is deliberately withheld**, on the same terms as [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration): constraining the sidebar scroll container's horizontal overflow removes the 242-pixel scroll that the defect depends on. Applying it means adding a stylesheet or a theme override to the site configuration, which exceeds the single permitted navigation edit, so it is carried as an authorisation-gated follow-up rather than applied quietly. **Nothing in this catalog's content is lost to this condition** — every page remains reachable at its own address, the pointer path is unaffected at every width, and a reload restores the drawer.
+
+### 8. The nested navigation section's disclosure control responds to Enter but not to Space
+
+Same origin as [limitation 7](#7-publishing-this-catalog-gives-the-site-a-nested-navigation-section-and-at-narrow-widths-that-sections-drawer-blanks-on-keyboard-tab) and the same reason for disclosing rather than fixing: publishing twenty-five pages under a nested section makes the theme render that section's heading as a focusable label paired with a hidden checkbox, and that markup is the theme's, not this catalog's.
+
+**Measured behaviour.** The control is reached in exactly **four Tab presses** from the top of the page — skip link, site logo, `Home`, then the control. It carries exactly four attributes: a class, the `for` reference to its hidden checkbox, its own id, and `tabindex="0"`. It has **no `role`**, **no `aria-expanded`**, no `aria-label` and no `aria-controls`. The expanded state is exposed instead on the sibling navigation region, which carries both `aria-expanded` and an `aria-labelledby` pointing back at the control, so the state is announced at region level even though it is absent from the element that takes focus.
+
+| Key, with focus on the control | Section toggles? | Region's `aria-expanded` | Page scroll |
+|---|---|---|---|
+| **Space**, section expanded | **no** | unchanged, `true` | **scrolls 787 px** |
+| **Space**, section collapsed | **no** | unchanged, `false` | **scrolls a further 787 px** |
+| **Enter**, section expanded | yes | `true` → `false` | unchanged |
+| **Enter**, section collapsed | yes | `false` → `true` | unchanged |
+
+Space was tested in **both** directions specifically to rule out the section having merely been open already: it is inert either way, and the keypress falls through to the page as a scroll. Enter toggles reliably in both directions and does not scroll.
+
+**Why this is bounded rather than blocking.** The function is reachable from the keyboard — Enter both collapses and expands the section — the state is announced on the region, and the control does receive a clearly visible focus indicator, measured as a one-pixel outline at four pixels of offset in the theme's accent colour, together with the label text taking the same colour. Every catalog page also remains reachable without ever operating this control, since the section renders expanded on catalog pages and each page has its own address.
+
+### 9. The verbatim build prompt is wider than the published code box, and is preserved rather than re-wrapped
+
+[Limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) explains why every fenced block in this catalog is published as a code box that clips rather than wraps, and the [note above the architecture diagram](#product-information-architecture) records the 74-character ceiling that every diagram line is held to as a result. **One block is deliberately exempt from that ceiling: the [Next Build Run Prompt](#next-build-run-prompt) at the foot of this page.**
+
+Measured in the published site, that block's longest line is **89 characters** against a box that fits **76** at its width, so **102 pixels are clipped** and **seven of its nine lines are cut mid-word**, with no scrollbar cue to signal it. That is a real defect of presentation and it is named here rather than left for a reader to discover.
+
+It is not fixed, and the reason is a rule rather than a preference: that block is a **user-provided template that upstream requirements mandate be preserved exactly**, in the WHY/WHAT/HOW form and wording given. Re-wrapping its continuation lines would make it legible in the published site at the cost of no longer being the verbatim block it is required to be — and its verbatim status is load-bearing elsewhere, since it is the second entry in the reviewed exception set in [limitation 5](#5-residual-third-party-product-name-occurrences-the-complete-reviewed-exception-set). Trading a rendering defect for a fidelity deviation is not this work's call to make, so the block stays byte-for-byte as mandated.
+
+**What to do instead, concretely.** The block's inner code element is horizontally scrollable, so the full text can be scrolled to on any surface. More simply: read it from this document's Markdown source in the repository, where it is not clipped and can be copied whole — which is the surface a build run takes it from in any case, and the same surface on which the frame links resolve and the diagrams render.
+
 ## Omissions
 
 **Nothing is omitted.** This section is the catalog's single declared place for recording an omission, so it states the position plainly rather than leaving a reader to infer it: all twenty-five planned files are delivered, the two priority artifacts are complete at full depth, and the union invariant is satisfied rather than merely satisfiable. Where an earlier checkpoint recorded an outstanding item, the item is now delivered and the record is corrected here rather than quietly dropped.
@@ -973,9 +1037,9 @@ The catalog's arithmetic, stated once here and derived from the [coverage assert
 
 **The one deliverable outside this catalog is now performed, and the earlier record of it is corrected rather than erased.** All twenty-five catalog pages are **added to the documentation site's `nav:`** in the repository's `mkdocs.yml`, under a single nested `Workflow Catalog` section: this index first as the section's own landing page, the twenty-three area documents in numeric order with human-readable titles, and the coverage index last. That is the publishing step, and it is the **only** change this work makes outside `docs/` — `site_name` and the `plugins` block are preserved byte for byte, and no `markdown_extensions`, `theme` or `docs_dir` key is introduced. An earlier revision of this section recorded the step as unperformed and held pending authorisation; it has since been performed, the site builds with every page reachable from the navigation, and the consequence for a reader is now the ordinary one: the catalog is browsable from the site navigation as well as from this index and from the repository.
 
-**What remains held, and why it is not the same thing.** The superfences fix described in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) is still **not** applied. The two are not equivalent: publishing is a change to the `nav:` key alone, which is the single edit this work is scoped to make outside `docs/`, whereas the superfences fix adds a `markdown_extensions` block and therefore widens the change surface beyond that scope. It stays recorded as a verified, authorisation-gated follow-up rather than applied quietly.
+**What remains held, and why it is not the same thing.** Two verified site-configuration remedies are still **not** applied: the superfences declaration described in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration), which would make the diagrams render, and the sidebar overflow constraint described in [limitation 7](#7-publishing-this-catalog-gives-the-site-a-nested-navigation-section-and-at-narrow-widths-that-sections-drawer-blanks-on-keyboard-tab), which would stop the narrow-width drawer blanking. Neither is equivalent to publishing: publishing is a change to the `nav:` key alone, which is the single edit this work is scoped to make outside `docs/`, whereas each of these adds a further key — a `markdown_extensions` block in the first case, a stylesheet or theme override in the second — and therefore widens the change surface beyond that scope. Both stay recorded as verified, authorisation-gated follow-ups rather than applied quietly.
 
-Three things are absent by **design** rather than by omission — and the site navigation is no longer among them, since it is now published. They are recorded here so that their absence is not mistaken for a gap: decorative marketing copy is deliberately not transcribed, because the build must supply its own; third-party brand palette values are deliberately not carried forward, because they are not this project's design tokens; and the superfences fix described in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) is deliberately not applied, because it exceeds the permitted change surface.
+Five things are absent by **design** rather than by omission — and the site navigation is no longer among them, since it is now published. They are recorded here so that their absence is not mistaken for a gap: decorative marketing copy is deliberately not transcribed, because the build must supply its own; third-party brand palette values are deliberately not carried forward, because they are not this project's design tokens; the superfences fix in [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) is deliberately not applied, because it exceeds the permitted change surface; the sidebar overflow constraint in [limitation 7](#7-publishing-this-catalog-gives-the-site-a-nested-navigation-section-and-at-narrow-widths-that-sections-drawer-blanks-on-keyboard-tab) is deliberately not applied, for the same reason; and the [Next Build Run Prompt](#next-build-run-prompt) is deliberately **not** re-wrapped to fit the published code box, because it is a template required to be preserved exactly, as [limitation 9](#9-the-verbatim-build-prompt-is-wider-than-the-published-code-box-and-is-preserved-rather-than-re-wrapped) records.
 
 ## Next Build Run Prompt
 

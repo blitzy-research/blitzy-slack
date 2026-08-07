@@ -416,7 +416,7 @@ Each state below is observed, with the frame that shows it. The cross-cutting ma
 ```mermaid
 stateDiagram-v2
     [*] --> NoSession
-    NoSession --> Starting : header huddle control, create-menu entry or destination start action
+    NoSession --> Starting : header control, create menu or destination
     NoSession --> Invited : invitation card and inline join action arrive
     Invited --> PanelDocked : join
     Starting --> PanelDocked : started from a conversation header
@@ -440,7 +440,7 @@ stateDiagram-v2
     StageOpen --> Ended : leave
     PanelDocked --> Ended : leave
     PanelFloating --> Ended : leave
-    Ended --> [*] : summary row in the message list, session listed in recent huddles
+    Ended --> [*] : summary row in the list, session in recent huddles
 ```
 
 **The four control-evidenced transitions**, listed so that no reader mistakes them for captured ones: leaving a session, whose destructive control is shown on both surfaces [frame 269](../../screenshots/Slack%20web%20Jul%202024%20269.png), [frame 300](../../screenshots/Slack%20web%20Jul%202024%20300.png) and whose *result* — a summary row and a listed session — is shown [frame 300](../../screenshots/Slack%20web%20Jul%202024%20300.png), [frame 401](../../screenshots/Slack%20web%20Jul%202024%20401.png), but never as a before-and-after pair; returning from the stage to the conversation through the overflow menu's go-to-direct-message entry [frame 282](../../screenshots/Slack%20web%20Jul%202024%20282.png); dismissing the microphone-denial band, whose dismiss control is present [frame 300](../../screenshots/Slack%20web%20Jul%202024%20300.png); and arming the camera from the video-preview popover [frame 295](../../screenshots/Slack%20web%20Jul%202024%20295.png). No transition *out of* `Captioned` or `CameraArmed` is drawn, because turning captions off and turning the camera on are both uncaptured.

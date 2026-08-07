@@ -235,31 +235,56 @@ Solid edges are transitions the corpus captures as consecutive states of one flo
 
 ```mermaid
 flowchart TD
-    RAILAVATAR["Account avatar at the rail foot - frame 504"] --> ACCTMENU["Account menu identity block - frame 504"]
-    ACCTMENU --> STATUSMODAL["Set-a-status modal - frames 505 to 511"]
-    STATUSMODAL --> SURFACED["Status emoji on the sidebar row, message rows and account avatar - frame 512"]
-    ACCTMENU --> PRESENCE["Presence toggle, active or away - frames 513 and 514"]
-    ACCTMENU --> PAUSE["Pause-notifications submenu - frame 514"]
-    PAUSE --> DND["Do-not-disturb popover with resume and adjust-time - frames 517 and 518"]
+    RAILAVATAR["Account avatar at the rail foot - frame 504"]
+    ACCTMENU["Account menu identity block - frame 504"]
+    STATUSMODAL["Set-a-status modal - frames 505 to 511"]
+    SURFACED["Status emoji on sidebar, message rows, avatar - frame 512"]
+    PRESENCE["Presence toggle, active or away - frames 513 and 514"]
+    PAUSE["Pause-notifications submenu - frame 514"]
+    DND["Do-not-disturb popover, resume, adjust time - frames 517, 518"]
+    PEOPLEDEST["People destination card grid - frame 490"]
+    PEOPLESEARCH["Person search with suggestions - frames 491 and 492"]
+    OTHERPANE["Read-only profile pane - frame 493"]
+    OWNPANE["Own-profile pane - frame 519"]
+    USERGROUPS["User groups - 15-admin-workspace.md"]
+    DMEMPTY["Direct-message empty state view-profile - frame 250"]
+    MENTIONREF["Person reference in a message list - frame 175"]
+    HOVERCARD["Hover profile card - frame 175"]
+    PEOPLETAB["People result tab in global search - frame 700"]
+    EDITNAME["Edit-your-profile modal - frames 520 and 521"]
+    EDITCONTACT["Edit-contact-information modal - frames 523 and 524"]
+    EDITABOUT["Edit-about-me modal with date picker - frames 526 to 530"]
+    VIEWAS["View-as audience menu - frame 533"]
+    PREVIEW["Coworker preview with exit-preview - frame 534"]
+    MEMBERROW["Channel Members tab member row - frame 105"]
+    REMOVECONFIRM["Remove-member confirmation - frame 105"]
+    MEMBERLIST["Member list with the person gone - frame 106"]
+
+    RAILAVATAR --> ACCTMENU
+    ACCTMENU --> STATUSMODAL
+    STATUSMODAL --> SURFACED
+    ACCTMENU --> PRESENCE
+    ACCTMENU --> PAUSE
+    PAUSE --> DND
     ACCTMENU -.-> OWNPANE
-    PEOPLEDEST["People destination card grid - frame 490"] --> PEOPLESEARCH["Person search with suggestion list - frames 491 and 492"]
-    PEOPLESEARCH --> OTHERPANE["Read-only profile pane - frame 493"]
-    PEOPLEDEST -.-> OWNPANE["Own-profile pane - frame 519"]
-    PEOPLEDEST -.-> USERGROUPS["User groups - 15-admin-workspace.md"]
-    DMEMPTY["Direct-message empty state view-profile action - frame 250"] -.-> OTHERPANE
-    MENTIONREF["Person reference in a message list - frame 175"] -.-> HOVERCARD["Hover profile card - frame 175"]
-    PEOPLETAB["People result tab in global search - frame 700"] -.-> OTHERPANE
-    OWNPANE --> EDITNAME["Edit-your-profile modal - frames 520 and 521"]
-    OWNPANE --> EDITCONTACT["Edit-contact-information modal - frames 523 and 524"]
-    OWNPANE --> EDITABOUT["Edit-about-me modal with date picker - frames 526 to 530"]
-    OWNPANE --> VIEWAS["View-as audience menu - frame 533"]
-    VIEWAS --> PREVIEW["Coworker preview with exit-preview - frame 534"]
+    PEOPLEDEST --> PEOPLESEARCH
+    PEOPLESEARCH --> OTHERPANE
+    PEOPLEDEST -.-> OWNPANE
+    PEOPLEDEST -.-> USERGROUPS
+    DMEMPTY -.-> OTHERPANE
+    MENTIONREF -.-> HOVERCARD
+    PEOPLETAB -.-> OTHERPANE
+    OWNPANE --> EDITNAME
+    OWNPANE --> EDITCONTACT
+    OWNPANE --> EDITABOUT
+    OWNPANE --> VIEWAS
+    VIEWAS --> PREVIEW
     OWNPANE -.-> STATUSMODAL
     EDITNAME --> OWNPANE
     EDITCONTACT --> OWNPANE
     EDITABOUT --> OWNPANE
-    MEMBERROW["Channel Members tab member row - frame 105"] --> REMOVECONFIRM["Remove-member confirmation - frame 105"]
-    REMOVECONFIRM --> MEMBERLIST["Member list with the person gone - frame 106"]
+    MEMBERROW --> REMOVECONFIRM
+    REMOVECONFIRM --> MEMBERLIST
 ```
 
 ### The docked profile pane

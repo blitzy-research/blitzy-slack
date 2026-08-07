@@ -227,20 +227,22 @@ Every node below corresponds to something the frames show, and every node that w
 
 ```mermaid
 flowchart TD
-    ENTRY["Inbound link or address - not captured"] --> HOME["Property home page - captured, frames 994 to 996"]
+    ENTRY["Inbound link or address - not captured"]
+    HOME["Property home page - captured, frames 994 to 996"]
+    ENTRY --> HOME
 
     HOME --> NAV["Grouped left navigation - persistent on every page"]
     HOME --> GRID["Home tile grid - names 9 of the 14 destinations"]
-    HOME --> FOOTER["Property footer - names 15 destinations in 3 columns"]
-    HOME --> OUTLINK["Link out to the product main site - destination not captured"]
-    HOME --> AUTHGATE["Authentication control - privileged area not captured"]
+    HOME --> FOOTER["Property footer - 15 destinations, 3 columns"]
+    HOME --> OUTLINK["Link out to the product site - not captured"]
+    HOME --> AUTHGATE["Authentication control - area not captured"]
 
     NAV --> G1
     NAV --> G2
     NAV --> G3
     GRID -. "curated subset" .-> NAV
     FOOTER -. "regroups the same destinations" .-> NAV
-    FOOTER --> EXTRA["A presentations page - named only in the footer - not captured"]
+    FOOTER --> EXTRA["A presentations page - footer only, not captured"]
 
     subgraph G1["Identity group"]
         ABOUT["About page - not captured"]
@@ -251,9 +253,9 @@ flowchart TD
     subgraph G2["Key-elements group"]
         LOGO["Logo-usage page - not captured"]
         COLOURS["Colours page - captured, frames 999 to 1002"]
-        COLOURS --> CORE["Section anchor - core palette - captured, frame 1000"]
-        COLOURS --> SECOND["Section anchor - secondary palette - not captured"]
-        COLOURS --> APPS["Section anchor - applications - captured, frames 1001 to 1002"]
+        COLOURS --> CORE["Anchor - core palette - captured, frame 1000"]
+        COLOURS --> SECOND["Anchor - secondary palette - not captured"]
+        COLOURS --> APPS["Anchor - applications - frames 1001 to 1002"]
         TYPE["Typography page - not captured"]
         WRITING["Writing page - not captured"]
         SHAPES["Brand-shapes page - not captured"]

@@ -688,45 +688,46 @@ sequenceDiagram
     Svc-->>User: Email a six-character code [frame 4]
     User->>Web: Enter the code [frame 5]
     alt Code accepted
-        Web-->>User: Show the get-started page with the confirmed address [frame 6]
+        Web-->>User: Show the get-started page with the address [frame 6]
     else Code rejected
-        Web-->>User: Clear the boxes and show an invalid-code message [frame 730]
+        Web-->>User: Clear the boxes and show invalid-code [frame 730]
     end
     User->>Web: Grant or withhold marketing consent [frames 6, 7]
 
     Note over User,Svc: Flow 01.4 to 01.6 - workspace setup and first run
     User->>Web: Answer one question per step, five steps [frames 8 to 16]
     Web->>Svc: Create the workspace and its first channel [frames 9, 16]
-    Svc-->>Web: Render the workspace preview in the sidebar [frames 9, 14, 16]
+    Svc-->>Web: Render the sidebar workspace preview [frames 9, 14, 16]
     User->>Web: Choose a plan tier [frames 17, 18]
     Web-->>User: Open the shell and start the coached tour [frames 25, 27]
 
     Note over User,Invitee: Flows 01.7 to 01.9 - invitation
-    User->>Web: Add a recipient, a role and an optional channel scope [frames 41, 44, 50]
+    User->>Web: Add recipient, role, channel scope [frames 41, 44, 50]
     opt Copy a shareable link instead of sending
-        Web-->>User: Confirm the link is copied and state that it expires in 19 days [frame 46]
+        Web-->>User: Confirm the copy, link expires in 19 days [frame 46]
     end
     User->>Web: Send the invitation [frames 47, 366]
     Web->>Svc: Create the invitation record [frame 47]
-    Svc-->>Web: Add the invitee to the sidebar and increment the member count [frames 47, 367]
+    Svc-->>Web: Add the invitee, increment the count [frames 47, 367]
     Svc-->>Invitee: Email the invitation [frame 367]
-    Note over Svc,Invitee: The invitee has no account yet but is already messageable, and will reply by email [frame 367]
+    Note over Svc,Invitee: No account yet, already messageable [frame 367]
+    Note over Svc,Invitee: Their replies arrive by email [frame 367]
 
-    Note over Invitee,Svc: Flows 01.12 and 01.19 - acceptance, asynchronous
-    Invitee->>Web: Open the invitation link for the bound address [frames 721, 746]
+    Note over Invitee,Svc: Flows 01.12, 01.19 - async acceptance
+    Invitee->>Web: Open the link for the bound address [frames 721, 746]
     Invitee->>Web: Enter a display name and continue [frames 722, 749]
     Web->>Svc: Accept the invitation for that address [frame 749]
 
     Note over User,Desk: Flows 01.10 and 01.20 - client hand-off
     User->>Web: Choose open-the-desktop-app [frame 750]
-    Web-->>User: Render the skeleton shell with a launch instruction and a browser fallback [frame 750]
+    Web-->>User: Skeleton shell, launch text, browser fallback [frame 750]
     Web->>Desk: Hand the session to the native client [frame 750]
     alt Native client launches
         Desk-->>User: The desktop client takes over
     else Launch does not happen
         User->>Web: Follow the continue-in-the-browser link [frame 750]
     end
-    User->>Web: Choose sign-in-on-mobile and scan the code shown [frame 714]
+    User->>Web: Choose sign-in-on-mobile, scan the code [frame 714]
 ```
 
 > **Partial capture:** three of the diagram's edges are the only evidence of their own kind. Nothing the workspace service emails is ever captured, so every `Svc-->>` message to a person is evidenced by the surface that describes it rather than by the message itself; no frame in this area shows a native-client surface and the [coverage ledger](_screenshot-index.md) records none elsewhere, so the hand-off's far side is evidenced only by the instruction that names it; and no frame shows an accepted invitation arriving in a workspace, so the acceptance edge ends at the submitting state.

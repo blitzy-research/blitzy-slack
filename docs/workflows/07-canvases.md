@@ -363,22 +363,22 @@ flowchart TD
     UPSELL["Not entitled: upgrade path, creation refused - 21, 18"]
 
     PICKER["Attach-a-canvas picker - flows 07.1, 07.5"]
-    SEARCHFIELD["Search field, filter chips, recency sort - unset states only"]
+    SEARCHFIELD["Search field, filter chips, sort - unset states only"]
     ROWSEL{"A canvas row selected?"}
     INSERTOFF["Insert rendered muted"]
     INSERTON["Insert rendered filled primary"]
     CANCEL["Cancel or dismiss - picker closes"]
 
-    COMPOSERCHIP["Composer attachment card with a permission control - flow 07.1"]
-    SHARECONFIRM["Share-this-template confirmation with a permission select - flow 07.5"]
+    COMPOSERCHIP["Composer attachment card, permission - flow 07.1"]
+    SHARECONFIRM["Share-template confirmation, permission - flow 07.5"]
     EMBEDCARD["Embedded canvas card in the canvas - flow 07.5"]
 
-    NEWCANVAS["Full-width canvas, untitled with a get-started list - flow 07.2"]
+    NEWCANVAS["Untitled full-width canvas, get-started list - flow 07.2"]
     PANE["Docked canvas pane with a get-started list - flow 07.3"]
     GALLERY["Templates gallery, list plus scrolling preview - flow 07.4"]
     POPULATED["Canvas populated from a template - flow 07.4"]
 
-    BUILD["Build blocks: text, checklist, image, file, table, columns, profile - flows 07.2, 07.4, 07.6"]
+    BUILD["Build blocks: seven types - flows 07.2, 07.4, 07.6"]
     INSERTMENU["Insert menu - 7 rows"]
     BLOCKMENU["Block-type menu - 9 rows"]
     UPLOADING["File block loading, spinner only"]
@@ -391,7 +391,7 @@ flowchart TD
     ACCESS["Accessibility submenu - flow 07.8"]
     READONLY["Read-only view, editing affordances removed - flow 07.9"]
     SYSMSG["System message on the visibility change - 03, 05"]
-    TEMPLATEREAD["Read-only canvas template with a use-template action - flow 07.10"]
+    TEMPLATEREAD["Read-only template, use-template action - flow 07.10"]
 
     HEADERCTL --> PICKER
     HEADERCTL --> PANE

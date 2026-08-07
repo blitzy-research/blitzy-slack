@@ -43,7 +43,9 @@ Every node and every edge below corresponds to a state or a transition observed 
 flowchart TD
     A["Conversation open, composer empty"] --> B["Type message text"]
     A --> J["Hover an existing message row"]
-    CP["Compose control in the sidebar header"] --> DF["Distraction-free surface: recipient row above an empty body"]
+    CP["Compose control in the sidebar header"]
+    DF["Distraction-free surface: recipient row above an empty body"]
+    CP --> DF
     DF --> DR["Recipient typeahead resolves a channel or a person"]
     DR --> B
     B --> C["Apply inline or block formatting from the toolbar"]
@@ -80,7 +82,8 @@ flowchart TD
     AB --> AC["Edited marker appended to the body"]
     Z --> AD["Delete confirmation dialog"]
     Z --> AF["Forward dialog: add a recipient"]
-    AF -.->|"outcome observed but transition not captured"| AG["Forwarded copy quoting the original"]
+    AG["Forwarded copy quoting the original"]
+    AF -.->|"outcome observed, transition not captured"| AG
 ```
 
 ## Flow 03.1 — React to a message while first-run coaching is active

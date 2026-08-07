@@ -40,31 +40,31 @@ Every node below is a state observed in a cited frame. Nothing is a plausible ro
 
 ```mermaid
 flowchart TD
-    CONV["Conversation with the composer at the foot of the content region"]
+    CONV["Conversation with the composer at the content-region foot"]
     RAIL["Navigation rail more menu"]
-    MENU["Attachment menu - snippet row, then an Attach group of canvas, GIF and upload rows"]
-    UPLOADING["Upload in progress - hatched pill at the top of the content region and a spinner on the tile"]
-    TILE["Attachment tile in the composer - format glyph, ellipsis-truncated title, format label"]
+    MENU["Attachment menu - snippet, then Attach: canvas, GIF, upload"]
+    UPLOADING["Upload in progress - hatched pill, spinner on the tile"]
+    TILE["Attachment tile - format glyph, truncated title, format label"]
     TEXT["Accompanying text typed on the input line above the tile"]
-    POSTEDFILE["File message - type-label disclosure row above a card with the full filename and a page preview"]
-    RECORD["Record video clip modal - camera preview and a muted Record action while the camera is off"]
+    POSTEDFILE["File message - disclosure row above a preview card"]
+    RECORD["Record video clip modal - camera off, Record muted"]
     ARMED["Camera on - live preview and Record rendered filled"]
-    SHAREFAIL["Screen share refused - warning block above the preview and Record muted again"]
-    COUNTDOWN["Countdown - modal title text removed, Stop the only action"]
-    RECORDING["Recording - progress track, elapsed over a five-minute limit, Share Screen, Pause, Stop"]
-    PAUSED["Paused - resume prompt over the preview, Start Over offered, Resume and Stop"]
-    SHARING["Screen-share recording - shared screen with a camera self-view inset and Stop Sharing"]
-    REVIEW["Review - full-width scrubber, elapsed over total, Select Thumbnail, Download, Done"]
-    THUMBS["Select thumbnail dialog - candidate preview above a filmstrip, Cancel and Select"]
-    CLIPTILE["Clip tile in the composer - thumbnail with a centred play overlay, draft counted in the sidebar"]
+    SHAREFAIL["Screen share refused - warning block, Record muted again"]
+    COUNTDOWN["Countdown - modal title removed, Stop the only action"]
+    RECORDING["Recording - progress track, elapsed over a 5-minute limit"]
+    PAUSED["Paused - resume prompt over the preview, Start Over offered"]
+    SHARING["Screen-share recording - shared screen, self-view inset"]
+    REVIEW["Review - full-width scrubber, elapsed over total, Download"]
+    THUMBS["Select thumbnail dialog - preview above a filmstrip"]
+    CLIPTILE["Clip tile - thumbnail, play overlay, counted as a draft"]
     REMOVE["Remove control with a tooltip on the clip tile"]
-    POSTEDCLIP["Clip message - media tile with a play control and a duration badge"]
-    FILESCARD["Channel details Files card - one row per file with a format glyph, a title and a recency line"]
-    SEARCH["Search results - Files tab with a count, file-type chip, list layout"]
-    TYPEMENU["File type checkbox list - lists, canvases and posts, documents, emails, images, PDFs, presentations, snippets"]
-    FILTERBY["Filter by modal - a File types select whose value summarises the selection"]
-    GRID["Grid layout - preview cards with truncated titles and a pagination control"]
-    FILESDEST["Files destination - recently viewed, shared with you, created by you, all files, over recency groups"]
+    POSTEDCLIP["Clip message - media tile, play control, duration badge"]
+    FILESCARD["Channel details Files card - glyph, title, recency"]
+    SEARCH["Search results - Files tab with a count, chip, list layout"]
+    TYPEMENU["File type checkbox list - eight types, lists to snippets"]
+    FILTERBY["Filter by modal - a File types select, value summarised"]
+    GRID["Grid layout - preview cards, truncated titles, pagination"]
+    FILESDEST["Files destination - four scopes, grouped by recency"]
 
     CONV -->|"attachment control"| MENU
     MENU -->|"upload from your computer"| UPLOADING
@@ -79,13 +79,13 @@ flowchart TD
     ARMED -->|"Record"| COUNTDOWN
     COUNTDOWN --> RECORDING
     RECORDING -->|"Pause"| PAUSED
-    PAUSED -.->|"Inferred - Resume, the moment between is not captured"| RECORDING
+    PAUSED -.->|"Inferred - Resume, the moment is not captured"| RECORDING
     RECORDING -->|"Share Screen"| SHARING
     SHARING -->|"Stop"| REVIEW
     RECORDING -->|"Stop"| REVIEW
     REVIEW -->|"Select Thumbnail"| THUMBS
     THUMBS -->|"Select"| REVIEW
-    REVIEW -.->|"Inferred - Start Over, the state that follows is not captured"| RECORD
+    REVIEW -.->|"Inferred - Start Over, next state uncaptured"| RECORD
     REVIEW -->|"Done"| CLIPTILE
     CLIPTILE -->|"pointer over the tile"| REMOVE
     CLIPTILE -->|"send"| POSTEDCLIP

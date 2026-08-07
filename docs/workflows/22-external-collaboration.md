@@ -242,6 +242,8 @@ One diagram covers the area's cross-actor arithmetic: how an inviting user, the 
 
 **Which parts of it are observed, and which are not.** The corpus is a set of client screens, so only two of the five participants and only the messages between them are directly observable. The inviting user and the web client are observed on every frame this area cites. **The workspace service and the approving administrator are inferred participants** — no frame shows a server, a service response or an administrator's screen — and they are labelled as inferred in the diagram itself, as is every message that crosses to or from them. The external person is named as a recipient in the client's own copy but never appears as an actor. Every message drawn without an `Inferred` prefix corresponds to something a cited frame renders; every message drawn with one is a deduction whose basis is the copy on the cited frame, and the `Partial capture` block immediately beneath the diagram names each of them.
 
+**Where each message's frame provenance lives.** The diagram itself carries no frame numbers, because a fenced diagram cannot carry a link and its lines must stay short enough to read without horizontal scrolling in the published site. Provenance is therefore held where it can be cited in the mandated linked form: each flow's frame-by-frame step table above names the frames for every step the diagram summarises, the `Partial capture` block below names the frames behind each inferred message, and [Frames covered](#frames-covered) closes the set. No frame cited anywhere in this area is reachable only from the diagram.
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -252,28 +254,36 @@ sequenceDiagram
     actor Invitee as External person - named in copy, never shown
 
     Note over Inviter,Web: Flow 22.1 - reach and orient
-    Inviter->>Web: Open the external-connections destination [frames 399, 494]
-    Web-->>Inviter: Render two destinations, a people search keyed by name, company or email, and two action cards [frame 494]
+    Inviter->>Web: Open the external-connections destination
+    Web-->>Inviter: Render two destinations and two action cards
+    Note over Web,Inviter: A people search keyed by name, company, email
 
     Note over Inviter,Invitee: Flow 22.2 - externally-scoped invitation
-    Inviter->>Web: Start a conversation with someone outside the workspace [frames 494, 498]
-    Web-->>Inviter: State that the message is delivered as an email invitation and that acceptance is notified [frame 498]
-    Inviter->>Web: Commit one email address as a token, then send [frames 499, 500]
-    Web->>Svc: Inferred - persist the externally-scoped invitation, since a sent register later lists it [frames 500, 503]
-    opt Sign-off is stated in copy as conditional and is never captured
-        Svc->>Admin: Inferred - raise the invitation for review, from the copy on the manage-requests row and the sent tab [frames 494, 502]
+    Inviter->>Web: Start a conversation with someone outside
+    Web-->>Inviter: State that delivery is by email invitation
+    Web-->>Inviter: State that acceptance is notified to the sender
+    Inviter->>Web: Commit one email address as a token, then send
+    Web->>Svc: Inferred - persist the externally-scoped invitation
+    Note right of Svc: Basis - a sent register later lists it
+    opt Sign-off is stated in copy as conditional, never captured
+        Svc->>Admin: Inferred - raise the invitation for review
+        Note right of Admin: Basis - manage-requests row, sent tab
     end
-    Svc-->>Invitee: Inferred - deliver the invitation by email, from the client's own statement that it is delivered that way [frame 498]
-    Web-->>Inviter: Confirm the send and state a 14-day acceptance window [frame 500]
-    Note over Svc,Invitee: The window is stated as 14 days and the sent record renders it as a concrete expiry date [frames 500, 503]
+    Svc-->>Invitee: Inferred - deliver the invitation by email
+    Note right of Invitee: Basis - the client states it works that way
+    Web-->>Inviter: Confirm the send, stating a 14-day window
+    Note over Svc,Invitee: The sent record renders the window as a date
 
-    Note over Inviter,Svc: Flow 22.3 - tracking, from the sender's side only
-    Inviter->>Web: Open the sent register [frames 502, 503]
-    Web-->>Inviter: List the invitation by type with its address, send time and expiry date [frame 503]
+    Note over Inviter,Svc: Flow 22.3 - tracking, sender's side only
+    Inviter->>Web: Open the sent register
+    Web-->>Inviter: List the invitation by type, with its address
+    Note over Web,Inviter: Each record carries a send time and an expiry
 
-    Note over Invitee,Svc: Beyond this point nothing is captured from the counterparty side
-    alt Invitee accepts inside the window - promised on the sender's screens, never captured
-        Svc-->>Inviter: Inferred - notify the sender and add the person to the direct-message list, from the promise the send screens make [frames 498, 500]
+    Note over Invitee,Svc: No counterparty-side frame exists beyond here
+    alt Invitee accepts in the window - promised, never captured
+        Svc-->>Inviter: Inferred - notify the sender
+        Svc-->>Inviter: Inferred - list the person in direct messages
+        Note right of Inviter: Basis - the promise the send screens make
     else Window lapses - no frame shows this outcome
         Svc-->>Inviter: Unobserved
     end

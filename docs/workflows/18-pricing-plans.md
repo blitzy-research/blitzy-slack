@@ -57,32 +57,32 @@ Every node below is an observed surface or an observed control, and every edge i
 flowchart TD
     subgraph PUB["Public surfaces - flows 18.3 and 18.4"]
         NAV["Marketing navigation pricing item - frame 0"]
-        SOL["Marketing solution page two-plan comparison card - frame 824"]
+        SOL["Solution-page two-plan comparison card - frame 824"]
         PP["Public pricing page with four plan cards - frame 966"]
-        PT["Public comparison grid with an action in every column header - frame 968"]
-        ADD["Add-on band, assurance band and pricing FAQ - frames 970 to 972"]
+        PT["Public grid, an action in every column header - frame 968"]
+        ADD["Add-on and assurance bands, pricing FAQ - frames 970 to 972"]
     end
 
     subgraph INAPP["In-product gates and prompts"]
         BADGE["Inline gate badge on a create-menu row - frame 550"]
         HDRBADGE["Gate badge on a surface-header action - frame 500"]
         STRIP["Contextual upsell strip above a result set - frame 700"]
-        BANNER["Sidebar promotional banner with countdown sub-line - frames 550 and 560"]
+        BANNER["Promotional sidebar banner, countdown - frames 550, 560"]
         FOOT["Sidebar footer trial item - frame 560"]
-        MENU["Workspace-menu offer block with an outlined upgrade action - frame 566"]
-        TOUR["Paid-plan benefits tour hero and closing action - flow 18.2"]
+        MENU["Workspace-menu offer block, outlined upgrade - frame 566"]
+        TOUR["Paid-plan tour hero and closing action - flow 18.2"]
     end
 
     subgraph ACCT["Account surfaces - flow 18.1"]
         PLANS["Account top bar plans menu - frame 601"]
-        CARD["Console billing card with upgrade and compare actions - frame 600"]
-        BILL["Billing overview with upgrade action and end-trial link - frame 669"]
+        CARD["Console billing card, upgrade and compare - frame 600"]
+        BILL["Billing overview, upgrade and end-trial link - frame 669"]
         SEL["Plan-selection page with three plan cards - frame 346"]
-        CMP["In-product comparison grid with a pinned header - frames 347 to 350"]
-        FAQ["Plan-selection FAQ, assurance section and page foot - frames 351 to 354"]
+        CMP["In-product grid with a pinned header - frames 347 to 350"]
+        FAQ["FAQ, assurance section and page foot - frames 351 to 354"]
     end
 
-    SALES["Sales-assisted route - affordance only, destination not captured"]
+    SALES["Sales-assisted route - affordance only, not captured"]
     HANDOFF["Upgrade journey - flow 15.10 in 15-admin-workspace.md"]
 
     NAV --> PP

@@ -414,13 +414,13 @@ stateDiagram-v2
         UpgradeSurface : trial status restated with an upgrade primary
         Available --> Disabled : enabling precondition unmet
         Disabled : same footprint and position, de-emphasised treatment
-        Disabled --> Available : precondition satisfied, counter reports it
+        Disabled --> Available : precondition met, counter says so
         Available --> InProgress : capability started
-        InProgress : spinner replaces the control label or the row status word
+        InProgress : spinner replaces the label or row status word
         InProgress --> Reported : result rendered in place
         Reported : status word in a success treatment on the same row
         InProgress --> Denied : device permission refused
-        Denied : destructive treatment naming the remedy outside the product
+        Denied : destructive treatment, remedy named outside
         Reported --> [*]
         Denied --> [*]
     }
@@ -431,7 +431,7 @@ stateDiagram-v2
         Loading --> Populated : rows repainted with real content
         Populated : the region's own rows and counts
         Loading --> EmptyRegion : states captured, transition not
-        EmptyRegion : centred block explaining the region, with or without an action
+        EmptyRegion : centred block explaining it, action optional
         Populated --> EmptyRegion : the last item leaves the region
     }
 ```

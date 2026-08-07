@@ -985,19 +985,19 @@ flowchart TD
         OFFER["Offer block with countdown and upgrade action"]
         AINVITE["Invite people row - 01-onboarding-and-auth.md"]
         APREFS["Preferences row - 14-preferences-settings.md"]
-        AHANDOFF["Desktop and mobile hand-off rows - 01-onboarding-and-auth.md"]
+        AHANDOFF["Client hand-off rows - 01-onboarding-and-auth.md"]
         ASIGNOUT["Sign out row"]
         SUBMENU["Tools and settings submenu - frame 567"]
-        GTOOLS["Tools group - customize, workflow builder, legacy workflow management, workspace analytics"]
-        GSETTINGS["Settings group - workspace settings, edit workspace details"]
-        GADMIN["Administration group - external-connection invitations, manage members, manage apps, manage workflows, billing"]
+        GTOOLS["Tools group - customize, builder, legacy, analytics"]
+        GSETTINGS["Settings group - workspace settings, edit details"]
+        GADMIN["Admin group - five rows, invitations through billing"]
     end
 
-    subgraph GROUPB["Group B - standalone administration console - flows 15.2 to 15.26"]
+    subgraph GROUPB["Group B - standalone console - flows 15.2 to 15.26"]
         CTOPBAR["Console top bar - home, plans, workspaces, help, launch"]
-        PLANSMENU["Plans menu - three paid tiers and compare plans - flow 15.7"]
-        WSPACESMENU["Workspaces menu - current workspace and sign in to another - flow 15.7"]
-        CNAV["Console left navigation - account and administration groups"]
+        PLANSMENU["Plans menu - three tiers, compare plans - flow 15.7"]
+        WSPACESMENU["Workspaces menu - current plus sign-in - flow 15.7"]
+        CNAV["Console left navigation - account and admin groups"]
         CHOME["Console home cards - flow 15.7"]
         RETURN["Return to the product row"]
 
@@ -1026,8 +1026,8 @@ flowchart TD
         PROFILES["Configure profile fields - flow 15.26"]
 
         CONFIGAPPS["Configure apps row - 11-apps-and-integrations.md"]
-        EXTCONN["External-connection connections and invitations rows - 22-external-collaboration.md"]
-        DEPREC["Deprecations and transport-security rows - destinations not captured"]
+        EXTCONN["External-connection rows - 22-external-collaboration.md"]
+        DEPREC["Deprecations and transport-security - not captured"]
         AUTHROW["Authentication row - flow 15.2"]
     end
 

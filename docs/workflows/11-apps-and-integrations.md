@@ -448,7 +448,7 @@ flowchart TD
     INSTALLED["An installed app"]
     APPHOME["App home - flow 11.2"]
     SLASHCMD["App-provided slash commands - 03-messaging-and-composer.md"]
-    APPMSG["App-posted message in a conversation - 03-messaging-and-composer.md"]
+    APPMSG["App-posted message - 03-messaging-and-composer.md"]
 
     RAIL --> MORE
     MORE --> AUTO

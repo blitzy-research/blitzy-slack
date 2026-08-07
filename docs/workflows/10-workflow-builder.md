@@ -43,7 +43,7 @@ flowchart TD
 
     BUILDER["Builder surface: header, three tabs"]
     TAB1EMPTY["Your workflows, empty: heading and body, no action"]
-    TAB1LIST["Your workflows, populated: count, filter, search, table, pagination"]
+    TAB1LIST["Your workflows: count, filter, search, table, pagination"]
     TAB2["All published workflows"]
     TAB3["Templates: six cards, five set-up and one start-from-scratch"]
     IMPORT["Import action in the header"]
@@ -51,15 +51,15 @@ flowchart TD
 
     DETAIL["Workflow detail: Workflow, Activity, Settings tabs"]
     TRIGGERCARD["Trigger card: scheduled start with an Edit action"]
-    STEPINVALID["Step 1 invalid: needs-attention banner, unset destination"]
-    STEPMODAL["Send-a-message step modal: recipient, message text, preview"]
+    STEPINVALID["Step 1 invalid: attention banner, no destination"]
+    STEPMODAL["Send-a-message step modal: recipient, text, preview"]
     STEPMODALVALID["Modal with a channel chosen, Save enabled"]
-    STEPVALID["Step 1 valid: destination named, toast confirms the update"]
+    STEPVALID["Step 1 valid: destination named, toast confirms it"]
     ADDSTEP["Add Step action beneath the last step"]
     PUBLISH["Publish action beside the Never Published label"]
 
     POSTED["Workflow-badged message in a conversation - 02-channels.md"]
-    COMMAND["Command typeahead row labelled Workflow - 03-messaging-and-composer.md"]
+    COMMAND["Workflow command row - 03-messaging-and-composer.md"]
 
     MENU --> BUILDER
     MENU --> LEGACYMGMT

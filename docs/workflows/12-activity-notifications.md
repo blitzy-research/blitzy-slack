@@ -327,7 +327,7 @@ stateDiagram-v2
         [*] --> Requested
         Requested : request band in the banner slot with an enable link
         Requested --> InEffect : states captured, transition not
-        InEffect : confirmation band in the same slot with a preferences link
+        InEffect : confirmation band in the slot, preferences link
     }
 
     state NotifiedItem {
@@ -343,7 +343,7 @@ stateDiagram-v2
         ReminderSet --> Overdue : the due time elapses
         Overdue : overdue pill on the later item and an elapsed due phrase
         Overdue --> Completed : check-mark control on the later item
-        Completed : listed on the completed tab with no pill, marker cleared
+        Completed : on the completed tab, no pill, marker cleared
     }
 
     state LaterDestinationBadge {
