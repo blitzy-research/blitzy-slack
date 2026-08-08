@@ -107,7 +107,7 @@ flowchart TD
 
 A file on the user's own machine becomes a message in five captured states: the attachment menu opens over the composer, the upload is reported in progress, the upload settles into a tile inside the composer, accompanying text is typed above that tile, and the send produces a message whose body is followed by a card carrying the filename and a preview of the file's first page [frame 163](../../screenshots/Slack%20web%20Jul%202024%20163.png) through [frame 167](../../screenshots/Slack%20web%20Jul%202024%20167.png).
 
-Two facts in this flow do most of the work for a build. First, the attachment is a **staged object inside the composer**, not an immediate post: it appears, it can be accompanied by text, and only the send commits it. Second, the composer shows the title **truncated with an ellipsis** while the posted card shows the same title **in full**, which is the corpus's own proof that the truncation is a display concern rather than a stored value.
+Two facts in this flow do most of the work for a build. First, the attachment is a **staged object inside the composer**, not an immediate post: it appears, it can be accompanied by text, and only the send commits it. Second, the composer shows the title **truncated with an ellipsis** while the posted card shows the same title **in full**, which is the corpus's own proof that the truncation is a display concern rather than a stored value [frame 163](../../screenshots/Slack%20web%20Jul%202024%20163.png), [frame 167](../../screenshots/Slack%20web%20Jul%202024%20167.png).
 
 ### Trigger
 
@@ -137,7 +137,7 @@ An authenticated session with a conversation open and its composer rendered. The
 
 Media is **authored inside the product** rather than uploaded: a modal offers a camera preview, records against a five-minute limit, allows a pause and a screen-share input, then hands the recording to a review state where a poster frame can be chosen and the clip can be downloaded before it is attached to the composer and sent [frame 186](../../screenshots/Slack%20web%20Jul%202024%20186.png) through [frame 198](../../screenshots/Slack%20web%20Jul%202024%20198.png).
 
-The flow is worth reading as three phases with different chrome. **Setup** keeps the modal title and offers upload, screen-share and record actions, with record gated on the camera being on. **Capture** removes the modal title entirely, reduces the footer to recording controls and a single stop action, and shows elapsed time against a limit. **Review** restores a title-row action, replaces the elapsed-over-limit readout with elapsed-over-total, and offers thumbnail selection, download and a terminal confirm.
+The flow is worth reading as three phases with different chrome. **Setup** keeps the modal title and offers upload, screen-share and record actions, with record gated on the camera being on. **Capture** removes the modal title entirely, reduces the footer to recording controls and a single stop action, and shows elapsed time against a limit. **Review** restores a title-row action, replaces the elapsed-over-limit readout with elapsed-over-total, and offers thumbnail selection, download and a terminal confirm [frame 186](../../screenshots/Slack%20web%20Jul%202024%20186.png), [frame 192](../../screenshots/Slack%20web%20Jul%202024%20192.png).
 
 ### Trigger
 
@@ -176,11 +176,11 @@ An authenticated session with a conversation open. A camera and a microphone mus
 
 A file already present in the workspace is posted into a conversation again, by a **different person** from the one who first shared it, with a sentence of accompanying text. The corpus captures only the result: one message row whose body announces the re-share and whose card carries a filename, a format label and a preview of the file's first page [frame 207](../../screenshots/Slack%20web%20Jul%202024%20207.png).
 
-This flow is included as a distinct flow rather than folded into `16.1` because the posted anatomy is identical while the **origin is not**: nothing in the capture indicates an upload, the author differs from the uploader in `16.1`, and the sample filename carries a duplicate-name suffix rather than the plain name posted there. A build therefore needs a path that posts an existing file object into a conversation, not only a path that uploads a new one.
+This flow is included as a distinct flow rather than folded into `16.1` because the posted anatomy is identical while the **origin is not**: nothing in the capture indicates an upload, the author differs from the uploader in `16.1`, and the sample filename carries a duplicate-name suffix rather than the plain name posted there. A build therefore needs a path that posts an existing file object into a conversation, not only a path that uploads a new one [frame 207](../../screenshots/Slack%20web%20Jul%202024%20207.png).
 
 ### Trigger
 
-Not captured. The frame shows a completed message; no menu, hover action or picker that would begin a re-share is visible in it.
+Not captured. The frame shows a completed message; no menu, hover action or picker that would begin a re-share is visible in it [frame 207](../../screenshots/Slack%20web%20Jul%202024%20207.png).
 
 > **Partial capture:** the entire interaction that produces this message is absent — there is no captured re-share action on a file card, on a message overflow menu, on a files-destination row or in the composer. Only the outcome is specified, and a build must design the entry point.
 
@@ -202,7 +202,7 @@ An authenticated session with a conversation open, and a file that already exist
 
 The workspace's files are a **top-level destination**, not only a per-conversation collection: a scope list in the sidebar, a search field over the whole collection, and rows grouped under recency headings [frame 488](../../screenshots/Slack%20web%20Jul%202024%20488.png). This is the corpus's only capture of a dedicated files browser, and it is the single frame this document owns outright with no other area named beside it in the ledger.
 
-The destination is also where the corpus shows most clearly that **"file" is a broader category than "upload"**: the captured rows include a list, a code snippet, several canvases and two template-badged canvases, all in one collection, all with the same row anatomy.
+The destination is also where the corpus shows most clearly that **"file" is a broader category than "upload"**: the captured rows include a list, a code snippet, several canvases and two template-badged canvases, all in one collection, all with the same row anatomy [frame 488](../../screenshots/Slack%20web%20Jul%202024%20488.png).
 
 ### Trigger
 

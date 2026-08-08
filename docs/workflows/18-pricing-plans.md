@@ -113,7 +113,7 @@ flowchart TD
 
 ### Overview
 
-A signed-in person on a trial reaches a dedicated plan-selection page on the account surfaces, reads three purchasable tiers presented as cards, scrolls into a four-column comparison grid, scrolls the grid through its row groups, and continues past it into a frequently-asked-questions accordion, an assurance section and a page footer. The whole flow is one continuous downward scroll of one page; nine consecutive frames capture it, and the page's own calls to action appear three times over — once per card, once in the grid's pinned header and once in the grid's footer row.
+A signed-in person on a trial reaches a dedicated plan-selection page on the account surfaces, reads three purchasable tiers presented as cards, scrolls into a four-column comparison grid, scrolls the grid through its row groups, and continues past it into a frequently-asked-questions accordion, an assurance section and a page footer. The whole flow is one continuous downward scroll of one page; nine consecutive frames capture it, and the page's own calls to action appear three times over — once per card, once in the grid's pinned header and once in the grid's footer row [frame 601](../../screenshots/Slack%20web%20Jul%202024%20601.png), [frame 354](../../screenshots/Slack%20web%20Jul%202024%20354.png).
 
 ### Trigger
 
@@ -153,7 +153,7 @@ The person is signed in to an account surface — the page carries the account t
 
 ### Overview
 
-A person on a trial opens a paid-plan-benefits destination **inside the application shell** — the only commercial surface in this area that renders with the rail, the conversation sidebar and the shell top bar in place — and scrolls a marketing-style tour of what a paid plan adds. The tour opens with a trial hero carrying an upgrade action, presents five alternating benefit cards, and closes by asking whether the team wants to stay on the paid tier and instructing the reader to enter payment details.
+A person on a trial opens a paid-plan-benefits destination **inside the application shell** — the only commercial surface in this area that renders with the rail, the conversation sidebar and the shell top bar in place — and scrolls a marketing-style tour of what a paid plan adds. The tour opens with a trial hero carrying an upgrade action, presents five alternating benefit cards, and closes by asking whether the team wants to stay on the paid tier and instructing the reader to enter payment details [frame 374](../../screenshots/Slack%20web%20Jul%202024%20374.png), [frame 375](../../screenshots/Slack%20web%20Jul%202024%20375.png), [frame 376](../../screenshots/Slack%20web%20Jul%202024%20376.png).
 
 ### Trigger
 
@@ -179,7 +179,7 @@ The workspace is on a trial of `plan tier 2` — the hero states the trial's len
 
 ### Overview
 
-A visitor reaches the public pricing page from the marketing navigation, reads four plan cards of which one is marked as the best value, scrolls into a shared feature list rendered four times in parallel, and continues into a four-column comparison grid whose every column header carries its own call to action. Four frames capture it, and the page's navigation transforms into a floating header as soon as the visitor scrolls.
+A visitor reaches the public pricing page from the marketing navigation, reads four plan cards of which one is marked as the best value, scrolls into a shared feature list rendered four times in parallel, and continues into a four-column comparison grid whose every column header carries its own call to action. Four frames capture it, and the page's navigation transforms into a floating header as soon as the visitor scrolls [frame 0](../../screenshots/Slack%20web%20Jul%202024%200.png), [frame 969](../../screenshots/Slack%20web%20Jul%202024%20969.png).
 
 ### Trigger
 
@@ -210,7 +210,7 @@ None. The page is public and unauthenticated — the navigation offers a sign-in
 
 ### Overview
 
-Continuing down the same public pricing page, the visitor passes an inverted promotional band for a separately purchased add-on, an assurance band, a frequently-asked-questions accordion whose first answer sets out the conditional routes to purchasing the add-on, and a page foot carrying a billing-information line, a social-proof row and a closing call-to-action band. Three frames capture it.
+Continuing down the same public pricing page, the visitor passes an inverted promotional band for a separately purchased add-on, an assurance band, a frequently-asked-questions accordion whose first answer sets out the conditional routes to purchasing the add-on, and a page foot carrying a billing-information line, a social-proof row and a closing call-to-action band. Three frames capture it [frame 970](../../screenshots/Slack%20web%20Jul%202024%20970.png), [frame 971](../../screenshots/Slack%20web%20Jul%202024%20971.png), [frame 972](../../screenshots/Slack%20web%20Jul%202024%20972.png).
 
 ### Trigger
 
@@ -370,6 +370,8 @@ State semantics for gates and trials are owned by [21-states.md](21-states.md) �
 | Outcome, success | Console payment-methods tab | Bold accent-toned text **beneath the submit control** — not a toast and not a banner [frame 679](../../screenshots/Slack%20web%20Jul%202024%20679.png) |
 | Delivery preference, locked | Billing contacts | A checkbox rendered checked **and** muted for the primary owner's own row [frame 672](../../screenshots/Slack%20web%20Jul%202024%20672.png) |
 | Send action, blocked | Guest invite form | Muted primary action while a required field is empty [frame 50](../../screenshots/Slack%20web%20Jul%202024%2050.png) |
+
+**Hover, as observed rather than assumed.** Two grid rows in this area are captured in a hovered rendering, and the two treatments differ by surface: the in-product grid shades the row across its full width including its label cell [frame 349](../../screenshots/Slack%20web%20Jul%202024%20349.png), while the public grid outlines the row on all four sides in the primary brand colour [frame 969](../../screenshots/Slack%20web%20Jul%202024%20969.png). **Inferred:** both are *hover* states rather than selected or active ones, because in each capture exactly one row of a peer set is treated differently while nothing else on the page changes and no later capture shows the treatment persisting; a screenshot cannot show a pointer, so the cause is not visible in either frame. The coverage ledger records the treatments themselves. **The two surfaces must not be collapsed into one hover rule** — the difference is observed, not incidental.
 
 **Field rejection in this area's own surfaces has exactly one observed policy**: the promotional-code modal reports the rejection as a tinted destructive block beneath the input **and mutes its primary action** [frame 677](../../screenshots/Slack%20web%20Jul%202024%20677.png). A second, opposite policy is observed on the purchase page that follows an upgrade action, where the primary action stays enabled while three fields are in error; that surface and that comparison belong to [15-admin-workspace.md](15-admin-workspace.md) and are recorded there rather than reconciled here.
 

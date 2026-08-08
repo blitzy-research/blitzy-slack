@@ -90,11 +90,11 @@ The site root. A single-column vertical stack of full-width sections beneath a p
 
 ### Trigger
 
-The visitor loads the site root with no session.
+The visitor loads the site root with no session [frame 0](../../screenshots/Slack%20web%20Jul%202024%200.png).
 
 ### Preconditions
 
-- No authenticated session; nothing on the page is gated.
+- No authenticated session; nothing on the page is gated [frame 0](../../screenshots/Slack%20web%20Jul%202024%200.png).
 - **Inferred:** no region or language has been chosen, because the page renders in the locale marked as current in the region modal [frame 986](../../screenshots/Slack%20web%20Jul%202024%20986.png).
 
 ### Frame-by-frame steps
@@ -118,12 +118,12 @@ Three of the five top-bar menu labels open a **mega-menu**: a wide panel anchore
 
 ### Trigger
 
-The visitor activates a caret-bearing menu label in the top bar.
+The visitor activates a caret-bearing menu label in the top bar [frame 752](../../screenshots/Slack%20web%20Jul%202024%20752.png).
 
 ### Preconditions
 
-- The visitor is on any page that carries the marketing top bar.
-- No authenticated session.
+- The visitor is on any page that carries the marketing top bar [frame 752](../../screenshots/Slack%20web%20Jul%202024%20752.png).
+- No authenticated session [frame 752](../../screenshots/Slack%20web%20Jul%202024%20752.png).
 
 ### Frame-by-frame steps
 
@@ -145,11 +145,11 @@ The landing page's lower stack, and the **only full capture of the marketing foo
 
 ### Trigger
 
-The visitor scrolls the landing page.
+The visitor scrolls the landing page [frame 755](../../screenshots/Slack%20web%20Jul%202024%20755.png).
 
 ### Preconditions
 
-- The visitor is on the landing page.
+- The visitor is on the landing page [frame 755](../../screenshots/Slack%20web%20Jul%202024%20755.png).
 
 ### Frame-by-frame steps
 
@@ -169,11 +169,11 @@ The longest single-page capture in the area, and the reference specification for
 
 ### Trigger
 
-The visitor selects a capability entry from the features mega-menu.
+The visitor selects a capability entry from the features mega-menu [frame 760](../../screenshots/Slack%20web%20Jul%202024%20760.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 760](../../screenshots/Slack%20web%20Jul%202024%20760.png).
 
 ### Frame-by-frame steps
 
@@ -199,11 +199,11 @@ A product page that adds three structures the channels page does not: a **number
 
 ### Trigger
 
-The visitor selects the external-collaboration entry from the features mega-menu.
+The visitor selects the external-collaboration entry from the features mega-menu [frame 769](../../screenshots/Slack%20web%20Jul%202024%20769.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 769](../../screenshots/Slack%20web%20Jul%202024%20769.png).
 
 ### Frame-by-frame steps
 
@@ -225,11 +225,11 @@ The **editorial article template**, and the first of four captures of the area's
 
 ### Trigger
 
-The visitor opens a resource from the library grid or a mega-menu featured card.
+The visitor opens a resource from the library grid or a mega-menu featured card [frame 776](../../screenshots/Slack%20web%20Jul%202024%20776.png).
 
 ### Preconditions
 
-- No authenticated session; the article is readable without one.
+- No authenticated session; the article is readable without one [frame 776](../../screenshots/Slack%20web%20Jul%202024%20776.png).
 
 ### Frame-by-frame steps
 
@@ -250,11 +250,11 @@ A product page whose feature blocks are carried by **interactive video players r
 
 ### Trigger
 
-The visitor selects the huddles entry from the features mega-menu.
+The visitor selects the huddles entry from the features mega-menu [frame 782](../../screenshots/Slack%20web%20Jul%202024%20782.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 782](../../screenshots/Slack%20web%20Jul%202024%20782.png).
 
 ### Frame-by-frame steps
 
@@ -273,11 +273,11 @@ A **collection** is an editorial grouping with its own landing page: a dark spli
 
 ### Trigger
 
-The visitor selects a collection card from the resources library carousel.
+The visitor selects a collection card from the resources library carousel [frame 786](../../screenshots/Slack%20web%20Jul%202024%20786.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 786](../../screenshots/Slack%20web%20Jul%202024%20786.png).
 
 ### Frame-by-frame steps
 
@@ -294,11 +294,11 @@ The first of the area's five public forms, and the largest: an **eleven-field re
 
 ### Trigger
 
-The visitor opens a webinar card from a collection page or the events index.
+The visitor opens a webinar card from a collection page or the events index [frame 788](../../screenshots/Slack%20web%20Jul%202024%20788.png).
 
 ### Preconditions
 
-- No authenticated session; the form is the gate, not a sign-in.
+- No authenticated session; the form is the gate, not a sign-in [frame 788](../../screenshots/Slack%20web%20Jul%202024%20788.png).
 
 ### Frame-by-frame steps
 
@@ -318,11 +318,11 @@ A product page notable for **repeating its own section heading as a tinted band*
 
 ### Trigger
 
-The visitor selects the apps entry from the features mega-menu.
+The visitor selects the apps entry from the features mega-menu [frame 791](../../screenshots/Slack%20web%20Jul%202024%20791.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 791](../../screenshots/Slack%20web%20Jul%202024%20791.png).
 
 ### Frame-by-frame steps
 
@@ -344,11 +344,11 @@ A product page with a **centred** hero rather than a split one, and the area's c
 
 ### Trigger
 
-The visitor selects the lists entry from the features mega-menu.
+The visitor selects the lists entry from the features mega-menu [frame 796](../../screenshots/Slack%20web%20Jul%202024%20796.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 796](../../screenshots/Slack%20web%20Jul%202024%20796.png).
 
 ### Frame-by-frame steps
 
@@ -369,11 +369,11 @@ The area's only **dark-surface product page**, and the source of the most diverg
 
 ### Trigger
 
-The visitor selects the assistant entry from the features mega-menu.
+The visitor selects the assistant entry from the features mega-menu [frame 800](../../screenshots/Slack%20web%20Jul%202024%20800.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 800](../../screenshots/Slack%20web%20Jul%202024%20800.png).
 
 ### Frame-by-frame steps
 
@@ -394,11 +394,11 @@ A **second landing page** with the same purpose as flow 17.1 and a different com
 
 ### Trigger
 
-The visitor selects a what-is-this-product entry from the features mega-menu.
+The visitor selects a what-is-this-product entry from the features mega-menu [frame 804](../../screenshots/Slack%20web%20Jul%202024%20804.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 804](../../screenshots/Slack%20web%20Jul%202024%20804.png).
 
 ### Frame-by-frame steps
 
@@ -416,11 +416,11 @@ A comparison page whose argument is carried by a **six-cell dimension grid** rat
 
 ### Trigger
 
-The visitor selects a comparison entry from the features mega-menu.
+The visitor selects a comparison entry from the features mega-menu [frame 807](../../screenshots/Slack%20web%20Jul%202024%20807.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 807](../../screenshots/Slack%20web%20Jul%202024%20807.png).
 
 ### Frame-by-frame steps
 
@@ -438,11 +438,11 @@ The second public form, and the **only lead-capture flow whose filled state and 
 
 ### Trigger
 
-The visitor follows a watch-demo link from a mega-menu, the footer or a page call to action.
+The visitor follows a watch-demo link from a mega-menu, the footer or a page call to action [frame 810](../../screenshots/Slack%20web%20Jul%202024%20810.png).
 
 ### Preconditions
 
-- No authenticated session; the form gates the demo, not a sign-in.
+- No authenticated session; the form gates the demo, not a sign-in [frame 810](../../screenshots/Slack%20web%20Jul%202024%20810.png).
 
 ### Frame-by-frame steps
 
@@ -464,11 +464,11 @@ Two client-download pages on a dark surface. Their value to a build is the **rel
 
 ### Trigger
 
-The visitor follows a client-download link from a mega-menu or the footer's legal row.
+The visitor follows a client-download link from a mega-menu or the footer's legal row [frame 815](../../screenshots/Slack%20web%20Jul%202024%20815.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 815](../../screenshots/Slack%20web%20Jul%202024%20815.png).
 
 ### Frame-by-frame steps
 
@@ -487,11 +487,11 @@ The **solutions-page template**: a split hero addressed to a role, three evidenc
 
 ### Trigger
 
-The visitor selects a by-department entry from the solutions mega-menu.
+The visitor selects a by-department entry from the solutions mega-menu [frame 817](../../screenshots/Slack%20web%20Jul%202024%20817.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 817](../../screenshots/Slack%20web%20Jul%202024%20817.png).
 
 ### Frame-by-frame steps
 
@@ -510,11 +510,11 @@ A solutions page that embeds a **two-plan comparison table** — the area's only
 
 ### Trigger
 
-The visitor selects a by-industry entry from the solutions mega-menu.
+The visitor selects a by-industry entry from the solutions mega-menu [frame 821](../../screenshots/Slack%20web%20Jul%202024%20821.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 821](../../screenshots/Slack%20web%20Jul%202024%20821.png).
 
 ### Frame-by-frame steps
 
@@ -536,11 +536,11 @@ A page whose entire argument is **numeric**: a dark hero with a figure set inlin
 
 ### Trigger
 
-The visitor selects a productivity entry from the solutions mega-menu.
+The visitor selects a productivity entry from the solutions mega-menu [frame 826](../../screenshots/Slack%20web%20Jul%202024%20826.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 826](../../screenshots/Slack%20web%20Jul%202024%20826.png).
 
 ### Frame-by-frame steps
 
@@ -559,11 +559,11 @@ A solutions page addressed to the largest buyer, distinguished by a **six-badge 
 
 ### Trigger
 
-The visitor activates the enterprise menu label in the top bar.
+The visitor activates the enterprise menu label in the top bar [frame 830](../../screenshots/Slack%20web%20Jul%202024%20830.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 830](../../screenshots/Slack%20web%20Jul%202024%20830.png).
 
 ### Frame-by-frame steps
 
@@ -582,11 +582,11 @@ The editorial library's index. Its structure is the most reusable in the area: a
 
 ### Trigger
 
-The visitor selects the resources-library entry from the resources mega-menu.
+The visitor selects the resources-library entry from the resources mega-menu [frame 834](../../screenshots/Slack%20web%20Jul%202024%20834.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 834](../../screenshots/Slack%20web%20Jul%202024%20834.png).
 
 ### Frame-by-frame steps
 
@@ -606,7 +606,7 @@ The area's **modal** filtering mechanism, and the most behaviourally complete of
 
 ### Trigger
 
-The visitor activates the filter-content control on any library heading row.
+The visitor activates the filter-content control on any library heading row [frame 839](../../screenshots/Slack%20web%20Jul%202024%20839.png).
 
 ### Preconditions
 
@@ -618,7 +618,7 @@ The visitor activates the filter-content control on any library heading row.
 |---|---|---|---|---|
 | 1 | [frame 839](../../screenshots/Slack%20web%20Jul%202024%20839.png) | Activates the filter control | **The page dims** and a modal opens: a brand-coloured header bar carrying a title and a trailing dismiss control; a body with an audience group label above a **checkbox grid of seventeen audiences in three columns of six, six and five**, then a second group label above **three checkboxes in one row**; a footer pairing a clear text link at the leading edge with a filled apply action at the trailing edge | `C-FILTER-MODAL` |
 | 2 | [frame 840](../../screenshots/Slack%20web%20Jul%202024%20840.png) | Ticks one audience | That checkbox fills with the primary brand color and takes a check glyph. **The filter control visible behind the modal immediately gains a parenthesised count of one**, so the trigger reflects pending selections before the apply action is taken | `C-FACET-FILTER-BAR` trigger, `C-FILTER-MODAL` |
-| 3 | [frame 841](../../screenshots/Slack%20web%20Jul%202024%20841.png) | Applies the filter | The modal closes and the page **retitles** to a personalised-results heading; the filter control keeps its parenthesised count; a **four-column grid** renders cards of mixed types — report, guide, programme and podcast among them | `C-FACET-FILTER-BAR` trigger, `C-FILTER-MODAL`, `C-CONTENT-CARD` |
+| 3 | [frame 841](../../screenshots/Slack%20web%20Jul%202024%20841.png) | Applies the filter | The modal closes and the page **retitles** to a personalised-results heading; the filter control keeps its parenthesised count; a **four-column grid** renders cards of mixed types — the first row's four carry the type labels report, e-book, guide and guide, the last of these on a card whose subject is a podcast, so a type label and a subject are **not** the same field | `C-FACET-FILTER-BAR` trigger, `C-FILTER-MODAL`, `C-CONTENT-CARD` |
 | 4 | [frame 842](../../screenshots/Slack%20web%20Jul%202024%20842.png) | Scrolls to the grid foot | Further cards, then a **numbered pagination row of four pages** — against twenty-one pages on the unfiltered grid — so the result set genuinely narrowed rather than merely re-ordering | `C-PAGER` |
 
 ## Flow 17.23 — Open a video resource and rate it
@@ -629,11 +629,11 @@ A resource whose primary artefact is a video. The page type is distinguished fro
 
 ### Trigger
 
-The visitor opens a video-typed card from the library grid.
+The visitor opens a video-typed card from the library grid [frame 843](../../screenshots/Slack%20web%20Jul%202024%20843.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 843](../../screenshots/Slack%20web%20Jul%202024%20843.png).
 
 ### Frame-by-frame steps
 
@@ -650,11 +650,11 @@ The events index. Its distinguishing mechanic is that **one card type carries tw
 
 ### Trigger
 
-The visitor selects the events entry from the resources mega-menu.
+The visitor selects the events entry from the resources mega-menu [frame 845](../../screenshots/Slack%20web%20Jul%202024%20845.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 845](../../screenshots/Slack%20web%20Jul%202024%20845.png).
 
 ### Frame-by-frame steps
 
@@ -672,11 +672,11 @@ The stories index, and the reference for the area's **inline facet bar** and its
 
 ### Trigger
 
-The visitor selects the customer-stories entry from the resources mega-menu.
+The visitor selects the customer-stories entry from the resources mega-menu [frame 848](../../screenshots/Slack%20web%20Jul%202024%20848.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 848](../../screenshots/Slack%20web%20Jul%202024%20848.png).
 
 ### Frame-by-frame steps
 
@@ -696,7 +696,7 @@ The **inline facet bar** mechanism, captured end to end across three frames. Thi
 
 ### Trigger
 
-The visitor activates one of the four facet selects in the story index's filter bar.
+The visitor activates one of the four facet selects in the story index's filter bar [frame 853](../../screenshots/Slack%20web%20Jul%202024%20853.png).
 
 ### Preconditions
 
@@ -718,11 +718,11 @@ The story-article template. It differs from the resource and blog article templa
 
 ### Trigger
 
-The visitor activates a story card's forward affordance in the index grid.
+The visitor activates a story card's forward affordance in the index grid [frame 856](../../screenshots/Slack%20web%20Jul%202024%20856.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 856](../../screenshots/Slack%20web%20Jul%202024%20856.png).
 
 ### Frame-by-frame steps
 
@@ -743,11 +743,11 @@ The blog is a **distinct editorial property inside the marketing chrome**: it ca
 
 ### Trigger
 
-The visitor selects the blog entry from the resources mega-menu.
+The visitor selects the blog entry from the resources mega-menu [frame 860](../../screenshots/Slack%20web%20Jul%202024%20860.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 860](../../screenshots/Slack%20web%20Jul%202024%20860.png).
 
 ### Frame-by-frame steps
 
@@ -767,11 +767,11 @@ The newsletter block in its **empty state**: a single-field subscribe form whose
 
 ### Trigger
 
-The visitor scrolls to the foot of a blog index page.
+The visitor scrolls to the foot of a blog index page [frame 865](../../screenshots/Slack%20web%20Jul%202024%20865.png).
 
 ### Preconditions
 
-- No authenticated session; the block is offered to everyone.
+- No authenticated session; the block is offered to everyone [frame 865](../../screenshots/Slack%20web%20Jul%202024%20865.png).
 
 ### Frame-by-frame steps
 
@@ -787,7 +787,7 @@ A category page reached from the blog's topic navigation. Its masthead **replace
 
 ### Trigger
 
-The visitor selects a topic entry from the blog's topic navigation.
+The visitor selects a topic entry from the blog's topic navigation [frame 866](../../screenshots/Slack%20web%20Jul%202024%20866.png).
 
 ### Preconditions
 
@@ -812,11 +812,11 @@ The blog-article template. It shares the sticky table-of-contents card with the 
 
 ### Trigger
 
-The visitor opens a post card from the blog home or a category page.
+The visitor opens a post card from the blog home or a category page [frame 868](../../screenshots/Slack%20web%20Jul%202024%20868.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 868](../../screenshots/Slack%20web%20Jul%202024%20868.png).
 
 ### Frame-by-frame steps
 
@@ -835,11 +835,11 @@ A second collection page, and the evidence that the collection template scales i
 
 ### Trigger
 
-The visitor selects a collection card from a library or blog carousel.
+The visitor selects a collection card from a library or blog carousel [frame 872](../../screenshots/Slack%20web%20Jul%202024%20872.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 872](../../screenshots/Slack%20web%20Jul%202024%20872.png).
 
 ### Frame-by-frame steps
 
@@ -857,7 +857,7 @@ The newsletter form's filled and succeeded states. The success contract is the t
 
 ### Trigger
 
-The visitor enters an address in a newsletter block's email field and activates its in-field control.
+The visitor enters an address in a newsletter block's email field and activates its in-field control [frame 875](../../screenshots/Slack%20web%20Jul%202024%20875.png).
 
 ### Preconditions
 
@@ -880,11 +880,11 @@ The release-notes page. Two structures make it distinct: a hero that carries **b
 
 ### Trigger
 
-The visitor selects the what's-new entry from the resources mega-menu.
+The visitor selects the what's-new entry from the resources mega-menu [frame 877](../../screenshots/Slack%20web%20Jul%202024%20877.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 877](../../screenshots/Slack%20web%20Jul%202024%20877.png).
 
 ### Frame-by-frame steps
 
@@ -904,11 +904,11 @@ The partner programme page. Its distinguishing structure is a **four-column part
 
 ### Trigger
 
-The visitor selects the partners entry from the resources mega-menu.
+The visitor selects the partners entry from the resources mega-menu [frame 932](../../screenshots/Slack%20web%20Jul%202024%20932.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 932](../../screenshots/Slack%20web%20Jul%202024%20932.png).
 
 ### Frame-by-frame steps
 
@@ -929,11 +929,11 @@ The site search **overlay**. Its defining behaviour is that it takes over the to
 
 ### Trigger
 
-The visitor activates the search glyph at the leading edge of the top bar's action cluster.
+The visitor activates the search glyph at the leading edge of the top bar's action cluster [frame 973](../../screenshots/Slack%20web%20Jul%202024%20973.png).
 
 ### Preconditions
 
-- The visitor is on any page carrying the marketing top bar.
+- The visitor is on any page carrying the marketing top bar [frame 973](../../screenshots/Slack%20web%20Jul%202024%20973.png).
 
 ### Frame-by-frame steps
 
@@ -950,7 +950,7 @@ The results page, and the only surface in the area that pages a heterogeneous re
 
 ### Trigger
 
-The visitor activates the search action, or selects a suggestion row in the overlay.
+The visitor activates the search action, or selects a suggestion row in the overlay [frame 975](../../screenshots/Slack%20web%20Jul%202024%20975.png).
 
 ### Preconditions
 
@@ -977,11 +977,11 @@ The third and largest public form: **eleven fields plus a routing select and an 
 
 ### Trigger
 
-The visitor activates the outlined sales action in the top bar's action cluster, or a sales action on any page.
+The visitor activates the outlined sales action in the top bar's action cluster, or a sales action on any page [frame 981](../../screenshots/Slack%20web%20Jul%202024%20981.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 981](../../screenshots/Slack%20web%20Jul%202024%20981.png).
 
 ### Frame-by-frame steps
 
@@ -1003,7 +1003,7 @@ The region switcher. It is the only **modal** in the area that opens from the fo
 
 ### Trigger
 
-The visitor activates the change-region control at the leading edge of the footer's top strip.
+The visitor activates the change-region control at the leading edge of the footer's top strip [frame 986](../../screenshots/Slack%20web%20Jul%202024%20986.png).
 
 ### Preconditions
 
@@ -1023,7 +1023,7 @@ The localised landing page, and the proof that localisation is **whole-page and 
 
 ### Trigger
 
-The visitor selects a locale entry in the change-region modal.
+The visitor selects a locale entry in the change-region modal [frame 987](../../screenshots/Slack%20web%20Jul%202024%20987.png).
 
 ### Preconditions
 
@@ -1045,11 +1045,11 @@ A separate public property with **its own chrome**: no menu labels, no search, n
 
 ### Trigger
 
-The visitor follows the status entry in the footer's product column.
+The visitor follows the status entry in the footer's product column [frame 988](../../screenshots/Slack%20web%20Jul%202024%20988.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 988](../../screenshots/Slack%20web%20Jul%202024%20988.png).
 
 ### Frame-by-frame steps
 
@@ -1072,11 +1072,11 @@ The company page. Its one structural novelty in the area is a **floating action 
 
 ### Trigger
 
-The visitor follows the about entry in the footer's company column.
+The visitor follows the about entry in the footer's company column [frame 990](../../screenshots/Slack%20web%20Jul%202024%20990.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 990](../../screenshots/Slack%20web%20Jul%202024%20990.png).
 
 ### Frame-by-frame steps
 
@@ -1095,11 +1095,11 @@ The careers landing pages. Their structure follows the solutions template — sp
 
 ### Trigger
 
-The visitor follows the careers entry in the footer's company column.
+The visitor follows the careers entry in the footer's company column [frame 1003](../../screenshots/Slack%20web%20Jul%202024%201003.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 1003](../../screenshots/Slack%20web%20Jul%202024%201003.png).
 
 ### Frame-by-frame steps
 
@@ -1117,11 +1117,11 @@ The area's **third and last filtering mechanism**, and the one that differs most
 
 ### Trigger
 
-The visitor activates the view-careers action on the careers page.
+The visitor activates the view-careers action on the careers page [frame 1006](../../screenshots/Slack%20web%20Jul%202024%201006.png).
 
 ### Preconditions
 
-- No authenticated session; applying is offered per role by link rather than behind a form on this surface.
+- No authenticated session; applying is offered per role by link rather than behind a form on this surface [frame 1006](../../screenshots/Slack%20web%20Jul%202024%201006.png).
 
 ### Frame-by-frame steps
 
@@ -1140,11 +1140,11 @@ A separate commerce property with **its own bar, its own promotional banner, its
 
 ### Trigger
 
-The visitor follows the store entry in the footer's company column.
+The visitor follows the store entry in the footer's company column [frame 1010](../../screenshots/Slack%20web%20Jul%202024%201010.png).
 
 ### Preconditions
 
-- No authenticated session; browsing is open.
+- No authenticated session; browsing is open [frame 1010](../../screenshots/Slack%20web%20Jul%202024%201010.png).
 
 ### Frame-by-frame steps
 
@@ -1161,7 +1161,7 @@ The product-detail page and the **only confirmation toast on any public surface 
 
 ### Trigger
 
-The visitor selects a product cell from the store's category grid.
+The visitor selects a product cell from the store's category grid [frame 1012](../../screenshots/Slack%20web%20Jul%202024%201012.png).
 
 ### Preconditions
 
@@ -1185,7 +1185,7 @@ The basket and checkout pages. Both are introduced by a **full-width heading ban
 
 ### Trigger
 
-The visitor activates the basket glyph in the store bar's trailing control group.
+The visitor activates the basket glyph in the store bar's trailing control group [frame 1015](../../screenshots/Slack%20web%20Jul%202024%201015.png).
 
 ### Preconditions
 
@@ -1208,11 +1208,11 @@ The legal property. It sits inside the marketing top bar but uses **its own two-
 
 ### Trigger
 
-The visitor follows the terms entry in the footer's legal row.
+The visitor follows the terms entry in the footer's legal row [frame 1017](../../screenshots/Slack%20web%20Jul%202024%201017.png).
 
 ### Preconditions
 
-- No authenticated session.
+- No authenticated session [frame 1017](../../screenshots/Slack%20web%20Jul%202024%201017.png).
 
 ### Frame-by-frame steps
 
@@ -1426,6 +1426,8 @@ Every row names the family it belongs to. The cross-cutting state contracts are 
 | All-clear, service health | M5 | Every service row marked at the **first of five legend levels**, with a green tick at the row's trailing edge and a matching caption. This is the exemplar [21-states.md](21-states.md) cites for service health | [frame 988](../../screenshots/Slack%20web%20Jul%202024%20988.png), [frame 989](../../screenshots/Slack%20web%20Jul%202024%20989.png) |
 | Localised | M1 | Navigation labels, action-cluster labels, headline, calls to action, qualifying copy **and the text inside the product-mock image** all translated; the customer-mark strip unchanged | [frame 987](../../screenshots/Slack%20web%20Jul%202024%20987.png) |
 | Announced plan limitation | M1 | A **full-width information strip in an accent colour** stating that some listed features are plan-limited, with a learn-more link — the only plan gating on any public surface in this area | [frame 879](../../screenshots/Slack%20web%20Jul%202024%20879.png) |
+
+**Inferred:** the two hover rows in the table above — the content card and the table row — are **hover** states rather than selected, focused or active ones. A screenshot cannot show a pointer, so the cause of either treatment is not visible in its frame; the basis is that in each case exactly one member of a peer set is treated differently while nothing else on the page changes and no frame in the corpus shows either treatment persisting on a later capture [frame 764](../../screenshots/Slack%20web%20Jul%202024%20764.png), [frame 765](../../screenshots/Slack%20web%20Jul%202024%20765.png), [frame 825](../../screenshots/Slack%20web%20Jul%202024%20825.png). What is **observed** is the treatment itself — the scale, the shadow, the arrow shift, the row shading — and that is what the [coverage ledger](_screenshot-index.md) records for those frames; the attribution to hover is made here, once, and marked.
 
 **What is not captured, and is therefore not specified here.** No frame in this area shows a hover or focus treatment on a top-bar menu label, on any call to action, or on a facet trigger other than the dotted ring drawn when a panel is open. No frame shows a loading, skeleton or pending state on any public surface. No frame shows a **zero-result** state for the site search, the story facets, the library filter or the careers filter — every filtered set observed returns results. No frame shows a **field-level validation failure** on any of the five public forms. No frame shows a disabled action anywhere in this area. Each of these is a gap rather than an absence of the state, and is carried into **Edge cases & validations** below.
 

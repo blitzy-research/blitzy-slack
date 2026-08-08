@@ -98,14 +98,14 @@ A `C-COACH-MARK` card reading "Add reaction…" whose caret points down at a spo
 
 ### Preconditions
 
-An authenticated session in a channel that already holds at least one message from another person, with first-run coaching still active. At this capture the channel holds three messages and one of them already carries a reaction chip [frame 33](../../screenshots/Slack%20web%20Jul%202024%2033.png).
+An authenticated session in a channel that already holds at least one message from another person, with first-run coaching still active. At this capture the channel holds three messages — a join system message and two authored messages — and **no message carries a reaction yet**: what sits beneath the teammate's message is the coaching pill, not a reaction chip [frame 33](../../screenshots/Slack%20web%20Jul%202024%2033.png).
 
 ### Frame-by-frame steps
 
 | Step | Frame(s) | What the user does | What changes on screen | Component(s) involved |
 |---|---|---|---|---|
-| 1 | [frame 33](../../screenshots/Slack%20web%20Jul%202024%2033.png) | Reads the conversation | The message list renders three rows; the third, from a teammate, carries a single reaction chip beneath its body | `C-MESSAGE-ROW` |
-| 2 | [frame 34](../../screenshots/Slack%20web%20Jul%202024%2034.png) | Hovers the teammate's message | The row highlights and the hover action bar appears pinned to its top-right, overlapping the row's upper edge: three one-tap emoji shortcuts, then a labelled React control, then a labelled Reply control, then a vertical-ellipsis overflow control. The coaching card is anchored to the spotlit add-reaction pill below the row | `C-MESSAGE-ROW`, `C-HOVER-ACTION-BAR`, `C-COACH-MARK` |
+| 1 | [frame 33](../../screenshots/Slack%20web%20Jul%202024%2033.png) | Reads the conversation | The message list renders three rows — a join system message, then two authored messages. Beneath the third, from a teammate, sits a **spotlit pill carrying an add-reaction glyph, the label "Try me!" and its own dismiss control**: a coaching affordance, not a reaction chip, and the row carries no reaction at this capture | `C-MESSAGE-ROW`, `C-COACH-MARK` |
+| 2 | [frame 34](../../screenshots/Slack%20web%20Jul%202024%2034.png) | Hovers the teammate's message | The row highlights and the hover action bar appears pinned to its top-right, overlapping the row's upper edge: three one-tap emoji shortcuts, then a labelled React control, then a labelled Reply control, then a vertical-ellipsis overflow control. The coaching card is anchored to the spotlit add-reaction pill below the row and **covers that message's body while it is shown** | `C-MESSAGE-ROW`, `C-HOVER-ACTION-BAR`, `C-COACH-MARK` |
 | 3 | [frame 35](../../screenshots/Slack%20web%20Jul%202024%2035.png) | Opens the emoji picker from a message action | The picker opens over the message list with a coaching tooltip above it explaining quick reactions; the picker exposes emoji and GIF tabs, a search field, a dismissible new-emoji notice, titled category grids, a handy-reactions band, and footer controls for adding an emoji and choosing a skin tone | `C-COACH-MARK` |
 | 4 | [frame 36](../../screenshots/Slack%20web%20Jul%202024%2036.png) | Hovers an emoji in the grid | A preview tooltip names the hovered emoji, and a suggestion row proposes a greeting reaction | `C-EMOJI-PICKER` |
 | 5 | [frame 37](../../screenshots/Slack%20web%20Jul%202024%2037.png) | Chooses the emoji | The picker closes; a coaching tooltip anchored near the message praises the action; the reply below now carries one reaction chip counting 1 with an add-reaction control beside it | `C-MESSAGE-ROW`, `C-COACH-MARK` |
@@ -263,7 +263,7 @@ An authenticated session with a conversation open and an empty composer carrying
 
 Typing the slash character alone opens a command typeahead that mixes **app-provided** commands with **native** commands and distinguishes them by a provider sub-line on every row. Narrowing the query surfaces an app's own command variants with usage examples; running one opens that app's modal, and confirming posts a message into the conversation authored by the app rather than by the person [frame 203](../../screenshots/Slack%20web%20Jul%202024%20203.png) through [frame 206](../../screenshots/Slack%20web%20Jul%202024%20206.png).
 
-Third-party application names are **not** reproduced. Following the placeholder vocabulary defined in [00-product-overview.md](00-product-overview.md), the applications observed here are named functionally: **a cloud-drive app** and **a poll app**. The native provider is written as **the product**.
+Third-party application names are **not** reproduced. Following the placeholder vocabulary defined in [00-product-overview.md](00-product-overview.md), the applications observed here are named functionally: **a cloud-drive app** and **a poll app**. The native provider is written as **the product** [frame 203](../../screenshots/Slack%20web%20Jul%202024%20203.png), [frame 204](../../screenshots/Slack%20web%20Jul%202024%20204.png), [frame 205](../../screenshots/Slack%20web%20Jul%202024%20205.png), [frame 206](../../screenshots/Slack%20web%20Jul%202024%20206.png).
 
 ### Trigger
 
@@ -302,7 +302,7 @@ The React control on `C-HOVER-ACTION-BAR` [frame 208](../../screenshots/Slack%20
 
 ### Preconditions
 
-An authenticated session with a conversation open and at least one message in the list. The message reacted to here carries a document card; the card itself, and files as an entity, belong to [16-files-media.md](16-files-media.md).
+An authenticated session with a conversation open and at least one message in the list. The message reacted to here carries a document card; the card itself, and files as an entity, belong to [16-files-media.md](16-files-media.md) [frame 208](../../screenshots/Slack%20web%20Jul%202024%20208.png).
 
 ### Frame-by-frame steps
 
@@ -429,7 +429,7 @@ The message overflow menu, reached from the overflow control on `C-HOVER-ACTION-
 
 ### Preconditions
 
-An authenticated session in a conversation holding a message authored by the signed-in person. Pin, edit and delete are all observed on the person's own message; whether they are offered on another person's is not captured.
+An authenticated session in a conversation holding a message authored by the signed-in person. Pin, edit and delete are all observed on the person's own message; whether they are offered on another person's is not captured [frame 248](../../screenshots/Slack%20web%20Jul%202024%20248.png).
 
 ### Frame-by-frame steps
 
@@ -462,7 +462,7 @@ The compose control in the `C-SIDEBAR` header [frame 342](../../screenshots/Slac
 
 ### Preconditions
 
-An authenticated session with a workspace loaded. No conversation need be open: the surface replaces the content region and does not depend on what was there. The rail and the sidebar persist unchanged throughout.
+An authenticated session with a workspace loaded. No conversation need be open: the surface replaces the content region and does not depend on what was there. The rail and the sidebar persist unchanged throughout [frame 342](../../screenshots/Slack%20web%20Jul%202024%20342.png).
 
 ### Frame-by-frame steps
 

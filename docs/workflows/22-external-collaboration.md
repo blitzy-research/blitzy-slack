@@ -89,7 +89,7 @@ The third concerns the other of the destination's two starting actions.
 
 Starting a one-to-one conversation with someone outside the workspace is not a compose action — it is an **invitation**. The modal says so before the user types anything: a direct message to a person at another organization is sent as an email invitation, and the sender is notified as soon as the recipient accepts [frame 498](../../screenshots/Slack%20web%20Jul%202024%20498.png). One address is collected, committed as a removable token, and sent; the confirmation then states the two facts that define the pending relationship — a **fourteen-day acceptance window**, and that acceptance makes the recipient appear in the sender's list of direct messages [frame 500](../../screenshots/Slack%20web%20Jul%202024%20500.png).
 
-This is the shortest flow in the area and the one carrying its hardest facts. It is three frames: the empty modal, the modal with an address committed, and the confirmation.
+This is the shortest flow in the area and the one carrying its hardest facts. It is three frames: the empty modal, the modal with an address committed, and the confirmation [frame 498](../../screenshots/Slack%20web%20Jul%202024%20498.png), [frame 499](../../screenshots/Slack%20web%20Jul%202024%20499.png), [frame 500](../../screenshots/Slack%20web%20Jul%202024%20500.png).
 
 ### Trigger
 

@@ -86,7 +86,7 @@ The workspace-name control at the head of the conversation sidebar, which carrie
 
 ### Preconditions
 
-An authenticated session with a workspace loaded and the shell rendered. At this capture the workspace is mid-trial, which is what populates the menu's offer block; no other precondition is observable — the control is present in every captured sidebar state.
+An authenticated session with a workspace loaded and the shell rendered. At this capture the workspace is mid-trial, which is what populates the menu's offer block; no other precondition is observable — the control is present in every captured sidebar state [frame 566](../../screenshots/Slack%20web%20Jul%202024%20566.png).
 
 ### Frame-by-frame steps
 
@@ -150,7 +150,7 @@ The outlined destructive action in the delete-workspace row at the foot of the c
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may delete. The settings row that triggers the flow is visible without any permission notice at this capture, so no gating is observable at the trigger.
+A session in the standalone console on a workspace the signed-in account may delete. The settings row that triggers the flow is visible without any permission notice at this capture, so no gating is observable at the trigger [frame 580](../../screenshots/Slack%20web%20Jul%202024%20580.png).
 
 ### Frame-by-frame steps
 
@@ -181,7 +181,7 @@ The expand control on the messaging row of the console's permissions tab [frame 
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may change the administration permissions and authentication requirements of, with the settings-and-permissions page open on its permissions tab. Each section saves independently, so no other section need be touched.
+A session in the standalone console on a workspace the signed-in account may change the administration permissions and authentication requirements of, with the settings-and-permissions page open on its permissions tab. Each section saves independently, so no other section need be touched [frame 584](../../screenshots/Slack%20web%20Jul%202024%20584.png).
 
 ### Frame-by-frame steps
 
@@ -191,7 +191,7 @@ A session in the standalone console on a workspace the signed-in account may cha
 | 2 | [frame 584](../../screenshots/Slack%20web%20Jul%202024%20584.png) | Reads the three selects | The first governs who may notify all members of the company-wide channel, the second who may raise a channel-wide or here notification in every other channel, and the third whether a warning is shown when such a notification is used in a channel above a stated member threshold; each select's current value carries a default suffix | `C-DROPDOWN-MENU` |
 | 3 | [frame 585](../../screenshots/Slack%20web%20Jul%202024%20585.png) | Widens the first permission | The first select's value changes to the broader audience and loses its default suffix; the other two are unchanged and the save action stays filled | `C-DROPDOWN-MENU` |
 | 4 | [frame 586](../../screenshots/Slack%20web%20Jul%202024%20586.png) | Saves the section | The save control is replaced in place by a wider filled control reading saved, with a leading circled-check glyph; no toast appears anywhere in the viewport | `C-DATA-TABLE` |
-| 5 | [frame 587](../../screenshots/Slack%20web%20Jul%202024%20587.png) | Scrolls the permissions tab | Four security rows: the workspace two-factor row with an expand control; a session-duration row carrying a paid-tier entitlement badge; a forced-password-reset row whose copy states each member receives a message from the built-in assistant and then a reset link by email; and an automatically-open-this-workspace row that carries a download action instead of an expand control and whose copy names three desktop operating systems and a downloadable token file | `C-UPGRADE-GATE` |
+| 5 | [frame 587](../../screenshots/Slack%20web%20Jul%202024%20587.png) | Moves to the **authentication** tab and scrolls it — the tab change itself is not captured, and the capture's own first visible line is the trailing copy of the federated-identity provider row that only the authentication tab carries [frame 577](../../screenshots/Slack%20web%20Jul%202024%20577.png) | Four security rows below the providers: the workspace two-factor row with an expand control; a session-duration row carrying a paid-tier entitlement badge; a forced-password-reset row whose copy states each member receives a message from the built-in assistant and then a reset link by email; and an automatically-open-this-workspace row that carries a download action instead of an expand control and whose copy names three desktop operating systems and a downloadable token file | `C-UPGRADE-GATE` |
 | 6 | [frame 588](../../screenshots/Slack%20web%20Jul%202024%20588.png) | Expands the two-factor row | Copy states that anyone not already enrolled receives a message from the built-in assistant with setup instructions and twenty-four hours to complete them, after which enrolment is required before signing in again; an unticked enable checkbox appears, and beneath it an indented nested checkbox requiring an authenticator application is rendered muted with a muted sub-line stating that text-message verification cannot be used; a filled save closes the section | `C-CONFIRM-DIALOG` |
 | 7 | [frame 589](../../screenshots/Slack%20web%20Jul%202024%20589.png) | Ticks the enable checkbox | The parent checkbox fills and the nested authenticator option becomes active — its border and label move from muted to full contrast — while its own checkbox stays unticked | `C-CONFIRM-DIALOG` |
 
@@ -213,7 +213,7 @@ Saving the workspace two-factor section in flow `15.4` [frame 589](../../screens
 
 ### Preconditions
 
-A session in the standalone console with a pending security-affecting change that the signed-in account may make, since this interstitial re-authenticates a change rather than authorizing one. The interstitial replaces the page content while the console's own top bar and left navigation remain.
+A session in the standalone console with a pending security-affecting change that the signed-in account may make, since this interstitial re-authenticates a change rather than authorizing one. The interstitial replaces the page content while the console's own top bar and left navigation remain [frame 590](../../screenshots/Slack%20web%20Jul%202024%20590.png).
 
 ### Frame-by-frame steps
 
@@ -241,7 +241,7 @@ The import-and-export-data action at the trailing edge of the console's settings
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may export the data of. No trial notice renders on this page, unlike the settings-and-permissions page the action was launched from.
+A session in the standalone console on a workspace the signed-in account may export the data of. No trial notice renders on this page, unlike the settings-and-permissions page the action was launched from [frame 593](../../screenshots/Slack%20web%20Jul%202024%20593.png).
 
 ### Frame-by-frame steps
 
@@ -273,7 +273,7 @@ The home entry in the console's account navigation group, and the home glyph at 
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may administer. At this capture the workspace is mid-trial with no payment details recorded, which is what populates the billing row's benefit-loss framing.
+A session in the standalone console on a workspace the signed-in account may administer. At this capture the workspace is mid-trial with no payment details recorded, which is what populates the billing row's benefit-loss framing [frame 600](../../screenshots/Slack%20web%20Jul%202024%20600.png).
 
 ### Frame-by-frame steps
 
@@ -304,7 +304,7 @@ The account-and-profile entry in the console's account navigation group, and the
 
 ### Preconditions
 
-A session in the standalone console on the signed-in account's own account-and-profile page; the capability required is over that account rather than over the workspace. No trial notice renders on this page.
+A session in the standalone console on the signed-in account's own account-and-profile page; the capability required is over that account rather than over the workspace. No trial notice renders on this page [frame 604](../../screenshots/Slack%20web%20Jul%202024%20604.png).
 
 ### Frame-by-frame steps
 
@@ -332,7 +332,7 @@ The deactivate-account action on the console's account page [frame 605](../../sc
 
 ### Preconditions
 
-A session in the standalone console on the account page; the capability required is over the signed-in account itself rather than over the workspace. The account being deactivated is the signed-in account — the page's copy is written in the first person throughout.
+A session in the standalone console on the account page; the capability required is over the signed-in account itself rather than over the workspace. The account being deactivated is the signed-in account — the page's copy is written in the first person throughout [frame 606](../../screenshots/Slack%20web%20Jul%202024%20606.png).
 
 ### Frame-by-frame steps
 
@@ -354,11 +354,11 @@ A session in the standalone console on the account page; the capability required
 
 ### Overview
 
-An upgrade action on an account surface leads to an upgrade destination, and that destination's own action leads to a **reduced-chrome page** on which the workspace's organisation details are entered as a first numbered step and a payment instrument as a second, with an estimate panel alongside. Seven frames capture the destination, the progressive disclosure of the address block, the payment step, three simultaneous field-validation failures and a change of the estimate's billing period.
+An upgrade action on an account surface leads to an upgrade destination, and that destination's own action leads to a **reduced-chrome page** on which the workspace's organisation details are entered as a first numbered step and a payment instrument as a second, with an estimate panel alongside. Seven frames capture the destination, the progressive disclosure of the address block, the payment step, three simultaneous field-validation failures and a change of the estimate's billing period [frame 610](../../screenshots/Slack%20web%20Jul%202024%20610.png), [frame 616](../../screenshots/Slack%20web%20Jul%202024%20616.png).
 
 **Why this journey belongs to this area.** It is a **billing journey reached only from account surfaces** — the console home's billing card and the billing overview — and it continues the billing subject this area already owns in flows `15.23` through `15.25`: the overview with its trial state, the history, the billing settings whose organisation-name, country and street-address fields are the same three fields as the first step here, the promotional code, and the payment-methods tab whose choice tiles and card fields are the same controls as the second step here [frame 669](../../screenshots/Slack%20web%20Jul%202024%20669.png), [frame 671](../../screenshots/Slack%20web%20Jul%202024%20671.png), [frame 678](../../screenshots/Slack%20web%20Jul%202024%20678.png). The commercial *comparison* surfaces — plan cards, the feature-comparison grid and `E-PLAN` — belong to [18-pricing-plans.md](18-pricing-plans.md) and are not restated here.
 
-**What this flow specifies, and what it deliberately does not.** It specifies **structure**: regions, ordering, numbered steps, field composition, the estimate panel's line structure, and the observed validation renderings. It specifies **no purchase, payment-handling, storage, authorization-model or billing-projection behaviour**, because the corpus captures none: the purchase action is never seen activated, no confirmation, receipt, invoice or failure outcome is captured, and nothing on any frame reports how a payment instrument is handled after entry. `S-GAP` in [00-product-overview.md](00-product-overview.md) governs every one of those gaps — the build decides and records its own design — and this document does not describe a screen it never saw. No price figure, no marketed tier name and no card-network name appears below; the tier is `plan tier 2` per the placeholder vocabulary and network marks are described by function.
+**What this flow specifies, and what it deliberately does not.** It specifies **structure**: regions, ordering, numbered steps, field composition, the estimate panel's line structure, and the observed validation renderings. It specifies **no purchase, payment-handling, storage, authorization-model or billing-projection behaviour**, because the corpus captures none: the purchase action is never seen activated, no confirmation, receipt, invoice or failure outcome is captured, and nothing on any frame reports how a payment instrument is handled after entry. `S-GAP` in [00-product-overview.md](00-product-overview.md) governs every one of those gaps — the build decides and records its own design — and this document does not describe a screen it never saw. No price figure, no marketed tier name and no card-network name appears below; the tier is `plan tier 2` per the placeholder vocabulary and network marks are described by function [frame 610](../../screenshots/Slack%20web%20Jul%202024%20610.png), [frame 616](../../screenshots/Slack%20web%20Jul%202024%20616.png).
 
 ### Trigger
 
@@ -409,7 +409,7 @@ The analytics entry in the console's account navigation group, and the analytics
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may read the analytics of. No trial notice renders on this page.
+A session in the standalone console on a workspace the signed-in account may read the analytics of. No trial notice renders on this page [frame 617](../../screenshots/Slack%20web%20Jul%202024%20617.png).
 
 ### Frame-by-frame steps
 
@@ -441,7 +441,7 @@ The where-conversations-happen section further down the analytics overview [fram
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may read the analytics of, on the analytics overview, scrolled past the membership section. The section's own tab bar is subordinate to the page's tab bar and does not change it.
+A session in the standalone console on a workspace the signed-in account may read the analytics of, on the analytics overview, scrolled past the membership section. The section's own tab bar is subordinate to the page's tab bar and does not change it [frame 622](../../screenshots/Slack%20web%20Jul%202024%20622.png).
 
 ### Frame-by-frame steps
 
@@ -469,7 +469,7 @@ The customize entry in the console's account navigation group, the customize-the
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may customize. The page's own lead states that an administrator can prevent members editing these values from the permissions page, so what a member sees here is permission-dependent.
+A session in the standalone console on a workspace the signed-in account may customize. The page's own lead states that an administrator can prevent members editing these values from the permissions page, so what a member sees here is permission-dependent [frame 625](../../screenshots/Slack%20web%20Jul%202024%20625.png).
 
 ### Frame-by-frame steps
 
@@ -500,7 +500,7 @@ The circled-cross remove control at the trailing edge of a custom-emoji row [fra
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may delete the custom emoji of, on the customize surface's emoji tab, with at least one custom emoji in the table.
+A session in the standalone console on a workspace the signed-in account may delete the custom emoji of, on the customize surface's emoji tab, with at least one custom emoji in the table [frame 629](../../screenshots/Slack%20web%20Jul%202024%20629.png).
 
 ### Frame-by-frame steps
 
@@ -528,7 +528,7 @@ The filled add-new-response action on the built-in assistant tab of the customiz
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may configure the assistant responses of, on the customize surface's assistant tab. No existing response is required — the flow is captured against the empty table.
+A session in the standalone console on a workspace the signed-in account may configure the assistant responses of, on the customize surface's assistant tab. No existing response is required — the flow is captured against the empty table [frame 632](../../screenshots/Slack%20web%20Jul%202024%20632.png).
 
 ### Frame-by-frame steps
 
@@ -587,7 +587,7 @@ The about-this-workspace entry in the console's account navigation group [frame 
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may administer. This page renders the workspace icon set in flow `15.16`, which is the corpus's evidence that console state persists across these flows.
+A session in the standalone console on a workspace the signed-in account may administer. This page renders the workspace icon set in flow `15.16`, which is the corpus's evidence that console state persists across these flows [frame 640](../../screenshots/Slack%20web%20Jul%202024%20640.png).
 
 ### Frame-by-frame steps
 
@@ -615,7 +615,7 @@ The manage-members entry in the console's administration navigation group, the m
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may manage the members of. No trial notice and no tab bar render on this page, which distinguishes it from every other administration page in this area.
+A session in the standalone console on a workspace the signed-in account may manage the members of. No trial notice and no tab bar render on this page, which distinguishes it from every other administration page in this area [frame 643](../../screenshots/Slack%20web%20Jul%202024%20643.png).
 
 ### Frame-by-frame steps
 
@@ -643,7 +643,7 @@ The user-groups entry in the console's administration navigation group [frame 60
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may manage the user groups of, with no user group yet defined — the flow opens on the empty state and closes on a list of one.
+A session in the standalone console on a workspace the signed-in account may manage the user groups of, with no user group yet defined — the flow opens on the empty state and closes on a list of one [frame 644](../../screenshots/Slack%20web%20Jul%202024%20644.png).
 
 ### Frame-by-frame steps
 
@@ -677,7 +677,7 @@ The invitations entry in the console's administration navigation group [frame 60
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may manage the invitations of, with at least one pending, one accepted and one link-based invitation on record — the tabs are captured populated except for requests, which is captured empty.
+A session in the standalone console on a workspace the signed-in account may manage the invitations of, with at least one pending, one accepted and one link-based invitation on record — the tabs are captured populated except for requests, which is captured empty [frame 653](../../screenshots/Slack%20web%20Jul%202024%20653.png).
 
 ### Frame-by-frame steps
 
@@ -712,7 +712,7 @@ The filled invite-people action on the console's invitations page [frame 653](..
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may invite people to, on a page that offers the invite action. The modal opens over the page it was launched from, which stays visible behind a dimmed backdrop.
+A session in the standalone console on a workspace the signed-in account may invite people to, on a page that offers the invite action. The modal opens over the page it was launched from, which stays visible behind a dimmed backdrop [frame 661](../../screenshots/Slack%20web%20Jul%202024%20661.png).
 
 ### Frame-by-frame steps
 
@@ -771,7 +771,7 @@ The billing entry in the console's administration navigation group, the home's b
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may read the billing of, mid-trial with no payment method recorded — the state that produces the overview's upgrade framing and the empty payment-methods form.
+A session in the standalone console on a workspace the signed-in account may read the billing of, mid-trial with no payment method recorded — the state that produces the overview's upgrade framing and the empty payment-methods form [frame 669](../../screenshots/Slack%20web%20Jul%202024%20669.png).
 
 ### Frame-by-frame steps
 
@@ -802,7 +802,7 @@ The promotional-code link at the foot of the billing overview [frame 669](../../
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may change the billing of, on the billing overview. The modal opens over that page, which stays visible behind a dimmed backdrop.
+A session in the standalone console on a workspace the signed-in account may change the billing of, on the billing overview. The modal opens over that page, which stays visible behind a dimmed backdrop [frame 675](../../screenshots/Slack%20web%20Jul%202024%20675.png).
 
 ### Frame-by-frame steps
 
@@ -830,7 +830,7 @@ Filling the card form on the payment-methods tab of the billing page [frame 674]
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may change the payment methods of, on the billing page's payment-methods tab, with no stored method — the panel is a single add-new column before this flow and two columns after it.
+A session in the standalone console on a workspace the signed-in account may change the payment methods of, on the billing page's payment-methods tab, with no stored method — the panel is a single add-new column before this flow and two columns after it [frame 678](../../screenshots/Slack%20web%20Jul%202024%20678.png).
 
 ### Frame-by-frame steps
 
@@ -859,7 +859,7 @@ The profiles entry in the console's administration navigation group [frame 600](
 
 ### Preconditions
 
-A session in the standalone console on a workspace the signed-in account may change the profile schema of. Some rows arrive already on and locked, so the page opens in a partly non-editable state rather than a blank one.
+A session in the standalone console on a workspace the signed-in account may change the profile schema of. Some rows arrive already on and locked, so the page opens in a partly non-editable state rather than a blank one [frame 680](../../screenshots/Slack%20web%20Jul%202024%20680.png).
 
 ### Frame-by-frame steps
 
@@ -869,7 +869,7 @@ A session in the standalone console on a workspace the signed-in account may cha
 | 2 | [frame 680](../../screenshots/Slack%20web%20Jul%202024%20680.png) | Reads the field rows | Each row pairs a bold field name over a type label carrying a type glyph — short text, image, audio clip — with a middle column stating the source as either user-editable or interface-supplied with a muted opaque field identifier beneath, an optional edit link, and a trailing toggle. Three toggle treatments appear: muted with a check and the knob to the trailing edge, meaning on and not changeable here; plain with the knob to the leading edge, meaning off; and filled in the success colour with a check, meaning on. The rows visible are a header row, profile picture, name, title, pronouns, name recording, name pronunciation, city and state | `C-DATA-TABLE` |
 | 3 | [frame 681](../../screenshots/Slack%20web%20Jul%202024%20681.png) | Changes a toggle | The publish-changes action in the header card becomes filled, so changes are staged rather than applied per row | `C-DATA-TABLE` |
 | 4 | [frame 682](../../screenshots/Slack%20web%20Jul%202024%20682.png) | Scrolls the page | The page is a series of grouped cards rather than one card: each group's header row carries the group name in bold with its own edit link and its own toggle. An affiliations group is on and holds four interface-supplied rows — organisation, division, department and cost centre — each off; an about-me group follows, on | `C-DATA-TABLE` |
-| 5 | [frame 683](../../screenshots/Slack%20web%20Jul%202024%20683.png) | Reads the last group | The about-me group holds one date-typed row whose middle column stacks a user-editable source over a bold celebrations label and a muted sub-line stating that work-anniversary and new-hire events are enabled; the card closes with an add-a-data-element link row | `C-DATA-TABLE` |
+| 5 | [frame 683](../../screenshots/Slack%20web%20Jul%202024%20683.png) | Reads the last group | The about-me group holds one date-typed row whose middle column stacks a user-editable source over a bold celebrations label and a muted sub-line stating that work-anniversary and new-hire events are enabled; the card closes with an add-a-data-element link row. **The publish action has also returned from filled to muted** between this capture and the previous one, with nothing else on the two captures differing and no frame showing it being used [frame 682](../../screenshots/Slack%20web%20Jul%202024%20682.png), [frame 683](../../screenshots/Slack%20web%20Jul%202024%20683.png) | `C-DATA-TABLE` |
 
 **Inferred:** a group's own toggle governs whether the group appears at all, independently of its members, because the affiliations group renders on while all four of its field rows are off [frame 682](../../screenshots/Slack%20web%20Jul%202024%20682.png).
 
@@ -1279,7 +1279,7 @@ This is the product's most privileged surface, and none of the protections a pri
 
 > **Build obligation:** **the profile-field schema decides existence but not audience, and the audience model is supplied here because nothing in the corpus supplies it.** The page's per-row control is an **existence — or enabled-state — toggle**, and this document names it that way throughout rather than calling it visibility, because the two are different dimensions and conflating them would ship a schema switch where an audience model belongs. The profiles page toggles whether a field exists at all — field rows pairing a name with a type and a source, grouped into cards whose group headers carry their own toggles, an affiliations group of interface-supplied rows, and an about-me group holding a date-typed celebrations row [frame 680](../../screenshots/Slack%20web%20Jul%202024%20680.png), [frame 682](../../screenshots/Slack%20web%20Jul%202024%20682.png), [frame 683](../../screenshots/Slack%20web%20Jul%202024%20683.png). **Nothing in the corpus states who may see an enabled field**, and this is the only surface that could have supplied that model, so the gap is named **and closed as an obligation** rather than left open: per `S-AUTHZ-READ` the build **adds a per-field audience dimension alongside the existence toggle** — at minimum distinguishing the field's owner, members of the workspace, guests, and people in an external organization — evaluated **per field and per record inside the query** that serves each surface, so that a withheld field is absent from the response rather than hidden in the client, and so that a count, a facet, a suggestion list or an export over people cannot disclose a value its viewer may not read. Per `S-PII` the same fields are additionally minimised, redacted from logs and retained under a stated period. **A field being enabled is therefore never the same as a field being readable by everyone.** The surfaces that consume this model are owned by [13-profiles-people.md](13-profiles-people.md) — which states the consumption explicitly in its own personal-data obligations and acceptance criteria — together with [09-search-and-filters.md](09-search-and-filters.md), [07-canvases.md](07-canvases.md) and [08-lists.md](08-lists.md), and each of them refers here for the model rather than inventing its own.
 
-> **Build obligation:** **session management is specified because two surfaces refer to it and neither can show it.** The console's permissions tab carries a session-duration row behind a paid-tier entitlement badge and a forced-password-reset row beside it [frame 587](../../screenshots/Slack%20web%20Jul%202024%20587.png), and the account page offers to sign out of all other sessions [frame 605](../../screenshots/Slack%20web%20Jul%202024%20605.png). Per `S-SECRET`: a session is a **revocable server-side record** with an idle and an absolute lifetime; the sign-out-everywhere action **invalidates those server-side records** rather than only clearing client state; sessions are invalidated on credential change; and the session-duration setting is **enforced server-side**. The corpus shows the two controls and can show nothing about what either does.
+> **Build obligation:** **session management is specified because two surfaces refer to it and neither can show it.** The console's **authentication** tab carries a session-duration row behind a paid-tier entitlement badge and a forced-password-reset row beside it [frame 587](../../screenshots/Slack%20web%20Jul%202024%20587.png), and the account page offers to sign out of all other sessions [frame 605](../../screenshots/Slack%20web%20Jul%202024%20605.png). Per `S-SECRET`: a session is a **revocable server-side record** with an idle and an absolute lifetime; the sign-out-everywhere action **invalidates those server-side records** rather than only clearing client state; sessions are invalidated on credential change; and the session-duration setting is **enforced server-side**. The corpus shows the two controls and can show nothing about what either does.
 
 > **Build obligation:** **`S-GAP` applies to the states and screens this area does not evidence**, and the build designs each using the contracts named beside it: the confirming step of a workspace deletion, which the corpus skips entirely between the armed page and the terminal page [frame 582](../../screenshots/Slack%20web%20Jul%202024%20582.png), [frame 583](../../screenshots/Slack%20web%20Jul%202024%20583.png); a rejected icon upload; a declined card; a confirmation for the deactivate-all action, which the corpus does not capture [frame 656](../../screenshots/Slack%20web%20Jul%202024%20656.png); an export that failed; a filter or a resend that hit a rate limit; a revoke of a download token being confirmed; and a refusal returned to a principal without the capability for any of these twenty-six flows — the last being, necessarily, absent from a corpus captured in a session that had every capability it used. Renderings come from the state matrix in [21-states.md](21-states.md); behaviour comes from the `S-*` contracts.
 
@@ -1291,6 +1291,8 @@ This is the product's most privileged surface, and none of the protections a pri
 - **A trailing tab-bar entry is styled unlike its neighbours.** The access-logs entry renders in the default text colour while the inactive tabs beside it render in the accent colour, on both pages that carry it [frame 575](../../screenshots/Slack%20web%20Jul%202024%20575.png), [frame 604](../../screenshots/Slack%20web%20Jul%202024%20604.png).
 - **Footer action order is reversed on the crop step.** Primary precedes secondary there [frame 637](../../screenshots/Slack%20web%20Jul%202024%20637.png); secondary precedes primary in every modal footer [frame 629](../../screenshots/Slack%20web%20Jul%202024%20629.png), [frame 632](../../screenshots/Slack%20web%20Jul%202024%20632.png), [frame 675](../../screenshots/Slack%20web%20Jul%202024%20675.png).
 - **The empty card-number field carries four network marks in one capture and a single, different mark in another** [frame 674](../../screenshots/Slack%20web%20Jul%202024%20674.png), [frame 679](../../screenshots/Slack%20web%20Jul%202024%20679.png).
+- **The deletion page's two captures disagree about the workspace's own address slug.** The reuse-the-address callout renders the current slug in an inline code style, and the value differs between the two consecutive captures of that page — a hyphenated form in the first and an unhyphenated form with a different leading character in the second — while every other element of both callouts, the card, the checkbox label, the password field and the helper copy is identical [frame 580](../../screenshots/Slack%20web%20Jul%202024%20580.png), [frame 581](../../screenshots/Slack%20web%20Jul%202024%20581.png). Both readings are recorded and neither is reconciled. It matters to a build because the slug is the value the callout tells the reader to change *before* deletion, so the page must render it from the workspace record on every load rather than from anything cached by the capture session.
+
 - **The account page's two captures disagree about the signed-in account's own email address.** The email-address row states one address in the upper capture and a **different** address in the lower one, while every other row the two captures share — password, two-factor state, time zone, language — matches, and the deactivation block's primary-owner contact address in the lower capture is the address the *upper* capture gave for the account [frame 604](../../screenshots/Slack%20web%20Jul%202024%20604.png), [frame 605](../../screenshots/Slack%20web%20Jul%202024%20605.png). The pair is therefore not a single continuous scroll of one page state, and nothing in either capture shows an address being changed. The record is left as it stands: **a build must read the account address from the account record rather than assuming the page's other addresses agree with it**, and the flow's step 3 is annotated rather than reconciled.
 - **Two console pages disagree about what an export contains.** The about page's retention-and-exports tab answers what administrators can access with a bold statement that **public data can be exported** [frame 642](../../screenshots/Slack%20web%20Jul%202024%20642.png), while the export page's own download-tokens section states that an export **embeds links to private files** carrying an access token [frame 599](../../screenshots/Slack%20web%20Jul%202024%20599.png). Both are what the captures say. Neither is altered to agree with the other, and the disagreement is not resolved here — a build cannot tell from these two frames whether the private-file links are a scope the export page describes and the about page omits, or a contradiction in the product's own copy. It is resolved **safely rather than editorially** by the export obligation above, which scopes the artefact to the exporter's authorized set and re-authorizes every embedded link on resolution, so the narrower reading is what gets built whichever is correct.
 - **The invite-link expiry observed in the console is one month after creation** [frame 656](../../screenshots/Slack%20web%20Jul%202024%20656.png), which differs from the expiry stated on the in-product copy-link confirmation recorded by [01-onboarding-and-auth.md](01-onboarding-and-auth.md). Two surfaces, two observations, both kept.

@@ -52,7 +52,7 @@ Flow identifiers are contiguous across all six properties. The **Property** colu
 
 ### Overview
 
-Inside the authenticated product, help is a **docked pane** rather than a separate destination: the shell stays fully visible and the pane takes a trailing slice of the content region. The pane is a small navigable site of its own — a root page offering search, a promoted-content carousel and a topic list; group sub-pages; a full guide article; and a footer that routes out to support-request history and to the contact flow.
+Inside the authenticated product, help is a **docked pane** rather than a separate destination: the shell stays fully visible and the pane takes a trailing slice of the content region. The pane is a small navigable site of its own — a root page offering search, a promoted-content carousel and a topic list; group sub-pages; a full guide article; and a footer that routes out to support-request history and to the contact flow [frame 705](../../screenshots/Slack%20web%20Jul%202024%20705.png), [frame 710](../../screenshots/Slack%20web%20Jul%202024%20710.png).
 
 ### Trigger
 
@@ -81,7 +81,7 @@ An authenticated session with a workspace open, since the pane is rendered insid
 
 ### Overview
 
-The administration console carries its own help destination, and that destination doubles as **support-request tracking**: it lists the requests raised from this workspace, links out to the public help centre, embeds a search entry into it, and opens each request as a read view of the submitted form plus a reply form. The catalog assigns this journey to this area rather than to administration because the goal is support.
+The administration console carries its own help destination, and that destination doubles as **support-request tracking**: it lists the requests raised from this workspace, links out to the public help centre, embeds a search entry into it, and opens each request as a read view of the submitted form plus a reply form. The catalog assigns this journey to this area rather than to administration because the goal is support [frame 711](../../screenshots/Slack%20web%20Jul%202024%20711.png), [frame 712](../../screenshots/Slack%20web%20Jul%202024%20712.png), [frame 713](../../screenshots/Slack%20web%20Jul%202024%20713.png).
 
 ### Trigger
 
@@ -106,7 +106,7 @@ An authenticated administrative session in the console, since the page is render
 
 ### Overview
 
-Product release notes are published as a **help-centre article** rather than as a separate property: same public chrome, same hero, same topic navigation, same in-article navigation rail — but the rail indexes **time periods** rather than article sections, and the body is grouped by date.
+Product release notes are published as a **help-centre article** rather than as a separate property: same public chrome, same hero, same topic navigation, same in-article navigation rail — but the rail indexes **time periods** rather than article sections, and the body is grouped by date [frame 880](../../screenshots/Slack%20web%20Jul%202024%20880.png), [frame 881](../../screenshots/Slack%20web%20Jul%202024%20881.png), [frame 882](../../screenshots/Slack%20web%20Jul%202024%20882.png).
 
 ### Trigger
 
@@ -133,7 +133,7 @@ None. The page reads without a session, while still offering a sign-up affordanc
 
 ### Overview
 
-The community is *marketed* from the marketing property and *inhabited* on the forum property. This flow covers the marketing-hosted landing page: it wears the marketing top navigation, presents the community's value proposition with an embedded video, and routes to the forum through a join call to action.
+The community is *marketed* from the marketing property and *inhabited* on the forum property. This flow covers the marketing-hosted landing page: it wears the marketing top navigation, presents the community's value proposition with an embedded video, and routes to the forum through a join call to action [frame 897](../../screenshots/Slack%20web%20Jul%202024%20897.png), [frame 898](../../screenshots/Slack%20web%20Jul%202024%20898.png), [frame 899](../../screenshots/Slack%20web%20Jul%202024%20899.png).
 
 ### Trigger
 
@@ -160,7 +160,7 @@ None; the page is public and offers sign-in and get-started affordances rather t
 
 ### Overview
 
-The forum's home page orients a newcomer and then hands off to the two content taxonomies that fill the rest of the property. Its navigation bar carries menu-bearing entries whose panels enumerate the taxonomy without leaving the page.
+The forum's home page orients a newcomer and then hands off to the two content taxonomies that fill the rest of the property. Its navigation bar carries menu-bearing entries whose panels enumerate the taxonomy without leaving the page [frame 900](../../screenshots/Slack%20web%20Jul%202024%20900.png), [frame 901](../../screenshots/Slack%20web%20Jul%202024%20901.png), [frame 902](../../screenshots/Slack%20web%20Jul%202024%20902.png).
 
 ### Trigger
 
@@ -187,7 +187,7 @@ None. The page reads without a session and offers a log-in affordance and a join
 
 ### Overview
 
-The discussions tab is the forum's question list. It is the surface that establishes the **question row anatomy** reused on topic pages, and it pairs a sort control with a filter control and a persistent ask-a-question action.
+The discussions tab is the forum's question list. It is the surface that establishes the **question row anatomy** reused on topic pages, and it pairs a sort control with a filter control and a persistent ask-a-question action [frame 903](../../screenshots/Slack%20web%20Jul%202024%20903.png).
 
 ### Trigger
 
@@ -213,7 +213,7 @@ None to read. Asking a question is offered as an action but its form is not capt
 
 ### Overview
 
-The topics tab is the forum's second taxonomy. It nests a **second-level tab pair** inside the first, exposes a large topic catalogue through a paginated two-column table with its own search field, and is the surface at which the forum's own footer becomes visible.
+The topics tab is the forum's second taxonomy. It nests a **second-level tab pair** inside the first, exposes a large topic catalogue through a paginated two-column table with its own search field, and is the surface at which the forum's own footer becomes visible [frame 904](../../screenshots/Slack%20web%20Jul%202024%20904.png), [frame 905](../../screenshots/Slack%20web%20Jul%202024%20905.png), [frame 906](../../screenshots/Slack%20web%20Jul%202024%20906.png), [frame 907](../../screenshots/Slack%20web%20Jul%202024%20907.png).
 
 ### Trigger
 
@@ -242,7 +242,7 @@ None [frame 905](../../screenshots/Slack%20web%20Jul%202024%20905.png).
 
 ### Overview
 
-A topic page is the forum's richest read surface: a titled hero, the question list, and a sidebar carrying engagement statistics, a follow action and a related-topics list. It is also the only place in this area where a **complete asynchronous re-sort** is captured end to end — menu open, region-scoped skeleton, repainted list.
+A topic page is the forum's richest read surface: a titled hero, the question list, and a sidebar carrying engagement statistics, a follow action and a related-topics list. It is also the only place in this area where a **complete asynchronous re-sort** is captured end to end — menu open, region-scoped skeleton, repainted list [frame 908](../../screenshots/Slack%20web%20Jul%202024%20908.png), [frame 915](../../screenshots/Slack%20web%20Jul%202024%20915.png).
 
 ### Trigger
 
@@ -273,7 +273,7 @@ None to read. Following is offered as an action but its authenticated outcome is
 
 ### Overview
 
-Groups are the forum's third structure: a membership object with an image, a visibility label, an owner, a description and a member roster, fronting a **social feed** of posts with tags, engagement counts and comment threads. This is the surface that shows the property's **unauthenticated gate** explicitly.
+Groups are the forum's third structure: a membership object with an image, a visibility label, an owner, a description and a member roster, fronting a **social feed** of posts with tags, engagement counts and comment threads. This is the surface that shows the property's **unauthenticated gate** explicitly [frame 916](../../screenshots/Slack%20web%20Jul%202024%20916.png), [frame 917](../../screenshots/Slack%20web%20Jul%202024%20917.png).
 
 ### Trigger
 
@@ -303,7 +303,7 @@ None to read. Joining the group and commenting on a post are both offered but bo
 
 ### Overview
 
-The guidelines page states the terms of participation. Structurally it is the property's simplest page type: hero, a centred introduction, then a stack of alternating text-and-illustration blocks.
+The guidelines page states the terms of participation. Structurally it is the property's simplest page type: hero, a centred introduction, then a stack of alternating text-and-illustration blocks [frame 918](../../screenshots/Slack%20web%20Jul%202024%20918.png), [frame 919](../../screenshots/Slack%20web%20Jul%202024%20919.png), [frame 920](../../screenshots/Slack%20web%20Jul%202024%20920.png).
 
 ### Trigger
 
@@ -329,7 +329,7 @@ None [frame 918](../../screenshots/Slack%20web%20Jul%202024%20918.png).
 
 ### Overview
 
-Certification is a **fourth public property** with its own chrome and its own commercial content. Its home page is a card grid of programme tracks; the property also carries a directory call to action and an anchored question index.
+Certification is a **fourth public property** with its own chrome and its own commercial content. Its home page is a card grid of programme tracks; the property also carries a directory call to action and an anchored question index [frame 936](../../screenshots/Slack%20web%20Jul%202024%20936.png), [frame 937](../../screenshots/Slack%20web%20Jul%202024%20937.png), [frame 938](../../screenshots/Slack%20web%20Jul%202024%20938.png).
 
 ### Trigger
 
@@ -356,7 +356,7 @@ None to read; the property offers a sign-in affordance rather than requiring a s
 
 ### Overview
 
-The certification property answers commercial questions in a long anchored article: section headings, bold question headings, prose answers, and **price tables** listing purchasable line items against amounts.
+The certification property answers commercial questions in a long anchored article: section headings, bold question headings, prose answers, and **price tables** listing purchasable line items against amounts [frame 939](../../screenshots/Slack%20web%20Jul%202024%20939.png), [frame 940](../../screenshots/Slack%20web%20Jul%202024%20940.png), [frame 941](../../screenshots/Slack%20web%20Jul%202024%20941.png).
 
 ### Trigger
 
@@ -385,7 +385,7 @@ None [frame 940](../../screenshots/Slack%20web%20Jul%202024%20940.png).
 
 ### Overview
 
-The help centre's home page is search-first: a hero whose primary control is a wide search input, a short list of common troubleshooting links, then a six-cell category grid, then curated shortcuts. Its top bar is **stateful** — transparent and search-free while it overlays the hero, opaque and search-bearing once the page scrolls.
+The help centre's home page is search-first: a hero whose primary control is a wide search input, a short list of common troubleshooting links, then a six-cell category grid, then curated shortcuts. Its top bar is **stateful** — transparent and search-free while it overlays the hero, opaque and search-bearing once the page scrolls [frame 942](../../screenshots/Slack%20web%20Jul%202024%20942.png), [frame 943](../../screenshots/Slack%20web%20Jul%202024%20943.png).
 
 ### Trigger
 
@@ -412,7 +412,7 @@ None. Reading is open; the top bar offers a contact affordance and a sign-up aff
 
 ### Overview
 
-Help search is a **public, single-corpus search with no facets**: type-ahead suggestions with the matched token emboldened, then a results page that echoes the query, states a total, and renders each hit as a title, a match-highlighted snippet and a category label. It is a different system from the in-product search documented in `09-search-and-filters.md`, and the two are not merged here.
+Help search is a **public, single-corpus search with no facets**: type-ahead suggestions with the matched token emboldened, then a results page that echoes the query, states a total, and renders each hit as a title, a match-highlighted snippet and a category label. It is a different system from the in-product search documented in `09-search-and-filters.md`, and the two are not merged here [frame 944](../../screenshots/Slack%20web%20Jul%202024%20944.png), [frame 945](../../screenshots/Slack%20web%20Jul%202024%20945.png).
 
 ### Trigger
 
@@ -439,7 +439,7 @@ None [frame 944](../../screenshots/Slack%20web%20Jul%202024%20944.png).
 
 ### Overview
 
-An article page is a **two-column read surface**: a wider article column of heading-and-body blocks interleaved with callouts and numbered-step cards, and a narrower **in-article navigation rail** that indexes the article's sections and tracks the reader's position. The rail's tracking behaviour is captured directly at three scroll positions.
+An article page is a **two-column read surface**: a wider article column of heading-and-body blocks interleaved with callouts and numbered-step cards, and a narrower **in-article navigation rail** that indexes the article's sections and tracks the reader's position. The rail's tracking behaviour is captured directly at three scroll positions [frame 946](../../screenshots/Slack%20web%20Jul%202024%20946.png), [frame 947](../../screenshots/Slack%20web%20Jul%202024%20947.png), [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png), [frame 948](../../screenshots/Slack%20web%20Jul%202024%20948.png).
 
 ### Trigger
 
@@ -461,7 +461,7 @@ None [frame 946](../../screenshots/Slack%20web%20Jul%202024%20946.png).
 | 6 | [frame 946](../../screenshots/Slack%20web%20Jul%202024%20946.png), [frame 947](../../screenshots/Slack%20web%20Jul%202024%20947.png), [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png) | Compares the rail across the scroll | Across the three positions the rail marks **no entry, then the second, then the third** — so **at most one entry is active at a time and the active entry follows the reader's position**. **Inferred:** the rail indexes the whole article rather than only the captured viewport, because at the article's top it already lists entries for sections that are not yet on screen [frame 946](../../screenshots/Slack%20web%20Jul%202024%20946.png) | — |
 | 7 | [frame 947](../../screenshots/Slack%20web%20Jul%202024%20947.png) | Scrolls into the second section | The rail's **second** entry becomes active while the rail stays pinned near the top of the viewport and the article column scrolls beneath it. The article renders a section heading with a rule, a bordered numbered-step card whose copy carries emboldened interface labels and an inline icon reference within a step, then a **tip callout** — a tinted card with a leading wand glyph and a bold tip label, **visually distinct in both tint and glyph from the note callout** — then a troubleshooting heading with a rule and a question-and-answer pair | — |
 | 8 | [frame 948](../../screenshots/Slack%20web%20Jul%202024%20948.png) | Reads the article's troubleshooting section | The property bar renders its search input, outlined contact action and filled sign-up action; the content column renders a bold section heading above a hairline rule, then three question sub-headings each with a three-to-four-line answer carrying inline links and emboldened address tokens; **the trailing column's in-this-article card now renders its third entry as the filled band while the first two are plain, so this card does track the section in view**; beneath the body a hairline rule precedes a centred glyph-led helpfulness prompt with two outlined actions | `C-PROPERTY-CHROME`, `C-ON-PAGE-CONTENTS` |
-| 9 | [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png) | Scrolls to the article's foot | The rail's **third** entry is active. The article closes with further question-and-answer blocks, then a **centred feedback prompt carrying a pencil glyph** that asks whether the article helped and offers a yes control and a no control | — |
+| 9 | [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png) | Scrolls to the article's foot | The rail's **third** entry is active. The article closes with further question-and-answer blocks, then a **centred feedback prompt carrying a pencil glyph** that asks whether the article helped and offers a yes control and a no control. **The two controls are not rendered alike here:** the yes control is a **filled** primary at this capture where the preceding one rendered it outlined, and the no control stays outlined in both [frame 948](../../screenshots/Slack%20web%20Jul%202024%20948.png), [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png) | — |
 
 > **Partial capture:** no article-list sidebar, sibling navigation or related-articles block appears on the article page itself.
 
@@ -469,7 +469,7 @@ None [frame 946](../../screenshots/Slack%20web%20Jul%202024%20946.png).
 
 ### Overview
 
-The feedback block at an article's foot is the **most completely captured validation contract in the corpus**: an empty state with a disabled primary action, a filled state with the action available, and an in-place confirmation. Three frames, three states, one contract.
+The feedback block at an article's foot is the **most completely captured validation contract in the corpus**: an empty state with a disabled primary action, a filled state with the action available, and an in-place confirmation. Three frames, three states, one contract [frame 949](../../screenshots/Slack%20web%20Jul%202024%20949.png), [frame 950](../../screenshots/Slack%20web%20Jul%202024%20950.png), [frame 951](../../screenshots/Slack%20web%20Jul%202024%20951.png), [frame 952](../../screenshots/Slack%20web%20Jul%202024%20952.png).
 
 ### Trigger
 
@@ -496,7 +496,7 @@ An article open and scrolled to its foot, and a response chosen on the helpfulne
 
 ### Overview
 
-A category page is a **link-directory page**: hero, active topic tab, then a stack of topic-group blocks each listing its articles in two columns. The topic navigation on these pages is menu-bearing, so the whole category tree is reachable without leaving the page.
+A category page is a **link-directory page**: hero, active topic tab, then a stack of topic-group blocks each listing its articles in two columns. The topic navigation on these pages is menu-bearing, so the whole category tree is reachable without leaving the page [frame 953](../../screenshots/Slack%20web%20Jul%202024%20953.png), [frame 957](../../screenshots/Slack%20web%20Jul%202024%20957.png).
 
 ### Trigger
 
@@ -524,7 +524,7 @@ None [frame 954](../../screenshots/Slack%20web%20Jul%202024%20954.png).
 
 ### Overview
 
-Contacting support is a **progressive form with a deflection step**: identify by email, choose a topic from a chip set or describe the need freely, then — once a topic is chosen — read a set of related questions and articles before a free-text message field and a send action are offered. It closes on a dedicated confirmation page. Its primary action is **disabled in the empty state**, making this the second observed instance of that contract in this area.
+Contacting support is a **progressive form with a deflection step**: identify by email, choose a topic from a chip set or describe the need freely, then — once a topic is chosen — read a set of related questions and articles before a free-text message field and a send action are offered. It closes on a dedicated confirmation page. Its primary action is **disabled in the empty state**, making this the second observed instance of that contract in this area [frame 958](../../screenshots/Slack%20web%20Jul%202024%20958.png), [frame 965](../../screenshots/Slack%20web%20Jul%202024%20965.png).
 
 ### Trigger
 

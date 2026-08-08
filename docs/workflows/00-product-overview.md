@@ -41,7 +41,7 @@ Frame spans below are written as plain numeric ranges because they designate a s
 
 ### Overview
 
-The rail's create control opens a menu of the six things a user can start from anywhere in the product, each named with a one-line description of what it is for. The menu is the shell's single global entry point into creation, and it is anchored to the control rather than centred, so the conversation behind it stays legible [frame 39](../../screenshots/Slack%20web%20Jul%202024%2039.png).
+The rail's create control opens a menu of the six things a user can start from anywhere in the product. **Five of the six carry a one-line description of what they are for; the sixth — invite-people — is visually separated from them and carries none**, in both captures of the menu [frame 39](../../screenshots/Slack%20web%20Jul%202024%2039.png), [frame 550](../../screenshots/Slack%20web%20Jul%202024%20550.png). The menu is the shell's single global entry point into creation, and it is anchored to the control rather than centred, so the conversation behind it stays legible [frame 39](../../screenshots/Slack%20web%20Jul%202024%2039.png).
 
 ### Trigger
 
@@ -49,7 +49,7 @@ The circular create control at the foot of the navigation rail, immediately abov
 
 ### Preconditions
 
-An authenticated session with a workspace loaded, and the shell rendered with a conversation in the content region. No selection, no draft and no permission grant is required — the control is present in every captured state of the rail.
+An authenticated session with a workspace loaded, and the shell rendered with a conversation in the content region. No selection, no draft and no permission grant is required — the control is present in every captured state of the rail [frame 39](../../screenshots/Slack%20web%20Jul%202024%2039.png).
 
 ### Frame-by-frame steps
 
@@ -204,7 +204,7 @@ The rail, entered by loading the shell; then the create control at its foot [fra
 
 ### Preconditions
 
-An authenticated session, a colour mode other than the default light purple selected, and a conversation in the content region. Colour-mode selection is specified by [14-preferences-settings.md](14-preferences-settings.md).
+An authenticated session, a colour mode other than the default light purple selected, and a conversation in the content region. Colour-mode selection is specified by [14-preferences-settings.md](14-preferences-settings.md) [frame 549](../../screenshots/Slack%20web%20Jul%202024%20549.png).
 
 ### Frame-by-frame steps
 
@@ -227,7 +227,7 @@ Selecting a conversation row in the sidebar, which loads it into the content reg
 
 ### Preconditions
 
-An authenticated session on a workspace whose plan state produces a promotional banner and a trial footer item, and a message-density preference other than the default. Density selection is specified by [14-preferences-settings.md](14-preferences-settings.md).
+An authenticated session on a workspace whose plan state produces a promotional banner and a trial footer item, and a message-density preference other than the default. Density selection is specified by [14-preferences-settings.md](14-preferences-settings.md) [frame 560](../../screenshots/Slack%20web%20Jul%202024%20560.png).
 
 ### Frame-by-frame steps
 
@@ -251,7 +251,7 @@ The square workspace icon at the very top of the rail, above the first destinati
 
 ### Preconditions
 
-An authenticated session. Only one workspace is listed at this capture, so the switcher is reachable even with nothing to switch to.
+An authenticated session. Only one workspace is listed at this capture, so the switcher is reachable even with nothing to switch to [frame 715](../../screenshots/Slack%20web%20Jul%202024%20715.png).
 
 ### Frame-by-frame steps
 
@@ -276,7 +276,7 @@ The workspace icon at the head of the rail [frame 724](../../screenshots/Slack%2
 
 ### Preconditions
 
-An authenticated session on an account that has joined more than one workspace.
+An authenticated session on an account that has joined more than one workspace [frame 724](../../screenshots/Slack%20web%20Jul%202024%20724.png).
 
 ### Frame-by-frame steps
 

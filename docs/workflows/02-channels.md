@@ -185,7 +185,7 @@ An authenticated session with a workspace that already holds several channels an
 
 | Step | Frame(s) | What the user does | What changes on screen | Component(s) involved |
 |---|---|---|---|---|
-| 1 | [frame 69](../../screenshots/Slack%20web%20Jul%202024%2069.png) | Opens the wizard and focuses the name field | Step 1 renders as in flow `02.2`, and focusing the field reveals a right-aligned character counter reading 80. This capture's footer additionally carries an unchecked invite-external-people checkbox with an information glyph and a plan-tier badge, to the left of the muted forward action | `C-MODAL-SHELL`, `C-STEP-WIZARD`, `C-UPGRADE-GATE` |
+| 1 | [frame 69](../../screenshots/Slack%20web%20Jul%202024%2069.png) | Opens the wizard and focuses the name field | The body renders as step 1 does in flow `02.2` — Name label, hash-prefixed field, helper copy — and focusing the field reveals a right-aligned character counter reading 80. The **footer differs**: an unchecked invite-external-people checkbox with an information glyph and a plan-tier badge occupies the footer's left half **in place of the step-progress label**, which this capture does not render at all, beside the muted forward action | `C-MODAL-SHELL`, `C-STEP-WIZARD`, `C-UPGRADE-GATE` |
 | 2 | [frame 70](../../screenshots/Slack%20web%20Jul%202024%2070.png) | Types a channel name | The name appears after the hash glyph, the forward action becomes a filled primary, the counter is no longer rendered, and the external-invite checkbox stays unchecked | `C-STEP-WIZARD` |
 | 3 | [frame 71](../../screenshots/Slack%20web%20Jul%202024%2071.png) | Advances to step 2 and keeps the default visibility | The visibility radio group renders with public selected and private beneath it, and the footer offers back then create | `C-STEP-WIZARD` |
 | 4 | [frame 72](../../screenshots/Slack%20web%20Jul%202024%2072.png) | Confirms creation and reads the add-people modal | A modal titled to add people, with the new channel named on a sub-line, opens over the created channel. Its body stacks, in order: a tinted notice restricting additions to people already in this workspace; a radio pair offering to add all members of the workspace, pre-selected, or to add specific people; and a bordered group whose legend carries an eye glyph and states that only admins can see this setting, containing a toggle rendered on and labelled to automatically add anyone who joins the workspace. The footer offers a single terminal action | `C-MODAL-SHELL`, `C-SIDEBAR` |
@@ -463,7 +463,7 @@ An authenticated session in a workspace holding an archived channel that the use
 
 The bookmark bar sits directly beneath the conversation header on every conversation in the corpus, and this flow is the only place it is used. It adds a link bookmark, then a folder, then opens the folder to reveal its contents. Both dialogs disclose progressively: the bookmark dialog shows **no footer actions at all** until a link is entered [frame 257](../../screenshots/Slack%20web%20Jul%202024%20257.png) through [frame 266](../../screenshots/Slack%20web%20Jul%202024%20266.png).
 
-The flow is captured on a **direct-message conversation**, and its own menu row calls that conversation a channel. The bar is therefore a conversation-level affordance whose copy is channel-worded, which is why this document owns it and [05-direct-messages.md](05-direct-messages.md) does not.
+The flow is captured on a **direct-message conversation**, and its own menu row calls that conversation a channel. The bar is therefore a conversation-level affordance whose copy is channel-worded, which is why this document owns it and [05-direct-messages.md](05-direct-messages.md) does not [frame 257](../../screenshots/Slack%20web%20Jul%202024%20257.png), [frame 266](../../screenshots/Slack%20web%20Jul%202024%20266.png).
 
 ### Trigger
 
@@ -500,7 +500,7 @@ Five of this area's flows — `02.14` through `02.18` — are the same act seen 
 
 ### Trigger
 
-The channel's row in the sidebar, or the home destination in the rail. The preceding surface is owned by [07-canvases.md](07-canvases.md).
+The channel's row in the sidebar, or the home destination in the rail. The preceding surface is owned by [07-canvases.md](07-canvases.md) [frame 341](../../screenshots/Slack%20web%20Jul%202024%20341.png).
 
 ### Preconditions
 
@@ -520,7 +520,7 @@ The same channel, returned to from the apps surface. It differs from `02.14` in 
 
 ### Trigger
 
-The channel's row in the sidebar, leaving the apps surface owned by [11-apps-and-integrations.md](11-apps-and-integrations.md).
+The channel's row in the sidebar, leaving the apps surface owned by [11-apps-and-integrations.md](11-apps-and-integrations.md) [frame 371](../../screenshots/Slack%20web%20Jul%202024%20371.png).
 
 ### Preconditions
 
@@ -540,7 +540,7 @@ The same channel again, and the one capture in which the **suggestion cards are 
 
 ### Trigger
 
-The channel's row in the sidebar, leaving an app home surface owned by [11-apps-and-integrations.md](11-apps-and-integrations.md).
+The channel's row in the sidebar, leaving an app home surface owned by [11-apps-and-integrations.md](11-apps-and-integrations.md) [frame 373](../../screenshots/Slack%20web%20Jul%202024%20373.png).
 
 ### Preconditions
 
@@ -560,7 +560,7 @@ The same channel, returned to from the activity destination, with the suggestion
 
 ### Trigger
 
-The channel's row in the sidebar, leaving the activity destination owned by [12-activity-notifications.md](12-activity-notifications.md).
+The channel's row in the sidebar, leaving the activity destination owned by [12-activity-notifications.md](12-activity-notifications.md) [frame 393](../../screenshots/Slack%20web%20Jul%202024%20393.png).
 
 ### Preconditions
 
@@ -580,7 +580,7 @@ The same channel, returned to after the preferences dialog is closed. The frame 
 
 ### Trigger
 
-Dismissal of the preferences dialog, which is owned by [14-preferences-settings.md](14-preferences-settings.md).
+Dismissal of the preferences dialog, which is owned by [14-preferences-settings.md](14-preferences-settings.md) [frame 545](../../screenshots/Slack%20web%20Jul%202024%20545.png).
 
 ### Preconditions
 
@@ -600,7 +600,7 @@ Arriving in a **second** workspace shows a channel first, exactly as arriving in
 
 ### Trigger
 
-Joining a second workspace, a journey owned by [01-onboarding-and-auth.md](01-onboarding-and-auth.md). Workspace switching itself is flows `00.9` and `00.10` of [00-product-overview.md](00-product-overview.md).
+Joining a second workspace, a journey owned by [01-onboarding-and-auth.md](01-onboarding-and-auth.md). Workspace switching itself is flows `00.9` and `00.10` of [00-product-overview.md](00-product-overview.md) [frame 723](../../screenshots/Slack%20web%20Jul%202024%20723.png).
 
 ### Preconditions
 
@@ -642,7 +642,7 @@ The invitee's first view of a channel, which stacks two first-run affordances on
 
 ### Trigger
 
-Acceptance of an invitation, a journey owned by [01-onboarding-and-auth.md](01-onboarding-and-auth.md).
+Acceptance of an invitation, a journey owned by [01-onboarding-and-auth.md](01-onboarding-and-auth.md) [frame 751](../../screenshots/Slack%20web%20Jul%202024%20751.png).
 
 ### Preconditions
 
@@ -677,7 +677,7 @@ The **channel intro hero** is this area's own component usage of `C-EMPTY-STATE`
 
 ### Screen 2 — the create-a-channel wizard
 
-`C-MODAL-SHELL` hosting `C-STEP-WIZARD`, centred and dimming the shell, roughly a third of viewport width. Step 1 stacks a Name label, a hash-prefixed single-line field and helper copy, with the footer's progress label at the left and the forward action at the right [frame 58](../../screenshots/Slack%20web%20Jul%202024%2058.png). Step 2 replaces the body with a sub-line echoing the name behind the glyph that matches the current visibility choice, a Visibility label and a two-option radio group whose options state their scope inline on their own label lines after an em-dash — with a further indented sub-label on the private option only, so the group is **two lines tall for private and one for public** — and adds a back action beside the terminal action [frame 60](../../screenshots/Slack%20web%20Jul%202024%2060.png), [frame 61](../../screenshots/Slack%20web%20Jul%202024%2061.png). One capture of step 1 additionally carries an unchecked external-invite checkbox with an information glyph and a plan-tier badge in the footer's left half [frame 69](../../screenshots/Slack%20web%20Jul%202024%2069.png).
+`C-MODAL-SHELL` hosting `C-STEP-WIZARD`, centred and dimming the shell, roughly a third of viewport width. Step 1 stacks a Name label, a hash-prefixed single-line field and helper copy, with the footer's progress label at the left and the forward action at the right [frame 58](../../screenshots/Slack%20web%20Jul%202024%2058.png). Step 2 replaces the body with a sub-line echoing the name behind the glyph that matches the current visibility choice, a Visibility label and a two-option radio group whose options state their scope inline on their own label lines after an em-dash — with a further indented sub-label on the private option only, so the group is **two lines tall for private and one for public** — and adds a back action beside the terminal action [frame 60](../../screenshots/Slack%20web%20Jul%202024%2060.png), [frame 61](../../screenshots/Slack%20web%20Jul%202024%2061.png). **The footer's left half is a variant slot, not a fixed progress label.** One capture of step 1 renders an unchecked external-invite checkbox with an information glyph and a plan-tier badge there, and renders **no step-progress label at all** — the badge-bearing checkbox stands where the label stands in the other capture, and the label is absent from the frame both before and after a name is typed [frame 69](../../screenshots/Slack%20web%20Jul%202024%2069.png), [frame 70](../../screenshots/Slack%20web%20Jul%202024%2070.png). A build must therefore treat that slot as holding either the progress label or the gated option, never both at once.
 
 ### Screen 3 — the add-people modal
 

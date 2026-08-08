@@ -1011,6 +1011,153 @@ It is not fixed, and the reason is a rule rather than a preference: that block i
 
 **What to do instead, concretely.** The block's inner code element is horizontally scrollable, so the full text can be scrolled to on any surface. More simply: read it from this document's Markdown source in the repository, where it is not clipped and can be copied whole — which is the surface a build run takes it from in any case, and the same surface on which the frame links resolve and the diagrams render.
 
+### 10. Site search is inert on every page, and no search field is rendered
+
+Every page in the published site emits exactly one console error — `Uncaught ReferenceError: base_url is not defined` — and the site renders no search field at all: a count of the theme's search-component class returns **zero** occurrences on every page.
+
+The cause was traced to the documentation plugin rather than inferred. The plugin declares its Material-search option **off by default**, and with it off it installs the *classic* search plugin instead. That plugin emits a `search/main.js` whose line 106 reads `new Worker(joinUrl(base_url, "search/worker.js"))`, but the Material template it is paired with never defines a `base_url` global — so the reference throws at `search/main.js:106:41`, which is exactly where the stack trace points. The two halves are individually correct and mutually incompatible.
+
+**Consequences, measured rather than assumed.** The error is confined to the search bootstrap: it fires once per page load, before any content script, and nothing else on the page depends on it. Across every page and viewport exercised, **no request returned a status of 400 or above**, no second console error of any kind appeared, and every table, task list and code block rendered normally. A reader loses site search; they lose nothing else.
+
+**A remedy exists, is one line, and is deliberately withheld.** Setting the plugin's Material-search option to true installs the Material search index, which defines `base_url`, and renders the search field. That edit changes the site configuration's `plugins` key — and upstream requirements freeze `site_name` and `plugins` byte-for-byte, permitting exactly one edit outside the documentation directory: the navigation key. Applying it therefore requires explicit authorization to widen that permitted surface, on the same terms as [limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration). Until then, use the catalog's own [index of documents](#index-of-catalog-documents) and the coverage ledger's flow groupings, both of which are complete and need no search index.
+
+### 11. The theme's chrome controls are pointer-only, unnamed, and the drawer is not a modal
+
+[Limitations 7](#7-publishing-this-catalog-gives-the-site-a-nested-navigation-section-and-at-narrow-widths-that-sections-drawer-blanks-on-keyboard-tab) and [8](#8-the-nested-navigation-sections-disclosure-control-responds-to-enter-but-not-to-space) record two specific keyboard defects in the navigation the catalog's own pages bring into being. Direct measurement found the same origin produces a wider family, recorded here once so that no part of it looks like an oversight.
+
+**There is not a single `<button>` element on any page measured.** Every chrome control is a `<label for="…">` driving a hidden checkbox whose computed display is `none`. That construction is what produces the results below: a `<label>` has no implicit ARIA role and is not natively focusable, so a control built from one is operable by pointer and by nothing else.
+
+| Control | Accessible name | In the a11y tree | Tab-reachable | Enter | Space |
+|---|---|---|---|---|---|
+| Hamburger / drawer toggle | **none** | **absent entirely** | no | no | no — scrolls the page instead |
+| Table-of-contents toggle (row form) | "Overview" — names the page, not the action | as bare text | no | no | no — scrolls the page |
+| Table-of-contents toggle (title form) | "Table of contents" | as bare text | no | no | no — scrolls the page |
+| Nested-section "back" control | "Workflow Catalog" — the arrow is an empty span, so the name never conveys *back* | as bare text | no | no | no — scrolls the page |
+| Nested-section expander | "Workflow Catalog" | as focusable label text, with **no expanded-state attribute** | **yes**, fourth tab stop | **yes** | no — see limitation 8 |
+
+The hamburger's entire markup is a class, a `for` reference and a bare path-only icon with no title element — hence no name by any route. A pointer click on it does work, so these controls are pointer-only rather than broken.
+
+**The drawer is not a modal, and does not behave like one.** With it open: pressing **Escape does not close it** — the controlling checkbox reads the same before and after, and the result is identical whether focus sits outside the drawer or inside it. There is **no focus trap**: the drawer contains 70 tabbable elements, and focusing its last one and pressing Tab moves focus into the page content behind it while the drawer stays open. There is **no isolation of the content behind it**: across the whole page, the count of elements carrying a hidden-from-assistive-technology attribute, an inert attribute, a modal attribute or an open dialog is **zero in every case**; the body element carries a text-direction attribute and nothing else; and the document is not scroll-locked.
+
+**Back-navigation restores the blank drawer rather than resetting it.** Opening the drawer, tabbing until it blanks, navigating to another catalog page and then going back returns the reader to the *same* blank open drawer — the container's horizontal offset and its count of opaque rows come back unchanged, and the rendered frames are byte-identical. The mechanism is a back/forward-cache restore of the same document, so the offset simply persists. One refinement to limitation 7 belongs here: the blanking begins on the **fourth** Tab press, not the fifth.
+
+**No pressed state exists anywhere.** Measured on a sidebar navigation link at rest, on hover, on keyboard focus and during a genuinely held mouse press, the pressed rendering is identical to hover on every property examined, and the background colour is fully transparent in all four states. A scan of all 929 readable style rules found **zero** rules whose selector contains the active pseudo-class. Only keyboard focus is visually distinct, and it differs solely by an outline.
+
+**Heading permalinks are small, unnamed except by their glyph, and invisible at rest.** There are 132 of them, one per heading. Each is announced by its pilcrow glyph — the "Permanent link" title is exposed only as a description, because text content outranks a title in the accessible-name algorithm. Each is transparent until its heading is hovered, yet remains clickable while invisible. Measured hit targets are about 15 × 42 and 12 × 35 CSS pixels, so **none meets a 44 × 44 target**.
+
+**Following an in-page link does not move focus to its destination.** Activating a table-of-contents entry changes the fragment and scrolls the heading into view, but the active element remains the body, and the heading receives neither focus nor a tabindex. The fragment does relocate the sequential-focus starting point, so the first tab stop afterwards is the destination's own permalink — announced as a pilcrow.
+
+**Navigation landmarks are duplicated.** Fourteen navigation elements exist, five of which are the not-visible duplicate of the table of contents that the narrow-width layout nests inside the drawer, and **none of the five is hidden from assistive technology**, so a reader using one is offered nine landmarks where the page has four meaningful ones.
+
+Every item above is produced by the theme's generated markup and stylesheet. Remedying any of them requires replacing generated markup through a theme override, or adding a stylesheet or script — three things upstream requirements exclude outright, alongside the frozen `plugins` and `theme` keys. They are therefore disclosed on the same authorization-gated terms as limitations 2, 7 and 8.
+
+### 12. Links are distinguished from body text by colour alone, and hovering or focusing one lowers its contrast
+
+Measured on an inline frame citation inside a body paragraph, against the white page background resolved through the ancestor chain.
+
+Every candidate differentiator other than colour was measured and found identical between the link and its surrounding text: underline, font weight, font style, font size, font family, background colour, border, box shadow, outline and padding. **Colour is the only thing that marks a link**, and no underline appears at rest or on hover.
+
+| State | Link colour | Contrast against the page background |
+|---|---|---|
+| At rest | a deep indigo | **6.86:1** |
+| Hover | a brighter blue | **4.26:1** |
+| Keyboard focus | the same brighter blue, plus an outline | **4.26:1** |
+
+The direction of that change is the notable part and is stated plainly: **contrast falls when a reader interacts with a link**, from comfortably above the normal-text threshold at rest to just above it on hover and focus. Against the surrounding body text rather than the background, the link measures 2.35:1 at rest and 3.78:1 on hover — below the 3:1 that would let colour alone carry the distinction at rest.
+
+Link colour, hover colour and the absence of an underline are all theme stylesheet values. Changing them means adding a stylesheet, which upstream requirements exclude, so this is disclosed rather than fixed. What the catalog *can* control, and does, is that no meaning is ever carried by colour in the authored content: every citation is also identifiable by its text, which always reads `frame` followed by the frame number.
+
+### 13. Acceptance-criteria checkboxes are unnamed, non-interactive, and show a check glyph even when unchecked
+
+Upstream requirements mandate that every area document's acceptance criteria be written as Markdown task-list checkboxes, and all 23 documents comply. The Markdown processor renders each one as a disabled checkbox, and three measured consequences follow that a reader — particularly one using assistive technology — should know about.
+
+Measured on one area document with 61 acceptance criteria: **all 61 checkboxes have an empty accessible name.** The processor wraps each input in a label that contains only the input and an empty span, so the label supplies no name, and the criterion's text is a *sibling* of that label rather than its content — never associated with the control. A reader using a screen reader therefore hears an unnamed, disabled checkbox followed by unattached text.
+
+**The visible control is not the checkbox.** The real input is made transparent and the visible mark is a masked pseudo-element carrying a circle-with-check glyph at a very light tint. Because the glyph is part of the mask rather than a checked state, **an unchecked criterion still renders a faint check mark inside a circle** rather than an empty box — which reads, wrongly, as "done". That indicator measures **1.17:1** against the page background, so it is nearly invisible either way.
+
+**They are not interactive, and correctly so.** The pointer cursor is the default one on the input, its label and the indicator; a real click leaves the checked state unchanged, the input fires neither a click nor a change event, and focus does not move. The criteria are a specification to be read, not a checklist to be ticked in a browser — a build run records completion in its own tracking, not here.
+
+All three are Python-Markdown's own task-list output plus the theme's styling of it. The authored Markdown cannot name a control it does not emit, and the fix — naming the inputs or restyling the indicator — needs generated-markup or stylesheet changes that upstream requirements exclude. **What a build run should take from this section is the criteria's text, which is complete and unambiguous in the Markdown source regardless of how the checkbox renders.**
+
+### 14. Horizontally scrolling regions offer no affordance, no keyboard route and no persistent table headers
+
+The catalog's widest tables and its diagram code blocks both overflow horizontally at narrow widths. Measured at 390 pixels on the coverage ledger, and at three widths on the diagram blocks.
+
+**Tables.** Of the ledger page's five table wrappers, two overflow — the flow-groupings table by **86 px** and the main ledger by **286 px**. Both have an automatic horizontal-overflow style, and for both the scrollbar consumes **zero** layout height. Neither carries a tabindex, a role or a label, and neither is reachable by keyboard: tabbing from the preceding link lands on a descendant, because the browser excludes scroll containers that hold their own focusable children — and these hold 248 and 2,735 of them. **There is consequently no keyboard route to scroll a table; sideways movement happens only as a side effect of tabbing onto a link already off-screen.**
+
+**No affordance exists, and each candidate was measured rather than eyeballed:** no scrollbar is painted at rest (this browser uses overlay scrollbars, measured at zero thickness on both axes with a synthetic control probe), no background gradient or fade, no mask, no box shadow, no before- or after-pseudo-element content, no edge border, and no textual hint anywhere on the page. At rest the ledger shows only its first two columns; **the flow and area columns are absent with nothing whatsoever to suggest they exist**, and captions clip mid-word exactly at the viewport edge. Scrolling to the maximum offset reveals both missing columns intact, so the content is present and reachable — only undiscoverable.
+
+**The ledger's header row does not persist.** The table has no caption element. Its header cells are true header cells inside a real header row — but they carry **no attributes at all**, so no scope is declared, and both the header row and its cells compute to static positioning, so **the header is not sticky**. The table is over 121,000 pixels tall, so its column headers leave the viewport permanently after the first screenful, and a reader deep in the ledger has no on-screen reminder of which column is which. The ledger's four columns are, in order: the frame link, the observed caption, the owning flow, and the owning area document — stated here so the information survives the scroll.
+
+**Diagram code blocks, measured against a peer page to establish whether any one page is unusual.** [Limitation 2](#2-mermaid-diagrams-do-not-render-under-the-committed-site-configuration) explains why every diagram is published as a code box, and [limitation 9](#9-the-verbatim-build-prompt-is-wider-than-the-published-code-box-and-is-preserved-rather-than-re-wrapped) records the same clipping for the build prompt. The horizontal extent hidden at rest:
+
+| Viewport width | Canvases diagram | Pricing-plans diagram (peer) |
+|---|---|---|
+| 390 px | **278 px hidden** | **286 px hidden** |
+| 768 px | 0 — nothing hidden | 0 — nothing hidden |
+| 1440 px | 0 — nothing hidden | 0 — nothing hidden |
+
+**No page is an outlier.** The two differ by 8 pixels, which is precisely the one-character difference between their longest lines at the published monospace size — the condition is uniform across the catalog and is a property of a fixed-width code box in a narrow column, not of any one diagram. The scrolling element is the code element itself, and the theme rule governing it permits touch panning, so the full text is reachable by swipe or by script; as with the tables, no affordance advertises it. Nothing is hidden at 768 pixels or above, and page-level horizontal overflow is zero at every width measured.
+
+**Why the diagrams are not re-wrapped to fit.** At 390 pixels roughly 41 characters fit. Every node label carries a surface description *and* its flow cross-reference, the catalog's own line-length gate already caps these lines at 74 characters, and the widest canvases line is 73 while eight other areas sit at 74. Cutting labels to 41 characters would strip exactly the cross-references that make a diagram navigable, which upstream requirements ask each diagram to provide. The clipping is therefore accepted and disclosed, and the remedy — a scrollbar, a fade or an accessible name on the scroll region — is a stylesheet change that upstream requirements exclude. **On a narrow screen, read the diagrams and the widest tables from the Markdown source, or at 768 pixels or wider, where nothing is hidden.**
+
+### 15. At very wide viewports the line measure runs long and most of the width is unused
+
+Measured at 1920 × 1080 on the longest area document. The content column computes to **757 pixels** at a 17.6-pixel body size, and the longest body paragraph — 1,563 characters over 17 rendered lines, the line count agreed by two independent methods — gives a measure of **about 92 characters per line**. Two further paragraphs on the same page measure 93 and 94. Comfortable reading is usually put nearer 60 to 80.
+
+The width is distributed as follows, and the arithmetic is worth stating because the unused portion is the larger share:
+
+| Band | Width | Share of the viewport |
+|---|---|---|
+| Left outer margin | 289 px | 15.05% |
+| Navigation sidebar | 266 px | 13.86% |
+| **Content column** | **757 px** | **39.42%** |
+| Table-of-contents sidebar | 266 px | 13.86% |
+| Right outer margin | 289 px | 15.05% |
+
+So **60.58% of a 1920-pixel viewport is not the content column**, and 578 pixels of it — 30.1% — is empty outer margin, imposed by the theme grid's maximum width of 1342 pixels. Both the grid maximum and the body type scale are theme values; capping the measure or removing the outer margins requires a stylesheet, which upstream requirements exclude. A reader who finds the measure long can narrow the window: at 768 pixels the same paragraphs set to a shorter measure, and nothing in the catalog is hidden at that width.
+
+### 16. Three page-level niceties the theme does not emit under this configuration
+
+Measured in the built output rather than the preview server, so these describe what would actually be published:
+
+- **No meta description.** The built pages carry none, because the site configuration declares no site description — a key outside the one permitted edit.
+- **Fonts are fetched from a third-party origin.** Each page references two external font origins. Self-hosting them is a `theme` key change, which upstream requirements freeze.
+- **No back-to-top control.** The theme's return-to-top feature is not enabled, and these are among the longest pages a documentation site is likely to carry — the ledger's own table exceeds 121,000 pixels. Enabling it is a `theme` feature flag, equally frozen.
+
+None affects the correctness of any statement in the catalog, and all three are single-key changes for whoever is authorized to widen the configuration surface.
+
+### 17. The largest pages are heavy on a mobile connection, and the weight is the content the catalog is required to carry
+
+Mobile performance auditing of the largest pages scores them in the range of the high thirties to low seventies. The cause is not incidental: the coverage ledger renders **1,022 table rows and 1,115 citation anchors** in a single document, and the longest area document carries **1,396 citation anchors** on a page over 164,000 pixels tall. That volume *is* the deliverable — one row per frame with no exception, and a citation on every non-trivial claim — so the usual remedies (paginate, truncate, lazy-render) would each break a requirement the catalog exists to satisfy.
+
+Three measured points bound the concern rather than dismissing it. The pages contain **zero image elements**, so nothing large is fetched for layout — the 1,115 and 1,396 citations are plain anchors, and **not one request to the corpus is made on load**. **No request returns a status of 400 or above** on any page at any viewport. And locally the ledger reaches document-complete in about **0.8 seconds** despite its size. The cost is bytes of markup and layout of a very large table, not blocked resources or failed requests.
+
+Serving these pages compressed and cached is a hosting concern, and the section below explains why no such header exists in what was measured.
+
+### 18. A build-time advisory in the Markdown processor, and why no version is pinned
+
+The Markdown extension pack used to build the site has a published advisory concerning pathological input. Two facts bound what it means here. It is a **build-time** component: it converts Markdown to HTML when the site is built and is absent from the published artifact, which is static HTML. And its only input is this repository's own authored Markdown — there is no untrusted submission path, because the published site is read-only with no form, no query handling and no request handler of its own.
+
+**No version is pinned, and pinning one is excluded rather than overlooked.** The repository declares no dependency manifest of any kind — no Python requirements file, no project file, no Node manifest, no runtime version file — which was verified directly. Upstream requirements record zero dependency changes for this work and forbid creating a manifest, so the honest disclosure is the version this catalog was validated against — extension pack **10.21.3**, on the site generator **1.6.1**, the documentation plugin **1.7.0** and the diagram plugin **1.2.3** — together with the note that whoever introduces a manifest should pin these deliberately rather than inherit them.
+
+### 19. Everything above about server behaviour describes a preview server, not the published site
+
+Several conditions worth recording are properties of the local preview server, and they are separated out here because attributing them to the published artifact would be wrong.
+
+Measured against the preview server:
+
+| Probe | Result |
+|---|---|
+| A path containing an encoded null byte | **500**, a bare error rather than a rejection |
+| A path containing an invalid byte sequence | **200**, quietly serving a page |
+| `OPTIONS`, `POST`, `PUT`, `DELETE`, `TRACE` on a page | all **200**, returning the static page body — no echo, no state change |
+| Content-security, content-type-options, frame-options, referrer, transport-security and cache headers | **none present** |
+
+**The built artifact has no request handler at all.** It is 27 HTML files plus assets and a generated 404 page; it cannot accept a method, reject a byte sequence or set a header, because nothing in it executes on request. Every row above therefore describes the development server that renders a local preview, and every one of them is answered by the host that eventually serves the site — method restrictions and security headers are configured there, and path validation is that host's, not this repository's. Upstream requirements exclude deployment and hosting configuration from this work entirely, and no such configuration exists to change.
+
+One refinement to [limitation 1](#1-frame-image-links-resolve-on-the-source-host-but-return-404-in-the-published-documentation-site) belongs here, because it corrects a reasonable assumption in the opposite direction. A frame link followed in the published site returns a **404 page that carries the site's full header and all 27 catalog navigation links**, so a reader who lands there is one click from any document rather than stranded. What that page does not do is *explain* why a frame link cannot resolve — its body reads only that the page was not found. The explanation lives in limitation 1, and it is the reason this catalog links the corpus rather than embedding it.
+
 ## Omissions
 
 **Nothing is omitted.** This section is the catalog's single declared place for recording an omission, so it states the position plainly rather than leaving a reader to infer it: all twenty-five planned files are delivered, the two priority artifacts are complete at full depth, and the union invariant is satisfied rather than merely satisfiable. Where an earlier checkpoint recorded an outstanding item, the item is now delivered and the record is corrected here rather than quietly dropped.

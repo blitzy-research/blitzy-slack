@@ -134,7 +134,7 @@ The same thread is captured again after the huddle, from the activity destinatio
 
 The threads destination collects every thread the user participates in and renders each one as a self-contained card in the content region, complete with its own reply composer, so a thread can be read and answered without opening the conversation it belongs to [frame 355](../../screenshots/Slack%20web%20Jul%202024%20355.png). The single captured instance holds one thread, and that thread carries an unread boundary — a rule labelled New at its right-hand end, drawn in a crimson accent, separating the parent from the reply posted since the user last looked.
 
-This is a one-frame flow, and the frame is dense enough to specify the surface: destination heading, per-thread conversation context, parent, unread boundary, reply, and an inline composer whose also-send checkbox is labelled for a direct message because that is the conversation this thread hangs off.
+This is a one-frame flow, and the frame is dense enough to specify the surface: destination heading, per-thread conversation context, parent, unread boundary, reply, and an inline composer whose also-send checkbox is labelled for a direct message because that is the conversation this thread hangs off [frame 355](../../screenshots/Slack%20web%20Jul%202024%20355.png).
 
 ### Trigger
 
