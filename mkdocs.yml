@@ -1,6 +1,32 @@
 site_name: 'blitzy-slack'
 nav:
   - Home: index.md
+  - Workflow Catalog:
+      - Overview: workflows/README.md
+      - Product Overview & App Shell: workflows/00-product-overview.md
+      - Onboarding & Authentication: workflows/01-onboarding-and-auth.md
+      - Channels: workflows/02-channels.md
+      - Messaging & Composer: workflows/03-messaging-and-composer.md
+      - Threads: workflows/04-threads.md
+      - Direct Messages: workflows/05-direct-messages.md
+      - Huddles: workflows/06-huddles.md
+      - Canvases: workflows/07-canvases.md
+      - Lists: workflows/08-lists.md
+      - Search & Filters: workflows/09-search-and-filters.md
+      - Workflow Builder: workflows/10-workflow-builder.md
+      - Apps & Integrations: workflows/11-apps-and-integrations.md
+      - Activity & Notifications: workflows/12-activity-notifications.md
+      - Profiles & People: workflows/13-profiles-people.md
+      - Preferences & Settings: workflows/14-preferences-settings.md
+      - Admin & Workspace: workflows/15-admin-workspace.md
+      - Files & Media: workflows/16-files-media.md
+      - Marketing Site: workflows/17-marketing-site.md
+      - Pricing & Plans: workflows/18-pricing-plans.md
+      - Brand Guidelines: workflows/19-brand-guidelines.md
+      - Help & Community: workflows/20-help-community.md
+      - Error, Empty & Loading States: workflows/21-states.md
+      - External Collaboration: workflows/22-external-collaboration.md
+      - Screenshot Coverage Index: workflows/_screenshot-index.md
 plugins:
   - techdocs-core
   - mermaid2
