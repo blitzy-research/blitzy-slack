@@ -1,0 +1,48 @@
+# The screenshot corpus is binary reference evidence: 1,022 frames that must stay
+# byte-identical. Marking it binary stops Git attempting textual diffs or merges
+# on it, and stops any end-of-line normalisation from ever rewriting a byte.
+screenshots/** binary
+screenshots/** -diff
+screenshots/** -merge
+screenshots/** linguist-vendored
+
+# All image formats are binary wherever they appear.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Authored text is stored and checked out with LF endings.
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+*.sh text eol=lf
+*.prisma text eol=lf
+.env.example text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.dockerignore text eol=lf
+.npmrc text eol=lf
+.nvmrc text eol=lf
+
+# Lockfiles are generated: keep them out of diff review noise but do track them.
+pnpm-lock.yaml text eol=lf -diff linguist-generated
+
+# Generated API description and raw measurement output are reviewed as data.
+packages/shared/src/openapi/openapi.json text eol=lf linguist-generated
+tools/measure-frames/out/*.json text eol=lf linguist-generated

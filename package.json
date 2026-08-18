@@ -1,0 +1,44 @@
+{
+  "name": "relay",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Relay - a workspace-scoped, channel-based team communication platform.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.20.2 <21",
+    "pnpm": ">=9.15.9 <10"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:e2e": "pnpm --filter @relay/e2e run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:generate": "pnpm --filter @relay/db run generate",
+    "db:migrate": "pnpm --filter @relay/db run migrate",
+    "db:seed": "pnpm --filter @relay/db run seed",
+    "db:seed:bulk": "pnpm --filter @relay/db run seed:bulk",
+    "measure:frames": "pnpm --filter @relay/measure-frames run start",
+    "check:brand": "pnpm --filter @relay/check-brand run start",
+    "check:corpus": "pnpm --filter @relay/check-corpus run start",
+    "ac:manifest": "pnpm --filter @relay/ac-manifest run start",
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "infra:logs": "docker compose logs -f"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "eslint": "9.39.5",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "prettier": "3.9.6",
+    "turbo": "2.10.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.67.0",
+    "vitest": "4.1.10"
+  }
+}

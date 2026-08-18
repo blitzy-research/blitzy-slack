@@ -1,0 +1,21 @@
+# Read-only inputs. Formatting these would modify files the project rules forbid
+# touching, so they are excluded from every formatting run.
+screenshots/
+docs/workflows/
+blitzy/
+catalog-info.yaml
+mkdocs.yml
+
+# Generated or vendored artifacts.
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+playwright-report/
+test-results/
+site/
+pnpm-lock.yaml
+packages/db/prisma/migrations/
+packages/shared/src/openapi/openapi.json
+tools/measure-frames/out/

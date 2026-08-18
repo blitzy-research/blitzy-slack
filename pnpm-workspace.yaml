@@ -1,0 +1,8 @@
+# Workspace membership. Only one level of nesting is supported by pnpm, which is
+# exactly the layout this repository uses: applications, libraries, tooling and
+# the end-to-end suite.
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "tools/*"
+  - "e2e"

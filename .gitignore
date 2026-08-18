@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+out/
+!tools/measure-frames/out/
+.vite/
+*.tsbuildinfo
+
+# Task-runner and tool caches
+.turbo/
+.eslintcache
+.cache/
+
+# Test and coverage artifacts
+coverage/
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+
+# Local environment (only .env.example is committed)
+.env
+.env.*
+!.env.example
+
+# Generated database client
+packages/db/generated/
+
+# Documentation-site output (the site is built, never committed)
+site/
+
+# Local scratch and editor state
+*.log
+*.local
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Python virtual environments (documentation-site toolchain only)
+.venv/
+venv/

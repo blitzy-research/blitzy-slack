@@ -1,0 +1,21 @@
+{
+  "name": "@relay/check-corpus",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pipeline guard: verifies the reference corpus file count and byte identity using metadata only.",
+  "license": "UNLICENSED",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "start": "pnpm run build && node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  }
+}

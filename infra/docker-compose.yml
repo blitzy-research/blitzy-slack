@@ -1,0 +1,113 @@
+# Local dependency stack. Everything the product needs at runtime, with no
+# external account of any kind: a database, a cache and publish/subscribe bus,
+# S3-compatible object storage, and an SMTP sink that captures mail instead of
+# sending it.
+#
+# Run it from the repository root - .env sets COMPOSE_FILE to this file:
+#
+#   cp .env.example .env
+#   docker compose up -d
+#
+# Every published port is parameterised so parallel checkouts can coexist; see
+# infra/README.md for the CLONE_INDEX convention. Data lives in named volumes
+# only, so the project directory is never written to.
+
+name: ${COMPOSE_PROJECT_NAME:-relay}
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-relay}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-relay_local_only}
+      POSTGRES_DB: ${POSTGRES_DB:-relay}
+      # Deterministic collation for reproducible ordering across machines.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/10-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-relay} -d ${POSTGRES_DB:-relay}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  redis:
+    image: redis:7
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-redis
+    restart: unless-stopped
+    command:
+      [
+        "redis-server",
+        "--appendonly",
+        "yes",
+        "--save",
+        "60",
+        "1",
+        "--maxmemory-policy",
+        "noeviction",
+      ]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  objectstore:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-objectstore
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:-relay_local_access}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:-relay_local_secret}
+      MINIO_BROWSER_REDIRECT_URL: http://localhost:${OBJECT_STORE_CONSOLE_PORT:-9001}
+    ports:
+      - "${OBJECT_STORE_PORT:-9000}:9000"
+      - "${OBJECT_STORE_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - objectstore-data:/data
+
+  objectstore-init:
+    image: minio/mc:RELEASE.2025-08-13T08-35-41Z
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-objectstore-init
+    depends_on:
+      objectstore:
+        condition: service_started
+    environment:
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-relay_local_access}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-relay_local_secret}
+      S3_BUCKET: ${S3_BUCKET:-relay-uploads}
+    entrypoint: ["/bin/sh", "/etc/objectstore/bootstrap.sh"]
+    volumes:
+      - ./minio/bootstrap.sh:/etc/objectstore/bootstrap.sh:ro
+    restart: "no"
+
+  mail:
+    image: axllent/mailpit:v1.30.7
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-mail
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+      MP_MAX_MESSAGES: 5000
+    ports:
+      - "${MAIL_SMTP_PORT:-1025}:1025"
+      - "${MAIL_UI_PORT:-8025}:8025"
+    volumes:
+      - mail-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
+  objectstore-data:
+  mail-data:

@@ -1,0 +1,43 @@
+# The reference frame corpus is 599 MB of read-only evidence. It must never enter
+# a build context, a container image or a client bundle.
+screenshots/
+
+# The specification catalog and vendor documentation are inputs, not artifacts.
+docs/
+blitzy/
+mkdocs.yml
+
+# Version-control metadata and local tooling state.
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Dependencies and build output are installed or produced inside the image.
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+.turbo/
+**/.turbo/
+.vite/
+**/*.tsbuildinfo
+
+# Test and coverage artifacts.
+coverage/
+**/coverage/
+playwright-report/
+**/playwright-report/
+test-results/
+**/test-results/
+
+# Local secrets and scratch files never travel into an image.
+.env
+.env.*
+!.env.example
+*.log
+.venv/
+venv/
+site/

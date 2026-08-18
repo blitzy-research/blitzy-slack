@@ -1,0 +1,24 @@
+{
+  "name": "@relay/e2e",
+  "version": "0.0.0",
+  "private": true,
+  "description": "End-to-end suite: one specification per surface family, a multi-client realtime project and the accessibility pass.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf .turbo playwright-report test-results",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "playwright test",
+    "test:a11y": "playwright test a11y.spec.ts",
+    "test:realtime": "playwright test --project=multi-client",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
+    "@relay/db": "workspace:*",
+    "@relay/shared": "workspace:*",
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3"
+  }
+}
