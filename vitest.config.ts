@@ -1,93 +1,33 @@
-import { defineConfig } from 'vitest/config';
-
 /**
- * Unit and component test projects for the whole workspace.
+ * Auto-discovery shim. The fast test projects are declared in exactly one
+ * place: `vitest.workspace.ts`, next to this file.
  *
- * Note on file naming: the pinned runner is Vitest 4, which removed support for
- * a separate `vitest.workspace.*` file - a `workspace` key now throws - so the
- * project list lives here under `test.projects`, which is the supported
- * equivalent. Behaviour is unchanged: one project per workspace, each with the
- * environment its code actually needs.
+ * WHY THIS FILE STILL EXISTS
+ * --------------------------
+ * The pinned runner (4.1.10) searches for `vite.config.*` and `vitest.config.*`
+ * and nothing else -- the standalone `*.workspace.*` manifest it once
+ * discovered by name was removed from the runner. The project list is
+ * nevertheless mandated to live at `vitest.workspace.ts`, and that file is
+ * loaded explicitly by the workspace `test` script:
  *
- * Integration tests are deliberately absent from this list. They need a real
- * database and are run through `pnpm --filter @relay/api run test:integration`,
- * so the default test task stays fast.
+ *     vitest run --config vitest.workspace.ts
+ *
+ * This shim exists so that the two routes cannot disagree. Anyone who runs the
+ * runner without that flag -- a bare `vitest`, an editor integration, or a
+ * `--project <name>` filter from inside a package -- lands here and gets the
+ * same project list, because this file re-exports it rather than restating it.
+ *
+ * WHY IT IS A RE-EXPORT AND NOT A SECOND PROJECT LIST
+ * --------------------------------------------------
+ * It previously carried its own copy of the project list. Two lists in one
+ * repository is a drift the moment one is edited and the other is not: the same
+ * command reports different results depending on which file the runner happened
+ * to load, and a project can be dropped from one list without a single check
+ * turning red. Delegating means there is one definition, one set of project
+ * names, and one set of include and exclude globs, whichever route is taken.
+ *
+ * There is deliberately nothing else here. Anything added to this file would be
+ * a second source of truth again -- put it in `vitest.workspace.ts`, which is
+ * where the project list, the coverage configuration and the reporters live.
  */
-export default defineConfig({
-  test: {
-    projects: [
-      {
-        test: {
-          name: 'shared',
-          root: './packages/shared',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'db',
-          root: './packages/db',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'ui',
-          root: './packages/ui',
-          environment: 'jsdom',
-          include: ['src/**/*.test.{ts,tsx}'],
-        },
-      },
-      {
-        test: {
-          name: 'api',
-          root: './apps/api',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/unit/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'web',
-          root: './apps/web',
-          environment: 'jsdom',
-          include: ['src/**/*.test.{ts,tsx}'],
-        },
-      },
-      {
-        test: {
-          name: 'measure-frames',
-          root: './tools/measure-frames',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'check-brand',
-          root: './tools/check-brand',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'check-corpus',
-          root: './tools/check-corpus',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-      {
-        test: {
-          name: 'ac-manifest',
-          root: './tools/ac-manifest',
-          environment: 'node',
-          include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-        },
-      },
-    ],
-  },
-});
+export { default } from './vitest.workspace';

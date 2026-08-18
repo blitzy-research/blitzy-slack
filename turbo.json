@@ -10,7 +10,8 @@
     "pnpm-lock.yaml",
     "prettier.config.cjs",
     "tsconfig.base.json",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "vitest.workspace.ts"
   ],
   "globalEnv": ["CI", "NODE_ENV"],
   "globalPassThroughEnv": [

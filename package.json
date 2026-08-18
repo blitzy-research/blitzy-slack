@@ -22,7 +22,7 @@
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "lint": "eslint .",
-    "test": "turbo run test",
+    "test": "vitest run --config vitest.workspace.ts",
     "test:integration": "pnpm --filter @relay/api test:integration",
     "test:e2e": "pnpm --filter @relay/e2e test",
     "test:a11y": "pnpm --filter @relay/e2e test:a11y",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "20.19.43",
+    "@vitest/coverage-v8": "4.1.10",
     "eslint": "9.39.5",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react-hooks": "7.1.1",

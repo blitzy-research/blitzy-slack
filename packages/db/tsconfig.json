@@ -1,13 +1,54 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    // Node module semantics, overriding the base's bundler resolution. This package
+    // is never bundled: it is compiled once and executed directly by Node as an ES
+    // module, so a relative import that omits its extension has to be a compile
+    // error (TS2835) rather than a seed run that dies on its first import with
+    // ERR_MODULE_NOT_FOUND. Every other Node workspace applies the same override,
+    // so the repository compiles under one module contract.
     "module": "Node16",
     "moduleResolution": "Node16",
-    "outDir": "dist",
+
+    // rootDir spans the package because there is authored TypeScript in three
+    // places - src/, the two seeds under prisma/, and test/ - and one project
+    // configuration covers all of them. This is what puts the barrel at
+    // dist/src/index.js and the seeds at dist/prisma/seed.js and
+    // dist/prisma/seed-bulk.js: the exact paths the manifest beside this file names
+    // in its "exports" map and in its seed scripts. Narrowing this to "src" would
+    // move the barrel and leave the seeds outside the project altogether, and no
+    // TypeScript runner is installed to execute them from source instead.
     "rootDir": ".",
-    "composite": false,
-    "paths": {}
+    "outDir": "dist",
+
+    // Incremental state belongs with the output it describes rather than at the
+    // package root. It is ignored twice over: inside dist/, and matching
+    // *.tsbuildinfo.
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+
+    // A Node-only package: it constructs a database client, reads configuration and
+    // runs seeds. No DOM library and no browser types belong here.
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"],
-  "exclude": ["node_modules", "dist", "test", "**/*.test.ts"]
+
+  // The three authored areas. The prisma glob is single-level on purpose: the only
+  // TypeScript under it is the two seeds, while schema.prisma is not TypeScript at
+  // all and prisma/migrations/** is checked-in SQL history that must never be
+  // compiled. The tests are inside the program because they are this package's
+  // evidence that workspace isolation cannot be bypassed, so they are type-checked
+  // under the same strict settings as the code they cover; the JavaScript that
+  // lands under dist/test/ is a harmless, untracked by-product.
+  "include": ["src/**/*.ts", "prisma/*.ts", "test/**/*.ts"],
+
+  "exclude": ["node_modules", "dist"],
+
+  // The base resolves "@relay/shared" to that package's source barrel, which lies
+  // outside this rootDir, so with no reference here the compiler pulls those
+  // sources into this program and fails with TS6059. Naming the composite project
+  // instead redirects the import to its emitted declarations and gives `tsc -b` the
+  // build order, which is what the base's declaration, declarationMap and composite
+  // settings are for - none of them is overridden here. No local "paths" entry is
+  // added either: the barrel the base names stays the one way into this package, so
+  // the unscoped client cannot be reached around the isolation chokepoint.
+  "references": [{ "path": "../shared" }]
 }
