@@ -1,12 +1,37 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    // Node module semantics, overriding the base. The base resolves the way a
+    // bundler does, which lets a relative import without a file extension
+    // compile cleanly and then fail at run time with ERR_MODULE_NOT_FOUND. This
+    // tool is never bundled: it is compiled once and executed directly by Node
+    // as an ES module, so it must resolve the way Node does. Under node16 a
+    // missing extension is a compile error (TS2835) instead of a measurement run
+    // that dies on its first import, and relative specifiers inside src/ carry
+    // an explicit .js extension. Every other workspace applies this same
+    // override, so the whole repository compiles under one module contract.
     "module": "Node16",
     "moduleResolution": "Node16",
-    "outDir": "dist",
-    "rootDir": "src",
-    "composite": false
+
+    // rootDir spans the package rather than just src/, because test/ is part of
+    // the program (see include below). That places the command-line entry at
+    // dist/src/index.js, which is exactly the path the sibling package
+    // manifest's `measure` script runs. Narrowing this to "src" would move the
+    // entry to dist/index.js and break `pnpm measure:frames`.
+    "rootDir": ".",
+    "outDir": "dist"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "out", "test"]
+
+  // The detector tests are this tool's only evidence that its measurements are
+  // real, so they are type-checked under the same strict settings as the code
+  // they cover: an unindexed pixel row or an absent measurement has to be a
+  // compile-time concern in the tests too, not a silent undefined. The test
+  // JavaScript that lands under dist/test/ is a harmless, untracked by-product.
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+
+  // out/ holds the committed measurement records. They are a deliverable and the
+  // evidence that the design tokens were extracted rather than estimated, so
+  // they are neither compiler input nor build output to be cleaned. Compiled
+  // output goes to dist/ alone, which is where the ignore rules expect it.
+  "exclude": ["node_modules", "dist", "out"]
 }

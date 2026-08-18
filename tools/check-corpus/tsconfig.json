@@ -5,7 +5,10 @@
     "moduleResolution": "Node16",
     "outDir": "dist",
     "rootDir": "src",
-    "composite": false
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "test"]

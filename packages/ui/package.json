@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run --config ../../vitest.config.ts --project ui"
+    "test": "pnpm -w exec vitest run --project ui"
   },
   "dependencies": {
     "@lexical/react": "0.49.0",

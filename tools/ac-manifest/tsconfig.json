@@ -5,8 +5,7 @@
     "moduleResolution": "Node16",
     "outDir": "dist",
     "rootDir": "src",
-    "composite": false
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "test"]
+  "include": ["src"]
 }
