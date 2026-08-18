@@ -1,34 +1,38 @@
 {
-  "name": "relay",
-  "version": "0.0.0",
+  "name": "blitzy-relay",
   "private": true,
-  "description": "Relay - a workspace-scoped, channel-based team communication platform.",
-  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A workspace-scoped, channel-based team communication platform for focused collaboration.",
   "packageManager": "pnpm@9.15.9",
   "engines": {
-    "node": ">=20.20.2 <21",
-    "pnpm": ">=9.15.9 <10"
+    "node": ">=20.20.2 <21.0.0",
+    "pnpm": ">=9.15.9 <10.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "testcontainers@12.1.0>undici": "7.29.0"
+    }
+  },
+  "dependencyOverrideReasons": {
+    "testcontainers@12.1.0>undici": "The required Node 20.20.2 runtime cannot execute undici 8.10.0 selected by testcontainers 12.1.0. Pinning undici 7.29.0 preserves the mandated direct package versions and is verified by import and live-container smoke tests."
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "test": "turbo run test",
-    "test:e2e": "pnpm --filter @relay/e2e run test",
-    "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "db:generate": "pnpm --filter @relay/db run generate",
-    "db:migrate": "pnpm --filter @relay/db run migrate",
-    "db:seed": "pnpm --filter @relay/db run seed",
-    "db:seed:bulk": "pnpm --filter @relay/db run seed:bulk",
-    "measure:frames": "pnpm --filter @relay/measure-frames run start",
-    "check:brand": "pnpm --filter @relay/check-brand run start",
-    "check:corpus": "pnpm --filter @relay/check-corpus run start",
-    "ac:manifest": "pnpm --filter @relay/ac-manifest run start",
-    "infra:up": "docker compose up -d",
-    "infra:down": "docker compose down",
-    "infra:logs": "docker compose logs -f"
+    "lint": "eslint .",
+    "test": "turbo run test",
+    "test:integration": "pnpm --filter @relay/api test:integration",
+    "test:e2e": "pnpm --filter @relay/e2e test",
+    "test:a11y": "pnpm --filter @relay/e2e test:a11y",
+    "db:migrate": "pnpm --filter @relay/db migrate",
+    "db:seed": "pnpm --filter @relay/db seed",
+    "db:seed:bulk": "pnpm --filter @relay/db seed:bulk",
+    "measure:frames": "pnpm --filter @relay/measure-frames measure",
+    "check:brand": "pnpm --filter @relay/check-brand check",
+    "check:corpus": "pnpm --filter @relay/check-corpus check",
+    "ac:manifest": "pnpm --filter @relay/ac-manifest ac:manifest"
   },
   "devDependencies": {
     "@types/node": "20.19.43",

@@ -2,43 +2,31 @@
   "name": "@relay/db",
   "version": "0.0.0",
   "private": true,
-  "description": "Data layer: schema, migrations, seeds, the workspace-isolation client extension and the transactional sequence allocator.",
-  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "default": "./dist/src/index.js"
+      "import": "./dist/src/index.js"
     }
   },
-  "files": [
-    "dist",
-    "prisma/schema.prisma",
-    "prisma/migrations"
-  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist .turbo *.tsbuildinfo",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint src prisma",
-    "test": "vitest run",
     "generate": "prisma generate",
-    "migrate": "prisma migrate deploy",
-    "migrate:dev": "prisma migrate dev",
-    "migrate:reset": "prisma migrate reset --force",
-    "studio": "prisma studio",
-    "seed": "pnpm run build && node dist/prisma/seed.js",
-    "seed:bulk": "pnpm run build && node dist/prisma/seed-bulk.js"
+    "postinstall": "prisma generate",
+    "build": "prisma generate && tsc -b tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "migrate": "cd ../.. && prisma migrate deploy --schema packages/db/prisma/schema.prisma",
+    "seed": "pnpm run build && node --env-file=../../.env dist/prisma/seed.js",
+    "seed:bulk": "pnpm run build && node --env-file=../../.env dist/prisma/seed-bulk.js"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",
     "@relay/shared": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "20.19.43",
-    "prisma": "6.19.3",
-    "typescript": "5.9.3",
-    "vitest": "4.1.10"
+    "prisma": "6.19.3"
   }
 }

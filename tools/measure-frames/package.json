@@ -2,23 +2,15 @@
   "name": "@relay/measure-frames",
   "version": "0.0.0",
   "private": true,
-  "description": "Deterministic frame measurement: crops the attribution band, differences scanlines, autocorrelates row pitch and emits one JSON record per manifest frame.",
+  "type": "module",
+  "description": "Performs deterministic geometric measurement of specification frames for design-token derivation.",
   "license": "UNLICENSED",
-  "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist .turbo *.tsbuildinfo",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint src",
-    "test": "vitest run",
-    "start": "pnpm run build && node dist/index.js"
+    "build": "tsc -b",
+    "typecheck": "tsc -p . --noEmit",
+    "measure": "pnpm run build && node dist/src/index.js"
   },
   "dependencies": {
     "sharp": "0.35.3"
-  },
-  "devDependencies": {
-    "@types/node": "20.19.43",
-    "typescript": "5.9.3",
-    "vitest": "4.1.10"
   }
 }

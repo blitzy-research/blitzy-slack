@@ -1,7 +1,9 @@
 /**
  * Flat ESLint configuration for the whole workspace.
  *
- * The root package is CommonJS, so this file uses `require`.
+ * The root package declares `"type": "module"`, so this `.js` file is an ES
+ * module and uses `import`/`export default`. Prettier's configuration keeps the
+ * `.cjs` extension because it stays a CommonJS script.
  *
  * The load-bearing part of this file is the import-boundary block. The project
  * rule "each shared contract is implemented exactly once" is only enforceable
@@ -9,9 +11,9 @@
  * workspace's `src` tree fail the build, so a consumer cannot reach past a
  * package barrel and cannot quietly grow a local copy of a shared contract.
  */
-const tseslint = require('typescript-eslint');
-const jsxA11y = require('eslint-plugin-jsx-a11y');
-const reactHooks = require('eslint-plugin-react-hooks');
+import tseslint from 'typescript-eslint';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 /** Paths that are read-only inputs or generated output: never linted. */
 const IGNORES = [
@@ -50,7 +52,7 @@ const IMPORT_BOUNDARY = {
   ],
 };
 
-module.exports = tseslint.config(
+export default tseslint.config(
   { ignores: IGNORES },
 
   // TypeScript baseline for every source file in the workspace.
@@ -107,10 +109,17 @@ module.exports = tseslint.config(
     },
   },
 
-  // Configuration files at the root of a workspace are plain Node scripts.
+  // Configuration files that keep the `.cjs` extension are CommonJS scripts.
   {
-    files: ['*.js', '*.cjs', '**/*.config.{js,cjs}'],
+    files: ['*.cjs', '**/*.config.cjs'],
     languageOptions: { sourceType: 'commonjs' },
     rules: { '@typescript-eslint/no-require-imports': 'off' },
+  },
+
+  // Every other `.js`/`.mjs` file in the workspace is an ES module, because the
+  // root package declares `"type": "module"`.
+  {
+    files: ['*.js', '*.mjs', '**/*.config.{js,mjs}'],
+    languageOptions: { ecmaVersion: 2022, sourceType: 'module' },
   },
 );

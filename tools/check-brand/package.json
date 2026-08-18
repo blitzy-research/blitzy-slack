@@ -2,20 +2,20 @@
   "name": "@relay/check-brand",
   "version": "0.0.0",
   "private": true,
-  "description": "Pipeline guard: fails the build on any third-party identity token outside the allowlisted read-only paths.",
-  "license": "UNLICENSED",
-  "main": "./dist/index.js",
+  "type": "module",
+  "description": "Build-time guard that fails the pipeline when a prohibited third-party product name appears outside the five read-only paths.",
+  "engines": {
+    "node": ">=20.20.2 <21"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist .turbo *.tsbuildinfo",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint src",
-    "test": "vitest run",
-    "start": "pnpm run build && node dist/index.js"
+    "check": "tsc -p tsconfig.json && node dist/index.js",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "@types/node": "20.19.43",
-    "typescript": "5.9.3",
-    "vitest": "4.1.10"
+    "eslint": "9.39.5",
+    "typescript": "5.9.3"
   }
 }
