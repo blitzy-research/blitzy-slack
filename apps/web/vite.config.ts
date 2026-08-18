@@ -8,8 +8,8 @@ import react from '@vitejs/plugin-react';
  * development: the session cookie stays first-party and the WebSocket upgrade
  * carries it without a cross-origin exception.
  */
-const apiTarget = process.env.PUBLIC_API_URL ?? 'http://localhost:3001';
-const webPort = Number(process.env.WEB_PORT ?? 5173);
+const apiTarget = process.env['PUBLIC_API_URL'] ?? 'http://localhost:3001';
+const webPort = Number(process.env['WEB_PORT'] ?? 5173);
 
 export default defineConfig({
   plugins: [react()],

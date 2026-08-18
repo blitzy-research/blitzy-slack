@@ -2,11 +2,14 @@
 node_modules/
 .pnpm-store/
 
-# Build output
+# Build output. Every workspace compiles to dist/: the tsc outDir in apps/api,
+# packages/* and tools/*, and the Vite build.outDir in apps/web. Turborepo
+# declares dist/** and build/** as its task outputs. There is deliberately no
+# blanket out/ pattern: tools/measure-frames/out/ holds the committed measurement
+# records that prove the design tokens were extracted rather than estimated, and
+# no workspace emits build output to a directory of that name.
 dist/
 build/
-out/
-!tools/measure-frames/out/
 .vite/
 *.tsbuildinfo
 
@@ -22,25 +25,35 @@ test-results/
 blob-report/
 .playwright/
 
-# Local environment (only .env.example is committed)
+# Local environment. A real .env carries the session secret and the object-storage
+# credentials, so it must never enter history; the .env.* pattern also covers
+# .env.local and .env.<mode>.local. The negation keeps the committed template
+# tracked: it is the documented default for every configurable value, and the
+# documented setup sequence copies it to create a working local configuration.
 .env
 .env.*
 !.env.example
 
-# Generated database client
-packages/db/generated/
+# Generated database client. The @relay/db workspace runs `prisma generate`, which
+# writes the client into node_modules/.prisma (already covered by the dependencies
+# rule above), and compiles its own sources to dist/. No further entry is warranted,
+# so none is guessed at here.
 
 # Documentation-site output (the site is built, never committed)
 site/
 
-# Local scratch and editor state
+# Logs. The package manager rotates its debug log (pnpm-debug.log.1), and a rotated
+# name no longer ends in .log, so both debug patterns are listed explicitly.
 *.log
-*.local
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor and operating-system state. Nothing under .vscode/ is committed, so there is
+# no shared settings file to re-include.
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/*
-!.vscode/extensions.json
 
 # Python virtual environments (documentation-site toolchain only)
 .venv/

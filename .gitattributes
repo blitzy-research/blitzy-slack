@@ -1,48 +1,178 @@
-# The screenshot corpus is binary reference evidence: 1,022 frames that must stay
-# byte-identical. Marking it binary stops Git attempting textual diffs or merges
-# on it, and stops any end-of-line normalisation from ever rewriting a byte.
-screenshots/** binary
-screenshots/** -diff
-screenshots/** -merge
-screenshots/** linguist-vendored
+# Git attributes for the Relay monorepo.
+#
+# This file has two jobs, in priority order.
+#
+#   1. Protect the read-only inputs. The reference frame corpus under
+#      screenshots/ is 1,022 binary capture files that must remain
+#      byte-identical, and the specification catalog, the vendor documentation
+#      folder and the two root metadata files are read-only inputs alongside it.
+#      An end-of-line normalisation is a re-encoding, so no normalising
+#      attribute is ever declared over any of those paths.
+#
+#   2. Keep authored text and review diffs predictable. Normalisation is
+#      declared tree by tree over the authored source only, and generated
+#      artifacts are collapsed in review without being hidden from it.
+#
+# There is deliberately NO repository-wide `* text=auto` here. A global
+# normalisation directive is the single most likely way to rewrite a byte in a
+# tracked read-only file, and byte-identity is absolute. Normalisation is
+# therefore opt-in per path, and the last block re-asserts "no conversion" over
+# the read-only inputs so that nothing above it can reach them.
+#
+# Read this together with .dockerignore, which handles the other half of corpus
+# containment: keeping the corpus out of every build context, container image
+# and client bundle. .prettierignore excludes the same read-only paths from
+# formatting runs.
+#
+# Every pattern that addresses the corpus matches on DIRECTORY and EXTENSION
+# only. The corpus filenames carry a third party's product name and the corpus
+# may not be renamed, so no filename form taken from it is ever written into
+# authored source.
+#
+# Pattern syntax note: Git matches these patterns with the same rules as
+# .gitignore. Brace alternation is NOT supported, so each extension gets its
+# own line. A leading slash anchors a pattern to the repository root.
 
-# All image formats are binary wherever they appear.
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
-*.webp binary
-*.avif binary
-*.ico binary
-*.woff binary
-*.woff2 binary
+# ---------------------------------------------------------------------------
+# 1. Reference frame corpus - read-only binary evidence, byte-identical
+# ---------------------------------------------------------------------------
+# `binary` is a macro for `-text -diff -merge`. All three are also stated
+# explicitly so the guarantee is legible without expanding the macro:
+#   -text   never convert line endings, in either direction, ever. This also
+#           overrides any core.autocrlf or core.eol a contributor has set
+#           globally, which is what makes the byte-identity guarantee hold on
+#           any machine.
+#   -diff   never attempt a textual diff over binary content.
+#   -merge  never synthesise a merged result inside a read-only tree; a
+#           conflict is reported instead. This affects merge results only and
+#           leaves a normal checkout untouched.
+screenshots/**                            binary -text -diff -merge
+screenshots/**/*.png                      binary -text -diff -merge
 
-# Authored text is stored and checked out with LF endings.
-*.ts text eol=lf
-*.tsx text eol=lf
-*.js text eol=lf
-*.cjs text eol=lf
-*.mjs text eol=lf
-*.json text eol=lf
-*.jsonc text eol=lf
-*.css text eol=lf
-*.html text eol=lf
-*.md text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
-*.sql text eol=lf
-*.sh text eol=lf
-*.prisma text eol=lf
-.env.example text eol=lf
-.gitignore text eol=lf
-.gitattributes text eol=lf
-.dockerignore text eol=lf
-.npmrc text eol=lf
-.nvmrc text eol=lf
+# The corpus is vendored input, not project source: keep it out of repository
+# language statistics.
+screenshots/**                            linguist-vendored
 
-# Lockfiles are generated: keep them out of diff review noise but do track them.
-pnpm-lock.yaml text eol=lf -diff linguist-generated
+# ---------------------------------------------------------------------------
+# 2. Binary asset types, wherever they appear
+# ---------------------------------------------------------------------------
+# These declarations only ever unset `text`, so they cannot trigger a
+# conversion pass on anything.
+*.png                                     binary
+*.jpg                                     binary
+*.jpeg                                    binary
+*.gif                                     binary
+*.webp                                    binary
+*.avif                                    binary
+*.ico                                     binary
+*.woff                                    binary
+*.woff2                                   binary
+*.ttf                                     binary
+*.otf                                     binary
 
-# Generated API description and raw measurement output are reviewed as data.
-packages/shared/src/openapi/openapi.json text eol=lf linguist-generated
-tools/measure-frames/out/*.json text eol=lf linguist-generated
+# Vector icon artwork is XML, so it stays text and stays reviewable as a diff.
+*.svg                                     text eol=lf
+
+# ---------------------------------------------------------------------------
+# 3. Authored source trees - stored and checked out with LF
+# ---------------------------------------------------------------------------
+apps/**/*.ts                              text eol=lf
+apps/**/*.tsx                             text eol=lf
+apps/**/*.css                             text eol=lf
+apps/**/*.html                            text eol=lf
+apps/**/*.json                            text eol=lf
+
+packages/**/*.ts                          text eol=lf
+packages/**/*.tsx                         text eol=lf
+packages/**/*.css                         text eol=lf
+packages/**/*.prisma                      text eol=lf
+packages/**/*.sql                         text eol=lf
+packages/**/*.json                        text eol=lf
+
+tools/**/*.ts                             text eol=lf
+tools/**/*.json                           text eol=lf
+tools/**/*.md                             text eol=lf
+
+e2e/**/*.ts                               text eol=lf
+e2e/**/*.json                             text eol=lf
+
+infra/**/*.yml                            text eol=lf
+infra/**/*.yaml                           text eol=lf
+infra/**/*.sql                            text eol=lf
+infra/**/*.sh                             text eol=lf
+infra/**/*.md                             text eol=lf
+
+.github/**/*.yml                          text eol=lf
+.github/**/*.yaml                         text eol=lf
+
+# Authored documentation. docs/workflows/ is a read-only input and is
+# deliberately excluded from this scope; see the last block.
+docs/index.md                             text eol=lf
+docs/decisions/**/*.md                    text eol=lf
+
+# A shell script checked out with CRLF endings fails inside a Linux container
+# with an obscure error, so the committed script is declared on its own as well
+# as by the tree pattern above.
+infra/minio/bootstrap.sh                  text eol=lf
+
+# ---------------------------------------------------------------------------
+# 4. Root configuration and documentation
+# ---------------------------------------------------------------------------
+# The leading slash anchors each pattern to the repository root, so none of
+# these can reach into a tree further down.
+/*.json                                   text eol=lf
+/*.yaml                                   text eol=lf
+/*.yml                                    text eol=lf
+/*.md                                     text eol=lf
+/*.js                                     text eol=lf
+/*.cjs                                    text eol=lf
+/*.mjs                                    text eol=lf
+/*.ts                                     text eol=lf
+/.nvmrc                                   text eol=lf
+/.npmrc                                   text eol=lf
+/.env.example                             text eol=lf
+/.gitignore                               text eol=lf
+/.gitattributes                           text eol=lf
+/.dockerignore                            text eol=lf
+/.prettierignore                          text eol=lf
+
+# ---------------------------------------------------------------------------
+# 5. Generated artifacts - collapsed in review, never hidden from it
+# ---------------------------------------------------------------------------
+# The lockfile is committed on purpose: it is the record of exactly which
+# versions this build resolves. Its diff is suppressed so that a routine
+# dependency refresh cannot drown a review, and it is flagged generated so it
+# does not count as authored source. `git diff --text` still shows it on
+# demand.
+/pnpm-lock.yaml                           text eol=lf -diff linguist-generated=true
+
+# The API description is generated from the shared schemas and committed so
+# that drift from the server is visible. Flagged generated, but its diff stays
+# on: a contract change has to be readable in review.
+packages/shared/src/openapi/openapi.json  text eol=lf linguist-generated=true
+
+# Raw frame-measurement output is committed evidence that the design tokens
+# were measured rather than estimated. It is deliberately NOT flagged
+# generated, and `diff` is stated explicitly, because a reviewer must be able
+# to read exactly what changed when a token value moves.
+tools/measure-frames/out/*.json           text eol=lf diff
+
+# ---------------------------------------------------------------------------
+# 6. Read-only inputs - no conversion, ever. Keep this block last.
+# ---------------------------------------------------------------------------
+# These paths are inputs to the build and are never edited by it. `-text` is a
+# no-op on content: it tells Git to store and check each file out byte for
+# byte and to ignore any core.autocrlf or core.eol a contributor has set
+# globally. It is declared last because a later line wins, so nothing above can
+# reintroduce a normalising attribute over a path that must not be re-encoded.
+# Two of these are also matched by the root patterns in block 4, which is
+# exactly why this block comes after it.
+#
+# `diff` is deliberately left on for these paths. They must never change, and
+# if one ever does, the change has to be readable in review. The frame corpus
+# is the fifth read-only input and is handled in block 1, where `-diff` is
+# correct because its content is binary.
+docs/workflows/**                         -text
+blitzy/documentation/**                   -text
+/catalog-info.yaml                        -text
+/mkdocs.yml                               -text

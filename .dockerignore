@@ -23,6 +23,7 @@ build/
 .turbo/
 **/.turbo/
 .vite/
+**/.vite/
 **/*.tsbuildinfo
 
 # Test and coverage artifacts.
@@ -33,11 +34,32 @@ playwright-report/
 test-results/
 **/test-results/
 
-# Local secrets and scratch files never travel into an image.
+# Local secrets and scratch files never travel into an image. A populated environment
+# file carries the session secret and the object-storage credentials, and anything
+# baked into an image layer is readable by anyone who can pull that image, so every
+# level of the tree is covered rather than the root alone. The committed template is
+# the single exception, re-admitted at any depth: it holds documented, non-sensitive
+# defaults and no credential. Logs are covered for the same reason: the server emits
+# structured audit records, so a stray log file is a disclosure risk, not just noise.
 .env
 .env.*
+**/.env
+**/.env.*
 !.env.example
+!**/.env.example
 *.log
+**/*.log
 .venv/
 venv/
 site/
+
+# Editor and operating-system noise. None of it is a build input, and admitting it
+# would let the image contents vary with whoever happened to run the build.
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/

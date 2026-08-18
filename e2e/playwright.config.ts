@@ -8,8 +8,8 @@ import { defineConfig, devices } from '@playwright/test';
  * the multi-client project runs serially with its own workers setting while the
  * default project may parallelise.
  */
-const baseURL = process.env.PUBLIC_APP_URL ?? 'http://localhost:5173';
-const isCI = Boolean(process.env.CI);
+const baseURL = process.env['PUBLIC_APP_URL'] ?? 'http://localhost:5173';
+const isCI = Boolean(process.env['CI']);
 
 export default defineConfig({
   testDir: './specs',
@@ -17,7 +17,11 @@ export default defineConfig({
   fullyParallel: !isCI,
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
-  workers: isCI ? 2 : undefined,
+  // Outside CI the worker count is deliberately left ABSENT rather than set to
+  // `undefined`, so the runner applies its own default. Under
+  // `exactOptionalPropertyTypes` an optional property that is present-but-undefined
+  // is not the same as one that is missing, so the key is spread in conditionally.
+  ...(isCI ? { workers: 2 } : {}),
   timeout: 60_000,
   expect: { timeout: 10_000 },
   reporter: isCI

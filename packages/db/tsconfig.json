@@ -5,7 +5,8 @@
     "moduleResolution": "Node16",
     "outDir": "dist",
     "rootDir": ".",
-    "composite": false
+    "composite": false,
+    "paths": {}
   },
   "include": ["src/**/*.ts", "prisma/**/*.ts"],
   "exclude": ["node_modules", "dist", "test", "**/*.test.ts"]

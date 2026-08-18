@@ -1,6 +1,22 @@
-# Workspace membership. Only one level of nesting is supported by pnpm, which is
-# exactly the layout this repository uses: applications, libraries, tooling and
-# the end-to-end suite.
+# Workspace membership: the manifest pnpm requires at the repository root.
+# Without it there is no workspace: `workspace:*` links do not resolve and the
+# task runner has no package graph to order builds over.
+#
+# Each group is a single-level glob, because pnpm supports one level of nesting
+# only and because a group root must stay manifest-free: a package.json at
+# `apps/`, `packages/` or `tools/` would make the group itself a member. So
+# `apps/**` is never written here. A matched directory joins the workspace only
+# when it carries its own package.json, which keeps the expansion exact: two
+# applications, three shared libraries, four command-line utilities, and the
+# end-to-end suite, which is a bare path rather than a glob because it is a
+# single package rather than a group.
+#
+# `infra/` is absent on purpose: it holds container, database-bootstrap and
+# shell assets rather than a Node package, so pnpm has nothing there to link.
+#
+# Entries are quoted so YAML never reads a leading `*` as an alias. Nothing else
+# belongs here: dependency resolution overrides live in the root package.json,
+# next to the reason each one exists.
 packages:
   - "apps/*"
   - "packages/*"

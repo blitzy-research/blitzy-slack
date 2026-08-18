@@ -9,15 +9,19 @@
     "moduleDetection": "force",
 
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useUnknownInCatchVariables": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "useUnknownInCatchVariables": true,
 
+    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
@@ -25,10 +29,18 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "composite": true,
     "removeComments": false,
     "pretty": true,
 
-    "types": ["node"]
+    "types": ["node"],
+
+    "baseUrl": ".",
+    "paths": {
+      "@relay/shared": ["packages/shared/src/index.ts"],
+      "@relay/db": ["packages/db/src/index.ts"],
+      "@relay/ui": ["packages/ui/src/index.ts"]
+    }
   },
-  "exclude": ["node_modules", "dist", "build", "coverage"]
+  "exclude": ["node_modules", "dist", "build", "coverage", "screenshots", "docs", "blitzy"]
 }
