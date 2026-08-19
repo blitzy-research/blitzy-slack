@@ -6,7 +6,7 @@ The record is append-only, and it is the only place the count is kept: the
 from nowhere else.
 
 ```text
-Frames opened           0  (see docs/decisions/frame-access-log.md)
+Frames opened           1  (see docs/decisions/frame-access-log.md)
 ```
 
 The log exists because corpus access is governed rather than forbidden. A frame
@@ -17,15 +17,15 @@ below is stated as a figure rather than left as an empty table: an untouched
 ledger and an unkept ledger look identical on the page, and only one of them is
 acceptable.
 
-| Field                 | Value                                                                               |
-| --------------------- | ----------------------------------------------------------------------------------- |
-| Record type           | Decision record **and** access ledger                                               |
-| Status                | Operative. Append-only for the life of the run                                      |
-| Frames opened to date | **0**                                                                               |
-| Entries               | **1** — a task-level justification, which records authorization rather than an open |
-| Authorizing manifest  | `docs/decisions/measurement-manifest.md`, which names 24 frames                     |
-| Reported as           | the `Frames opened` line of the run's reporting ledger                              |
-| Companion records     | `docs/decisions/measurement-manifest.md`, `docs/decisions/catalog-defects.md`       |
+| Field                 | Value                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Record type           | Decision record **and** access ledger                                                                        |
+| Status                | Operative. Append-only for the life of the run                                                               |
+| Frames opened to date | **1**                                                                                                        |
+| Entries               | **2** — one task-level justification, which records authorization rather than an open, and one recorded open |
+| Authorizing manifest  | `docs/decisions/measurement-manifest.md`, which names 24 frames                                              |
+| Reported as           | the `Frames opened` line of the run's reporting ledger                                                       |
+| Companion records     | `docs/decisions/measurement-manifest.md`, `docs/decisions/catalog-defects.md`                                |
 
 (Rules are cited throughout by subject and by position in the order they were
 provided, never by their platform identifiers. Each identifier embeds a
@@ -44,11 +44,13 @@ surface, and the ordering between the two is not a preference: a question goes
 to the prose first, and a frame becomes eligible to be opened only once the
 prose has failed to answer it.
 
-In practice the prose has answered every question this run has asked. Every
-geometric and structural fact the decision records rest on was read from a
-catalog document and is cited to it, which is why this log opens with no frame
-recorded against it. What the prose supplied instead is set out under
-[What the catalog answered instead](#what-the-catalog-answered-instead).
+In practice the prose has answered almost every question this run has asked.
+Every geometric and structural fact the decision records rest on was read from a
+catalog document and is cited to it, which is why this log carries a single
+recorded open rather than many. What the prose supplied instead is set out under
+[What the catalog answered instead](#what-the-catalog-answered-instead); the one
+question it could not answer is the second row of
+[the log](#the-log), and the reason it could not is stated there.
 
 ## When a frame may be opened
 
@@ -161,27 +163,42 @@ The date and the authorizing clause are this record's own additions: without
 them a reader can see that an open happened but not when, and not under which of
 the three permissions.
 
-| Date       | Frame    | Task                                                                                                                                                                                                               | Authorizing clause                                          | What the catalog failed to answer                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-08-18 | None yet | Deriving the geometric design tokens — the frame-measurement run over the fixed manifest, producing the committed records under `tools/measure-frames/out/` and the geometry in `packages/ui/src/styles/tokens.ts` | **(b)** — named in `docs/decisions/measurement-manifest.md` | **Absolute pixel values.** The catalog states prescriptively that its layout specifications are proportional or relative — regions, columns, ordering and relative sizing — and never absolute pixel offsets, because an offset keyed to a fixed canvas would be wrong on 48 of the 1,022 frames (`README.md`, known limitation 4). No further reading of the prose yields a spacing, sizing or rhythm value in pixels, so measurement is the only remaining source |
+| Date       | Frame    | Task                                                                                                                                                                                                               | Authorizing clause                                                                                                                                                                                              | What the catalog failed to answer                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-08-18 | None yet | Deriving the geometric design tokens — the frame-measurement run over the fixed manifest, producing the committed records under `tools/measure-frames/out/` and the geometry in `packages/ui/src/styles/tokens.ts` | **(b)** — named in `docs/decisions/measurement-manifest.md`                                                                                                                                                     | **Absolute pixel values.** The catalog states prescriptively that its layout specifications are proportional or relative — regions, columns, ordering and relative sizing — and never absolute pixel offsets, because an offset keyed to a fixed canvas would be wrong on 48 of the 1,022 frames (`README.md`, known limitation 4). No further reading of the prose yields a spacing, sizing or rhythm value in pixels, so measurement is the only remaining source |
+| 2026-08-19 | 338      | Authoring `docs/decisions/keyboard-shortcuts.md` — recovering the shell's key bindings for that record's binding map                                                                                               | **(b)** — named as row 19 of `docs/decisions/measurement-manifest.md`. Clause **(a)** holds independently: the step table of flow `00.4` cites this frame and its prose is not sufficient to implement the step | **Which keys?** The flow's prose enumerates every function the reference pane lists and names no combination for any of them (`00-product-overview.md` L142), and a sweep of all twenty-five catalog documents for every plausible key token returns nothing, so no further reading of the prose yields a binding                                                                                                                                                   |
 
-That is the whole log. Three things about it need saying, because each is a
+That is the whole log. Four things about it need saying, because each is a
 place a reader could reasonably suspect an omission.
 
-### The entry carries no frame number, and that is deliberate
+### The first entry carries no frame number, and that is deliberate
 
 The manifest names 24 frames — inside the 15 to 25 range the build prompt
-prescribes — and every one of them is authorized. None of them has been read.
-This entry is the justification the cap requires, appended **before** the run
-rather than after it, because a justification written afterwards would be an
-excuse rather than an authorization.
+prescribes — and every one of them is authorized. None of them has been read by
+the measurement run. That first entry is the justification the cap requires,
+appended **before** the run rather than after it, because a justification
+written afterwards would be an excuse rather than an authorization.
 
 A frame therefore appears in the `Frame` column only once it has actually been
 opened. Writing the 24 numbers in now would turn an authorization into a false
 record of 24 opens, and the count in the header table — which is read straight
 off this log — would report work nobody has done. The honest reading of the log
-today is: one task is authorized to open up to 24 named frames, and zero frames
-have been opened.
+today is: one task is authorized to open up to 24 named frames and has opened
+none of them, and a second task has opened exactly one frame.
+
+### The second entry carries a frame number, because that frame was read
+
+The row dated 2026-08-19 records an open rather than an authorization, which is
+why it names frame 338 and why the reported count is 1 rather than 0. It belongs
+to a different task from the measurement run — authoring the keyboard-shortcut
+record — and the cap is measured per task, so its single frame is counted against
+its own budget of six and not against the measurement run's.
+
+The frame it names is also a manifest frame, which is what clause (b) turns on.
+That coincidence is worth stating so it is not mistaken for a loophole: being
+named in the manifest is what made the frame _eligible_, and the question in the
+final column is what made opening it _necessary_. Neither condition alone would
+have been enough, and the entry records both.
 
 ### One entry rather than 24
 
@@ -209,14 +226,20 @@ treating the manifest as an exemption.
 
 ## What the catalog answered instead
 
-**Zero frames were opened during planning, and zero during the authoring of the
-decision records.** The measurement manifest states the same for the family of
-22 records, this one included, and this log is where any exception would have to
-appear — so the absence is a finding rather than a blank.
+**Zero frames were opened during planning, and exactly one during the authoring
+of the decision records** — frame 338, for the keyboard-shortcut record, which is
+the second row of [the log](#the-log). This log is where any such exception has
+to appear, and it appears here rather than being absorbed into a companion
+record's prose.
 
-Every corpus fact those records carry was read from catalog prose. The
-load-bearing ones are listed with their source below, so the claim can be
-checked rather than believed.
+The exception is narrow, and its narrowness is the point. It was not a geometric
+or structural question — the catalog answers those, as the table below shows. It
+was a question the catalog structurally cannot answer, because the catalog
+describes what the shortcut pane lists without reproducing the key combinations
+it lists them against, and a key combination is the one class of content the
+identity rule permits to be transcribed. Every other corpus fact the 22 records
+carry was read from catalog prose. The load-bearing ones are listed with their
+source below, so the claim can be checked rather than believed.
 
 | Fact the records rely on                                                                                                      | Where it was read                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -231,6 +254,8 @@ checked rather than believed.
 | The entity set and the per-viewer relation placements                                                                         | `README.md`, consolidated data model                                        |
 | Which frame numbers attach to which surface, for every row of the measurement manifest                                        | the area documents cited in that manifest's rows                            |
 | The census of build-obligation, partial-capture and gap markers                                                               | counted in the area documents; recorded in `docs/decisions/gap-register.md` |
+| That the shortcut pane groups its rows by the region they act on, and which functions each group lists                        | `00-product-overview.md` L139, L142                                         |
+| The key combinations those functions are listed against                                                                       | **not answered** — the one question that produced the log's second row      |
 
 Two of those readings disagree with figures recorded elsewhere — the band
 height against an upstream figure, and the marker census against the totals
@@ -242,8 +267,9 @@ The pattern behind the table is the useful part: a fact about the corpus as a
 population — how many frames, how tall, what colour mode, what the band
 contains — is a fact the catalog has already measured and published, so opening
 a frame to establish one would breach the confirmation prohibition. What the
-catalog cannot supply is a distance in pixels, which is precisely the one
-question the log's only entry is about.
+catalog cannot supply is a distance in pixels and a key combination, which is
+precisely what the log's two entries are about — the first authorizing the
+former, the second recording an open for the latter.
 
 ## Cross-reference obligation
 
@@ -280,9 +306,9 @@ Entries are added. They are never edited and never removed.
 - **Entries stay in the order they were appended**, oldest first, so the log
   reads as a chronology rather than as a tidy summary.
 - **The reported count is a row count over this file**, taken over rows that
-  record a frame actually opened. The justification row records authorization
+  record a frame actually opened. A justification row records authorization
   rather than an open and is not counted, which is why the header table reports
-  zero against one entry.
+  one frame against two entries.
 - **A frame opened twice is logged twice** if the two opens belong to different
   tasks, because the cap is per task and the log has to make each task's usage
   visible on its own.
@@ -313,9 +339,12 @@ seventh frame is opened.
 
 Take the question to `docs/workflows/` first. That is the sequence the rule
 prescribes, and on the evidence of this run it is also the faster route: the
-catalog has answered every question asked of it so far, including every
-question about the corpus itself, and it carries its own measurements of the
-population that a single frame could not establish anyway.
+catalog has answered all but one of the questions asked of it so far, including
+every question about the corpus itself, and it carries its own measurements of
+the population that a single frame could not establish anyway. The single
+exception is instructive rather than encouraging — it was a question about
+content the catalog deliberately does not reproduce, not a question it happened
+to leave out.
 
 If the prose genuinely does not answer, check whether one of the three clauses
 covers the frame you have in mind. If none does, the open is not permitted, and

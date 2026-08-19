@@ -65,9 +65,15 @@ Every geometric fact stated below — band height, frame height, frame width, co
 mode, region proportions, and which surface each listed frame shows — was resolved
 from catalog prose. **Not one frame was opened while authoring this manifest**, and
 opening one to confirm something the catalog already states would itself breach the
-rule. The same holds for the decision records as a family: authoring all 22 of them
-required **zero** frame opens, because every corpus fact they carry is a citation of
-the catalog rather than an observation of an image.
+rule. Nearly the same holds for the decision records as a family: authoring 21 of the
+22 required **zero** frame opens, because every corpus fact they carry is a citation
+of the catalog rather than an observation of an image. The exception is
+`docs/decisions/keyboard-shortcuts.md`, which opened frame 338 — a frame this manifest
+itself names, at row 19 — because the catalog describes what the shortcut pane lists
+without reproducing the key combinations it lists them against, and a key combination
+is the one class of content the identity rule permits to be transcribed. That open is
+recorded in `docs/decisions/frame-access-log.md`, which is the authority on what was
+read.
 
 Frames are cited **by number alone** throughout — "frame 549", never a filename and
 never the catalog's percent-encoded citation form. Every filename in the corpus
@@ -331,11 +337,18 @@ and the measurement run is one task with one justification: every frame in it is
 opened for the same reason, under the same authority, by the same tool, in the same
 pass.
 
-**Authoring the decision records opened nothing.** All 22 records in
+**Authoring the decision records opened one frame in total.** 21 of the 22 records in
 `docs/decisions/` were written without opening a single frame, this one included. The
-frame-access log therefore has no authoring entries to carry — its only entry is the
-measurement run's — and the run's reported count of frames opened is the count of
-manifest frames the tool actually read, which is bounded above by 24.
+one exception is `docs/decisions/keyboard-shortcuts.md`, which opened frame 338 under
+the manifest clause — row 19 above — to recover key bindings the catalog names no
+combination for. The frame-access log therefore carries one authoring entry alongside
+the measurement run's justification, and the run's own reported count of frames opened
+is the count of manifest frames the tool actually read, which is bounded above by 24.
+
+The two counts are separate and must not be added together carelessly. A frame the
+tool reads for measurement and a frame a record opened for a binding are the same
+frame in this instance, and the log records them as two entries because the cap is
+measured per task rather than per frame.
 
 ## Downstream contract
 
