@@ -1,9 +1,9 @@
 # Catalog defects
 
 A specification can be wrong and still be the specification. This build is
-written over a read-only corpus and a read-only catalog that are, in seven
+written over a read-only corpus and a read-only catalog that are, in eight
 identifiable places, mistaken, incomplete, or in disagreement with themselves or
-with the build prompt that governs them. None of those seven is repaired. Each is
+with the build prompt that governs them. None of those eight is repaired. Each is
 **recorded here and left exactly as it stands**, and the work proceeds anyway.
 
 That is a deliberate discipline rather than a limitation, and it has one purpose:
@@ -17,7 +17,7 @@ attributable and reversible.
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | Record type                         | Decision record — the register of specification defects                                                                                       |
 | Status                              | Operative                                                                                                                                     |
-| Entries                             | **Seven**, each with a resolution adopted and in force                                                                                        |
+| Entries                             | **Eight**, each with a resolution adopted and in force                                                                                        |
 | Discipline                          | **Record, never correct.** No file under a read-only path is edited to close any entry below                                                  |
 | Frames opened to author this record | **0** — every fact below was resolved from catalog prose                                                                                      |
 | Companion records                   | `docs/decisions/phase-gates-ledger.md`, `docs/decisions/gap-register.md`, `docs/decisions/observed-values.md`, `docs/decisions/data-model.md` |
@@ -32,7 +32,7 @@ and no entry re-derives it:
    where a catalog document measures something different.
 2. **Where the requirements and a user rule appear to differ, the rule is the
    stricter reading and governs.** A rule never loosens what the prompt requires;
-   it either narrows it or leaves it alone. Three of the seven entries below are
+   it either narrows it or leaves it alone. Four of the eight entries below are
    resolved on exactly this step, and in each of them the narrower answer is the
    one adopted.
 3. **The catalog is evidence, never authority, on any point the first two
@@ -77,7 +77,7 @@ Two things this register is **not**:
   labels the prompt uses; position **with** subject is not.
 
 One rendering artefact belongs with the citation convention rather than in the
-seven, because it is a defect in how the rule text is *displayed* and not a
+eight, because it is a defect in how the rule text is *displayed* and not a
 defect in the catalog this register covers: the delivered rule text wraps several
 decision-record paths in spurious auto-links, turning a repository path into an
 external link to a host that does not exist. Three such wrappers appear inside
@@ -86,7 +86,7 @@ frame-access log — and one inside the uncertainty rule, on the observed-values
 record. **The plain repository paths used throughout this directory are the real
 ones**, and no agent should follow, reproduce or create the wrapped form.
 
-## The seven entries at a glance
+## The eight entries at a glance
 
 | #   | Defect                                                                  | Resolved by                                              |
 | --- | ----------------------------------------------------------------------- | -------------------------------------------------------- |
@@ -97,6 +97,7 @@ ones**, and no agent should follow, reproduce or create the wrapped form.
 | 5   | Two surfaces state two lifetimes for one bearer credential              | One default, one enforcement point, absolute timestamp   |
 | 6   | The per-viewer relation count reads ten in one place, eleven in another | Both readings carried; neither asserted                  |
 | 7   | The catalog's statement that no project rules exist is now false        | Superseded as fact; its quality bar retained             |
+| 8   | The rail carries a destination the placeholder enumeration does not     | Alias onto the activity-feed placeholder's address       |
 
 ## 1. The gate authority the prompt names does not exist
 
@@ -402,11 +403,53 @@ families the rules and the prompt impose, and this record for the supersession
 itself. The ten practices need no separate record: they are observed in the
 authoring conventions every record in this directory closes with.
 
+## 8. The rail carries a destination the placeholder enumeration does not
+
+**What the specification says.** The catalog's destination map counts fourteen
+top-level destinations, twelve of them configurable rail entries, and it lists the
+saved-items destination among those twelve — owned by the same deferred area
+document that owns the aggregated activity destination
+(`00-product-overview.md` L645, frame 113). The shortcuts reference maps a numbered
+key combination to it besides (`00-product-overview.md` L142), so the destination is
+reachable by two independent routes.
+
+**Why it is a defect.** `docs/decisions/placeholder-surfaces.md` enumerates sixteen
+deferred destinations, and its sixteen segments are a closed set that the
+placeholder read endpoint validates against. **None of them addresses the
+saved-items destination.** The two enumerations count different things: that record
+carries one destination per deferred *area*, while the rail carries destinations —
+and one deferred area fronts two of them. The result is a rail destination the
+catalog states exists, with no address in the enumeration meant to cover every
+deferred destination. That is not a cosmetic gap: an unaddressed rail destination is
+exactly the dead control the catalog's own phase-exit gate forbids
+(`README.md` L481), and it would be dead by pointer and by keyboard at once.
+
+**Resolution adopted, and under what precedence.** The destination resolves to the
+activity-feed placeholder's address, declared as an explicit alias rather than as a
+seventeenth surface — precedence step 2, where the corpus-handling rule's
+record-never-correct discipline is the stricter reading and the closed enumeration
+is left exactly as it stands. Two alternatives were rejected: a seventeenth
+placeholder route, because the sixteen are closed and validated against, and another
+record owns them; and leaving the destination unaddressed, because the uncertainty
+rule — the fourth as provided — forbids omitting a mechanism whose target is
+uncertain. Two rail destinations therefore resolve to one placeholder, deliberately,
+and that ends the moment either capability is built.
+
+The alias is declared in the type system rather than hidden in a fallback, so an
+exhaustive switch over the rail's destinations cannot miss it, and no surface module
+is added to a route folder whose membership is fixed.
+
+**Where the resolution lives.** `docs/decisions/keyboard-shortcuts.md` for the
+target resolution and the options it weighed — it resolves the same destination's
+numbered binding to the same address — and `apps/web/src/routes/paths.ts`, which is
+the single definition site for every path in the client and where the alias is
+written down.
+
 ## Checked and found sound
 
 A register that lists only problems invites its own checks to be repeated, and the
 next reader has no way to tell an unexamined area from a clean one. Three things
-were examined closely enough to have produced an eighth entry and did not. They are
+were examined closely enough to have produced a ninth entry and did not. They are
 recorded as sound so that nobody re-opens them looking for a defect that is not
 there.
 
