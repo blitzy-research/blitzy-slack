@@ -6,7 +6,10 @@
 set -eu
 
 ALIAS="local"
-ENDPOINT="http://objectstore:9000"
+# Supplied by the compose file, which is where the store's on-network address is
+# fixed by the service name and the container port. The fallback keeps the script
+# runnable on its own.
+ENDPOINT="${OBJECT_STORE_ENDPOINT:-http://objectstore:9000}"
 BUCKET="${S3_BUCKET:-relay-uploads}"
 ACCESS_KEY="${S3_ACCESS_KEY_ID:-relay_local_access}"
 SECRET_KEY="${S3_SECRET_ACCESS_KEY:-relay_local_secret}"

@@ -125,23 +125,33 @@ Four long-running services and one one-shot. Every published port is declared as
 a variable with the default shown, so a second checkout can shift its ports
 without editing the compose file; `infra/README.md` carries that convention.
 
-| Service            | Image                                      | Purpose                                                                                                              | Published port(s) | Environment variable it backs                                          |
-| ------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------------------------------------------------------------------- |
-| `postgres`         | `postgres:16`                              | Primary datastore and full-text search                                                                               | `5432`            | `DATABASE_URL`, and `TEST_DATABASE_URL` for the separate test database |
-| `redis`            | `redis:7`                                  | Presence, socket registry and cross-instance publish/subscribe                                                       | `6379`            | `REDIS_URL`                                                            |
-| `objectstore`      | `minio/minio:RELEASE.2025-09-07T16-13-09Z` | S3-compatible object storage for pre-signed uploads. The first port is the storage interface, the second its console | `9000`, `9001`    | `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` |
-| `objectstore-init` | `minio/mc:RELEASE.2025-08-13T08-35-41Z`    | One-shot. Creates the upload bucket, leaves it private, exits. Never restarts                                        | none              | `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`                |
-| `mail`             | `axllent/mailpit:v1.30.7`                  | Local SMTP capture: accepts mail, delivers none. The first port is SMTP, the second the web interface                | `1025`, `8025`    | `SMTP_URL`, with `EMAIL_FROM` as the sender it stamps                  |
+| Service                 | Image                                      | Purpose                                                                                                              | Published port(s) | Environment variable it backs                                          |
+| ----------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------------------------------------------------------------------- |
+| `postgres`              | `postgres:16`                              | Primary datastore and full-text search                                                                               | `5432`            | `DATABASE_URL`, and `TEST_DATABASE_URL` for the separate test database |
+| `redis`                 | `redis:7`                                  | Presence, socket registry and cross-instance publish/subscribe                                                       | `6379`            | `REDIS_URL`                                                            |
+| `objectstore`           | `minio/minio:RELEASE.2025-09-07T16-13-09Z` | S3-compatible object storage for pre-signed uploads. The first port is the storage interface, the second its console | `9000`, `9001`    | `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` |
+| `objectstore-bootstrap` | `minio/minio:RELEASE.2025-09-07T16-13-09Z` | One-shot. Creates the upload bucket, leaves it private, exits. Never restarts                                        | none              | `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`                |
+| `mail`                  | `axllent/mailpit:v1.30.7`                  | Local SMTP capture: accepts mail, delivers none. The first port is SMTP, the second the web interface                | `1025`, `8025`    | `SMTP_URL`, with `EMAIL_FROM` as the sender it stamps                  |
 
 The port variables are `POSTGRES_PORT`, `REDIS_PORT`, `OBJECT_STORE_PORT`,
 `OBJECT_STORE_CONSOLE_PORT`, `MAIL_SMTP_PORT` and `MAIL_UI_PORT`. Only the
 published side moves: the port inside each container is fixed, so a shifted
 publication changes the connection strings in `.env` and nothing else.
 
-**On the image identifiers.** All five images are third-party software, each named
-by the identifier it publishes under — a datastore, a cache, an object store
-together with that store's own command-line client, and an SMTP sink. Pulling an
-infrastructure dependency by its published identifier is a different act from
+**Every one of those ports is published on the loopback address**, never on all
+interfaces. The stack holds local placeholder credentials, so a port answering
+the network the machine is attached to would expose a password-authenticated
+database and an object store to it for no benefit. Loopback publication costs
+nothing that development needs: services address one another by service name on
+the project network rather than through a published port, and the host-run server
+reaches each one on `localhost`, which is the address being bound.
+
+**On the image identifiers.** All four images are third-party software, each named
+by the identifier it publishes under — a datastore, a cache, an object store and
+an SMTP sink. The one-shot that creates the bucket adds no fifth identifier: it
+runs the object store's own image, which already carries that store's
+command-line client. Pulling an infrastructure dependency by its published
+identifier is a different act from
 reproducing a product's identity in this project's own names, copy or assets,
 which the **identity rule** — the fifth of the five project rules as provided —
 prohibits outright. Everything this project names itself is authored: the project
@@ -156,17 +166,19 @@ the project-name default harmless: were data kept beside the checkout, the
 directory name would be load-bearing, and moving or renaming a clone would move
 or orphan its data with it.
 
-| Compose key        | Name created under the default project name | What it holds                    |
-| ------------------ | ------------------------------------------- | -------------------------------- |
-| `postgres-data`    | `relay_postgres-data`                       | The database cluster             |
-| `redis-data`       | `relay_redis-data`                          | The append-only persistence file |
-| `objectstore-data` | `relay_objectstore-data`                    | Uploaded objects                 |
-| `mail-data`        | `relay_mail-data`                           | Captured messages                |
+| Compose key              | Name created under the default project name | What it holds                    |
+| ------------------------ | ------------------------------------------- | -------------------------------- |
+| `relay_postgres_data`    | `relay_postgres_data`                       | The database cluster             |
+| `relay_redis_data`       | `relay_redis_data`                          | The append-only persistence file |
+| `relay_objectstore_data` | `relay_objectstore_data`                    | Uploaded objects                 |
+| `relay_mail_data`        | `relay_mail_data`                           | Captured messages                |
 
-The created name is the project name joined to the compose key, so every volume
-carries `COMPOSE_PROJECT_NAME` as its prefix. Two clones with distinct project
-names therefore share nothing at all, and the same clone finds its own data again
-after a restart.
+Each created name is pinned to the project name joined to what the volume holds,
+rather than left to the tool's default of the project name joined to the compose
+key — which would have doubled the prefix, the key already carrying it. Every
+volume therefore carries `COMPOSE_PROJECT_NAME` exactly once. Two clones with
+distinct project names share nothing at all, and the same clone finds its own data
+again after a restart.
 
 Only the two read-only mounts break the pattern, and neither carries data: the
 database initialisation script and the bucket bootstrap script are each mounted
@@ -174,11 +186,15 @@ into the container that runs it.
 
 ### The network
 
-No network is declared, so the services share the project's default network,
-named `relay_default` under the default project name. They address one another by
-service name on it — the bootstrap script reaches the object store at
-`http://objectstore:9000`, which is why it needs no published port to do its
-work. Nothing outside the project joins that network.
+One network is declared, `relay_local`, and every service is attached to it. Its
+created name is pinned the same way the volumes are, to the project name joined to
+`local`. Declaring it rather than relying on the project's default network means
+the name is stated in the file instead of being inferred from a compose key.
+
+Services address one another by service name on that network — the bootstrap
+script reaches the object store at `http://objectstore:9000`, which is why it needs
+no published port to do its work, and why loopback publication does not affect it.
+Nothing outside the project joins the network.
 
 ### The two mounted assets
 
@@ -205,13 +221,20 @@ the one-shot re-executing on a later `up` is a no-op rather than a failure.
 
 ### Healthchecks
 
-| Service            | Health gate                                                                                        |
-| ------------------ | -------------------------------------------------------------------------------------------------- |
-| `postgres`         | Declared: a readiness probe against the configured user and database, with a start-up grace period |
-| `redis`            | Declared: a ping probe                                                                             |
-| `mail`             | None declared here; the image supplies its own, and the container reports healthy                  |
-| `objectstore`      | **None.** The gap is covered downstream rather than here — see below                               |
-| `objectstore-init` | Not applicable. It is a one-shot that exits, and it is configured never to restart                 |
+| Service                 | Health gate                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------- |
+| `postgres`              | Declared: a readiness probe against the configured user and database, with a start-up grace period |
+| `redis`                 | Declared: a ping probe                                                                             |
+| `mail`                  | Declared: an HTTP readiness probe against the web interface, with a start-up grace period          |
+| `objectstore`           | Declared: an HTTP liveness probe against the storage interface, with a start-up grace period       |
+| `objectstore-bootstrap` | Not applicable. It is a one-shot that exits, and it is configured never to restart                 |
+
+Each probe runs inside the container it belongs to and addresses the fixed container
+port, so shifting a publication never changes a probe. Each uses a client the image
+actually ships, which is not interchangeable between them: the object store's image
+carries `curl` and the mail sink's image does not, so the mail probe uses the `wget`
+that image does carry. A probe written with the wrong one would fail permanently
+rather than intermittently, and would read as a broken service.
 
 These matter to the developer experience because of what follows the stack in the
 documented sequence: the migration and seed steps run immediately after
@@ -220,12 +243,15 @@ fail those steps with a connection error that reads like a misconfiguration, and
 the developer would go looking for a wrong password rather than waiting two
 seconds. A declared health gate turns that class of confusion into a wait.
 
-The object store carries no health gate, and the one-shot that depends on it waits
-only for it to have started rather than to be healthy. That is not an oversight
-left unhandled: the bootstrap script polls the storage endpoint itself, up to
-thirty times at two-second intervals, and fails loudly with the endpoint in the
-message if the store never answers. The retry is stated here so that the absent
-health gate is not read as an absent guarantee.
+Four declared gates also make the diagnostic worth something: `up -d --wait` returns
+only once all four report healthy, and `ps` shows which one has not, so a stack that
+came up short says so rather than being discovered later by a failing migration.
+
+The one-shot waits on the object store being **healthy** rather than merely started,
+which is what the declared gate on that service buys. Its script keeps its own retry
+regardless — up to thirty attempts at two-second intervals, failing loudly with the
+endpoint in the message — because the script is also runnable on its own, and a
+belt-and-braces wait costs nothing when the gate has already been satisfied.
 
 ## Corpus containment: there is no build context
 
@@ -329,16 +355,22 @@ executed here is recorded instead.
 Executed, from the repository root, using the documented copy step followed by the
 documented command with no arguments added:
 
-| Check                                              | Result                                                                                                              |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| The plain command resolves the file under `infra/` | Passed. Both the configuration dump and the start-up ran from the root with no file argument                        |
-| All five images pull                               | Passed                                                                                                              |
-| `docker compose up -d`                             | Passed. The three services with health gates reported healthy; the object store reported running                    |
-| The one-shot completes                             | Passed. It exited zero after creating the upload bucket and setting its access to none                              |
-| The initialisation script is applied               | Passed. All three extensions, the text-search configuration and the separate test database were present afterwards  |
-| First-start-only semantics                         | Passed. The script ran exactly once on first start and did not run again after the database container was restarted |
-| The cache and the mail interface answer            | Passed. A ping returned, and the mail web interface and the storage liveness endpoint both answered                 |
-| `docker compose down -v`                           | Passed. Containers, network and all four named volumes were removed, leaving nothing behind                         |
+| Check                                              | Result                                                                                                                                |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| The plain command resolves the file under `infra/` | Passed. Both the configuration dump and the start-up ran from the root with no file argument                                          |
+| Configuration validates with no warning            | Passed. The schema check exits zero and emits nothing at all on either stream                                                         |
+| Resolution is identical three ways                 | Passed. The plain form, the explicit-file form, and the explicit-file form with no environment file at all render byte-identically    |
+| All four images pull                               | Passed                                                                                                                                |
+| `docker compose up -d`                             | Passed, exit zero. All four long-running services reported healthy                                                                    |
+| The one-shot completes                             | Passed. It exited zero after creating the upload bucket, and the bucket's anonymous access reads back as private                      |
+| The one-shot waited on health, not on start        | Passed. The start-up log shows it held until the object store reported healthy, then ran                                              |
+| The initialisation script is applied               | Passed. All three extensions, the text-search configuration and the separate test database were present afterwards, in both databases |
+| First-start-only semantics                         | Passed. A table created after initialisation survived a restart, so the volume persisted and initialisation did not run again         |
+| The cache persists as configured                   | Passed. A ping returned, append-only is reported on, and a write-read-delete round trip succeeded                                     |
+| The mail sink answers on both ports                | Passed. Its readiness and liveness endpoints both returned success, and its SMTP port returned a banner and accepted a greeting       |
+| Publication is loopback-only                       | Passed. Every published port answers over `localhost` and is refused on the host's routable address                                   |
+| Password authentication is enforced                | Passed. From another container on the network, a wrong password and an absent password are both rejected and the correct one is not   |
+| `docker compose down -v`                           | Passed. Containers, network and all four named volumes were removed, leaving nothing behind                                           |
 
 One qualification on all of the above, because it changes what the result proves:
 the run used a distinct project name and shifted published ports, which is the
@@ -346,6 +378,29 @@ parallel-checkout convention rather than the template's defaults. The **command*
 was the documented one; the **values** it read were clone-scoped, so what is
 proven is the mechanism and the stack, not the specific default ports on a machine
 where nothing else is listening.
+
+Two findings from that run are worth carrying, because both would otherwise be
+rediscovered as bugs.
+
+**Waiting on health reports the one-shot's success as a failure.** The documented
+command exits zero. Adding the wait flag to it does not, even when every service
+came up healthy and the one-shot finished cleanly: the tool treats any container
+leaving the running state during the wait as a reason to fail, and a job that exits
+zero is exactly that. Scoping the wait to the four long-running services exits zero
+and is the form to use as a health gate:
+
+```
+docker compose up -d --wait postgres redis objectstore mail
+```
+
+**Testing the password rule from inside the database container proves nothing.**
+The database image's generated host-based rules trust `local`, `127.0.0.1/32` and
+`::1/128` and apply the password method to everything else, so a client running
+inside the container authenticates against the trusted rows and connects with any
+password at all. That is the image's own arrangement and not this stack's. The rule
+that governs every real client is the final row, and testing it means connecting
+from off-host — from another container on the project network, or from the host over
+a published port — which is how the check in the table above was run.
 
 Not executed, and honestly so:
 
@@ -369,17 +424,22 @@ where a step has not been executed, this record says it has not been executed.
 
 ## Divergences recorded rather than reconciled
 
-The stack as committed differs in three naming details from the description this
-record was planned against. The committed artifact is the authority on what
-exists, so the differences are recorded here rather than smoothed over in either
-direction; none of them changes behaviour, and none was worth rewriting a verified
-stack to remove.
+The stack as committed differs in one detail from the description this record was
+planned against. The committed artifact is the authority on what exists, so the
+difference is recorded here rather than smoothed over in either direction.
 
-| Planned                                                      | Committed                                                       | Consequence                                                                                            |
-| ------------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| A one-shot reusing the object-storage image, adding no image | `objectstore-init`, running the object store's own client image | One additional image identifier to pull. The client image is what carries the bucket commands          |
-| Three named volumes                                          | Four: captured mail persists across a restart as well           | The reset removes four volumes, not three. Losing captured mail on every restart would have been worse |
-| An explicitly declared network                               | No network declared; the project's default network is used      | The effective name is the project name joined to `default`. Service-name addressing is unaffected      |
+| Planned             | Committed                                             | Consequence                                                                                            |
+| ------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Three named volumes | Four: captured mail persists across a restart as well | The reset removes four volumes, not three. Losing captured mail on every restart would have been worse |
+
+Two further divergences this record previously carried have since been reconciled in
+the artifact rather than left standing, and both are noted here so a reader of an
+earlier revision is not misled. The one-shot no longer runs a separate client image:
+it runs the object store's own image, which already carries the identical client
+release, so the stack holds four images rather than five. And the network is now
+declared as `relay_local` and attached to every service rather than left to the
+project default. Neither change alters how a service is addressed — both were
+adopted because the artifact should state what it uses rather than inherit it.
 
 ## Authoring conventions observed by this record
 

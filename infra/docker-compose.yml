@@ -3,14 +3,30 @@
 # S3-compatible object storage, and an SMTP sink that captures mail instead of
 # sending it.
 #
+# LOCAL DEVELOPMENT ONLY. Nothing here is deployment configuration. Every
+# credential below is a local placeholder that grants access to a container on
+# this machine and nothing else, and each one is stated inline so the stack
+# renders completely with no .env at all. The values that would matter in a
+# deployed system live only in the untracked .env.
+#
 # Run it from the repository root - .env sets COMPOSE_FILE to this file:
 #
 #   cp .env.example .env
 #   docker compose up -d
 #
-# Every published port is parameterised so parallel checkouts can coexist; see
-# infra/README.md for the CLONE_INDEX convention. Data lives in named volumes
-# only, so the project directory is never written to.
+# That COMPOSE_FILE key is the whole reason the documented command needs no file
+# argument, and it is why this file sits under infra/ rather than beside the
+# command that starts it. The reasoning is recorded once, in
+# docs/decisions/compose-and-env.md. Operating notes - the parallel-checkout
+# port convention, resetting a volume, reading captured mail - are in
+# infra/README.md.
+#
+# Every published port is parameterised so parallel checkouts can coexist, and
+# every variable carries an inline default equal to the one .env.example
+# documents. Data lives in named volumes only, so the project directory is never
+# written to. Four published images and not one build stanza, so the stack
+# creates no build context whatsoever - nothing in this repository is ever sent
+# to a builder from here.
 
 name: ${COMPOSE_PROJECT_NAME:-relay}
 
@@ -25,11 +41,22 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-relay}
       # Deterministic collation for reproducible ordering across machines.
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    # Published on the loopback address rather than on every interface. Every
+    # port in this file is bound the same way: the stack holds local placeholder
+    # credentials, and it has no business answering the network the machine
+    # happens to be attached to.
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - relay_postgres_data:/var/lib/postgresql/data
+      # FIRST INITIALISATION ONLY. Everything in this directory is read once,
+      # while the data volume is still empty, and never again: editing the
+      # script does not change a volume that already exists, and no restart
+      # re-applies it. Discarding the volumes is what re-runs it, and
+      # infra/README.md carries the command.
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/10-init.sql:ro
+    networks:
+      - relay_local
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-relay} -d ${POSTGRES_DB:-relay}"]
       interval: 5s
@@ -53,9 +80,11 @@ services:
         "noeviction",
       ]
     ports:
-      - "${REDIS_PORT:-6379}:6379"
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
     volumes:
-      - redis-data:/data
+      - relay_redis_data:/data
+    networks:
+      - relay_local
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -72,24 +101,46 @@ services:
       MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:-relay_local_secret}
       MINIO_BROWSER_REDIRECT_URL: http://localhost:${OBJECT_STORE_CONSOLE_PORT:-9001}
     ports:
-      - "${OBJECT_STORE_PORT:-9000}:9000"
-      - "${OBJECT_STORE_CONSOLE_PORT:-9001}:9001"
+      - "127.0.0.1:${OBJECT_STORE_PORT:-9000}:9000"
+      - "127.0.0.1:${OBJECT_STORE_CONSOLE_PORT:-9001}:9001"
     volumes:
-      - objectstore-data:/data
+      - relay_objectstore_data:/data
+    networks:
+      - relay_local
+    healthcheck:
+      # Probed from inside the container against the fixed container port, so a
+      # shifted publication never changes the probe. This image carries curl.
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
 
-  objectstore-init:
-    image: minio/mc:RELEASE.2025-08-13T08-35-41Z
-    container_name: ${COMPOSE_PROJECT_NAME:-relay}-objectstore-init
+  # One-shot: creates the upload bucket, leaves it private, exits, never
+  # restarts. It runs the object store's own image rather than a separate client
+  # image because that image already carries the client - the same client
+  # release - which keeps the stack at four images instead of five.
+  objectstore-bootstrap:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: ${COMPOSE_PROJECT_NAME:-relay}-objectstore-bootstrap
     depends_on:
       objectstore:
-        condition: service_started
+        condition: service_healthy
     environment:
+      # The store's address ON THIS NETWORK, fixed by the service name and the
+      # container port rather than by any publication. Passed in so the script
+      # holds no address of its own.
+      OBJECT_STORE_ENDPOINT: http://objectstore:9000
       S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-relay_local_access}
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-relay_local_secret}
       S3_BUCKET: ${S3_BUCKET:-relay-uploads}
-    entrypoint: ["/bin/sh", "/etc/objectstore/bootstrap.sh"]
+    # Invoked through a shell rather than relying on the script's executable
+    # bit, so a mode bit lost on checkout cannot break the stack.
+    entrypoint: ["/bin/sh", "/bootstrap/bootstrap.sh"]
     volumes:
-      - ./minio/bootstrap.sh:/etc/objectstore/bootstrap.sh:ro
+      - ./minio/bootstrap.sh:/bootstrap/bootstrap.sh:ro
+    networks:
+      - relay_local
     restart: "no"
 
   mail:
@@ -101,13 +152,38 @@ services:
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
       MP_MAX_MESSAGES: 5000
     ports:
-      - "${MAIL_SMTP_PORT:-1025}:1025"
-      - "${MAIL_UI_PORT:-8025}:8025"
+      - "127.0.0.1:${MAIL_SMTP_PORT:-1025}:1025"
+      - "127.0.0.1:${MAIL_UI_PORT:-8025}:8025"
     volumes:
-      - mail-data:/data
+      - relay_mail_data:/data
+    networks:
+      - relay_local
+    healthcheck:
+      # This image carries no curl, so the probe uses the wget it does carry.
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:8025/readyz"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
 
 volumes:
-  postgres-data:
-  redis-data:
-  objectstore-data:
-  mail-data:
+  # Each created name is the project name joined to what the volume holds,
+  # pinned explicitly so it reads the same as the key it is declared under. Two
+  # checkouts with distinct project names therefore share no data at all, and
+  # the same checkout finds its own data again after a restart.
+  relay_postgres_data:
+    name: ${COMPOSE_PROJECT_NAME:-relay}_postgres_data
+  relay_redis_data:
+    name: ${COMPOSE_PROJECT_NAME:-relay}_redis_data
+  relay_objectstore_data:
+    name: ${COMPOSE_PROJECT_NAME:-relay}_objectstore_data
+  relay_mail_data:
+    name: ${COMPOSE_PROJECT_NAME:-relay}_mail_data
+
+networks:
+  # One network, declared rather than left to the project default, so the name
+  # is stated here instead of being inferred. Services address one another by
+  # service name on it - which is how the bootstrap job reaches the object store
+  # without any published port - and nothing outside the project joins it.
+  relay_local:
+    name: ${COMPOSE_PROJECT_NAME:-relay}_local
