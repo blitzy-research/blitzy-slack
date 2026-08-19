@@ -149,12 +149,20 @@
  *     carries.
  *   - KEYS BELONGING TO A LATER CONSUMER — the log level, the server host and
  *     port, the client dev-server port, the session cookie name, the sender
- *     address, the separate test database URL and the rate-limit budgets. Each
+ *     address and the mail transport selector, the browser-reachable storage
+ *     endpoint, the separate test database URL and the rate-limit budgets. Each
  *     belongs to a component that does not exist yet. When one is genuinely
  *     needed it is added HERE, and in the same change to the environment
  *     template and to the operating manual's variable table — never read
  *     directly from the environment at its point of use, which is the failure
  *     this module exists to prevent.
+ *   - THE TWO CLIENT-EXPOSED ORIGINS, which are absent for a stronger reason
+ *     than the two above: they are not this module's to read. The bundler
+ *     exposes its own prefixed namespace directly to the browser bundle, so
+ *     those two values are consumed by client code through that mechanism and
+ *     never by a server-side loader. They are origins rather than secrets, and
+ *     the prefix is the boundary — nothing carrying a credential may ever be
+ *     named that way, because that namespace ships verbatim to every visitor.
  *
  * Unknown keys are stripped rather than rejected, which is what makes those
  * omissions harmless: see the note on the schema declaration below.

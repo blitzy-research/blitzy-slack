@@ -10,6 +10,12 @@
     "declarationMap": false,
     "composite": false
   },
-  "include": ["**/*.ts"],
+  "include": [
+    "specs/**/*.ts",
+    "fixtures/**/*.ts",
+    "support/**/*.ts",
+    "a11y.spec.ts",
+    "playwright.config.ts"
+  ],
   "exclude": ["node_modules", "playwright-report", "test-results"]
 }
